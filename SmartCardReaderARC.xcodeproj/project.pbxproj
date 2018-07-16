@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		826EE72220FBDA8500DB4EA7 /* GetResponseCAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 826EE72120FBDA8500DB4EA7 /* GetResponseCAPDU.m */; };
 		8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */; };
 		8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5720FB7EDD00DF4BC6 /* ViewController.m */; };
 		8277EF5B20FB7EDD00DF4BC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5920FB7EDD00DF4BC6 /* Main.storyboard */; };
@@ -14,6 +15,13 @@
 		8277EF6020FB7EDE00DF4BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5E20FB7EDE00DF4BC6 /* LaunchScreen.storyboard */; };
 		8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6220FB7EDE00DF4BC6 /* main.m */; };
 		8277EF6D20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */; };
+		8277EF7920FB7F6800DF4BC6 /* libiOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */; };
+		8277EF9A20FB847800DF4BC6 /* CommandProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9220FB847800DF4BC6 /* CommandProcessor.m */; };
+		8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9620FB847800DF4BC6 /* CAPDU.m */; };
+		8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9920FB847800DF4BC6 /* RAPDU.m */; };
+		8277EFA020FB918B00DF4BC6 /* APDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9E20FB918B00DF4BC6 /* APDU.m */; };
+		8277EFA320FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */; };
+		8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		826EE72020FBDA8500DB4EA7 /* GetResponseCAPDU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetResponseCAPDU.h; sourceTree = "<group>"; };
+		826EE72120FBDA8500DB4EA7 /* GetResponseCAPDU.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetResponseCAPDU.m; sourceTree = "<group>"; };
 		8277EF5020FB7EDD00DF4BC6 /* SmartCardReaderARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCardReaderARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8277EF5320FB7EDD00DF4BC6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,6 +50,18 @@
 		8277EF6820FB7EDE00DF4BC6 /* SmartCardReaderARCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCardReaderARCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartCardReaderARCTests.m; sourceTree = "<group>"; };
 		8277EF6E20FB7EDE00DF4BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiOSLibrary.a; path = lib/libiOSLibrary.a; sourceTree = "<group>"; };
+		8277EF9220FB847800DF4BC6 /* CommandProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandProcessor.m; sourceTree = "<group>"; };
+		8277EF9320FB847800DF4BC6 /* CAPDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPDU.h; sourceTree = "<group>"; };
+		8277EF9420FB847800DF4BC6 /* RAPDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPDU.h; sourceTree = "<group>"; };
+		8277EF9620FB847800DF4BC6 /* CAPDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPDU.m; sourceTree = "<group>"; };
+		8277EF9720FB847800DF4BC6 /* CommandProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandProcessor.h; sourceTree = "<group>"; };
+		8277EF9920FB847800DF4BC6 /* RAPDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPDU.m; sourceTree = "<group>"; };
+		8277EF9E20FB918B00DF4BC6 /* APDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDU.m; sourceTree = "<group>"; };
+		8277EF9F20FB918B00DF4BC6 /* APDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
+		8277EFA120FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+NSNumbersFromUnsignedCharArray.h"; sourceTree = "<group>"; };
+		8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NSNumbersFromUnsignedCharArray.m"; sourceTree = "<group>"; };
+		8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */,
+				8277EF7920FB7F6800DF4BC6 /* libiOSLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +90,7 @@
 				8277EF5220FB7EDD00DF4BC6 /* SmartCardReaderARC */,
 				8277EF6B20FB7EDE00DF4BC6 /* SmartCardReaderARCTests */,
 				8277EF5120FB7EDD00DF4BC6 /* Products */,
+				8277EF7720FB7F6800DF4BC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +106,18 @@
 		8277EF5220FB7EDD00DF4BC6 /* SmartCardReaderARC */ = {
 			isa = PBXGroup;
 			children = (
+				8277EFA120FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.h */,
+				8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */,
+				8277EF9F20FB918B00DF4BC6 /* APDU.h */,
+				8277EF9E20FB918B00DF4BC6 /* APDU.m */,
+				8277EF9320FB847800DF4BC6 /* CAPDU.h */,
+				8277EF9620FB847800DF4BC6 /* CAPDU.m */,
+				826EE72020FBDA8500DB4EA7 /* GetResponseCAPDU.h */,
+				826EE72120FBDA8500DB4EA7 /* GetResponseCAPDU.m */,
+				8277EF9420FB847800DF4BC6 /* RAPDU.h */,
+				8277EF9920FB847800DF4BC6 /* RAPDU.m */,
+				8277EF9720FB847800DF4BC6 /* CommandProcessor.h */,
+				8277EF9220FB847800DF4BC6 /* CommandProcessor.m */,
 				8277EF5320FB7EDD00DF4BC6 /* AppDelegate.h */,
 				8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */,
 				8277EF5620FB7EDD00DF4BC6 /* ViewController.h */,
@@ -101,6 +138,15 @@
 				8277EF6E20FB7EDE00DF4BC6 /* Info.plist */,
 			);
 			path = SmartCardReaderARCTests;
+			sourceTree = "<group>";
+		};
+		8277EF7720FB7F6800DF4BC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */,
+				8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +249,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8277EF9A20FB847800DF4BC6 /* CommandProcessor.m in Sources */,
+				8277EFA320FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m in Sources */,
+				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
+				8277EFA020FB918B00DF4BC6 /* APDU.m in Sources */,
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,
+				8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */,
+				826EE72220FBDA8500DB4EA7 /* GetResponseCAPDU.m in Sources */,
 				8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */,
 				8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */,
 			);
@@ -362,14 +414,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DKV7Q87Z7J;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartCardReaderARC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TactivoSDK/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrejtrajkovski.SmartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/TactivoSDK/headers";
 			};
 			name = Debug;
 		};
@@ -378,14 +437,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DKV7Q87Z7J;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartCardReaderARC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TactivoSDK/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrejtrajkovski.SmartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/TactivoSDK/headers";
 			};
 			name = Release;
 		};
