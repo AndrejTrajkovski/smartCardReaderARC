@@ -8,13 +8,23 @@
 #import "CAPDU.h"
 #import "NSArray+NSNumbersFromUnsignedCharArray.h"
 
+@interface CAPDU()
+
+@property (strong, nonatomic) NSNumber* cla;
+@property (strong, nonatomic) NSNumber* ins;
+@property (strong, nonatomic) NSNumber* p1;
+@property (strong, nonatomic) NSNumber* p2;
+@property (strong, nonatomic) NSNumber* lc;
+@property (strong, nonatomic) NSArray* commandData;
+@property (strong, nonatomic) NSNumber* le;
+
+@end
+
 @implementation CAPDU
 
 -(void)replaceLengthByteWithCorrectLength:(Byte)le
 {
-    self.le = le;
-    NSNumber *leNumber = [NSNumber numberWithUnsignedChar:le];
-    self.bytes = [self.bytes arrayByAddingObject:leNumber];
+    self.le = [NSNumber numberWithUnsignedChar:le];
 }
 
 -(instancetype)initWithCLA:(Byte)cla
@@ -24,19 +34,30 @@
 {
     self = [super init];
     if (self) {
+        self.cla = [NSNumber numberWithUnsignedChar:cla];
+        self.ins = [NSNumber numberWithUnsignedChar:ins];
+        self.p1 = [NSNumber numberWithUnsignedChar:p1];
+        self.p2 = [NSNumber numberWithUnsignedChar:p2];
         
-        self.cla = cla;
-        self.ins = ins;
-        self.p1 = p1;
-        self.p2 = p2;
-        
-        NSNumber *claNumber = [NSNumber numberWithUnsignedChar:cla];
-        NSNumber *insNumber = [NSNumber numberWithUnsignedChar:ins];
-        NSNumber *p1Number = [NSNumber numberWithUnsignedChar:p1];
-        NSNumber *p2Number = [NSNumber numberWithUnsignedChar:p2];
-        
-        self.bytes = @[claNumber, insNumber, p1Number, p2Number];
     }
+    
+    return self;
+}
+
+-(instancetype)initWithCLA:(Byte)cla
+                       INS:(Byte)ins
+                        p1:(Byte)p1
+                        p2:(Byte)p2
+    expectedResponseLength:(Byte)le
+{
+    self = [self initWithCLA:cla
+                         INS:ins
+                          p1:p1
+                          p2:p2];
+    if (self){
+        self.le = [NSNumber numberWithUnsignedChar:le];
+    }
+    
     return self;
 }
 
@@ -52,16 +73,12 @@
                           p1:p1
                           p2:p2];
     if (self) {
-        
-        self.lc = lc;
-        NSNumber *lcNumber = [NSNumber numberWithUnsignedChar:lc];
-        self.bytes = [self.bytes arrayByAddingObject:lcNumber];
-
+        self.lc = [NSNumber numberWithUnsignedChar:lc];
         int commandLengthInt = (int)lc;
         NSArray *commandDataArray = [[NSArray alloc] initFromCArray:commandData withCount:commandLengthInt];
         self.commandData = commandDataArray;
-        self.bytes = [self.bytes arrayByAddingObjectsFromArray:commandDataArray];
     }
+    
     return self;
 }
 
@@ -79,13 +96,28 @@
                           p2:p2
                commandLength:lc
                  commandData:commandData];
-    
     if (self) {
-        self.le = le;
-        NSNumber *leNumber = [NSNumber numberWithUnsignedChar:le];
-        self.bytes = [self.bytes arrayByAddingObject:leNumber];
+        self.le = [NSNumber numberWithUnsignedChar:le];
     }
+    
     return self;
+}
+
+-(NSArray *)bytes{
+    
+    NSArray *finalBytes = @[];
+    NSArray *headerBytes = @[self.cla, self.ins, self.p1, self.p2];
+    finalBytes = headerBytes;
+    if (self.lc) {
+        finalBytes = [finalBytes arrayByAddingObject:self.lc];
+    }
+    if (self.commandData) {
+        finalBytes = [finalBytes arrayByAddingObjectsFromArray:self.commandData];
+    }
+    if (self.le) {
+        finalBytes = [finalBytes arrayByAddingObject:self.le];
+    }
+    return finalBytes;
 }
 
 @end

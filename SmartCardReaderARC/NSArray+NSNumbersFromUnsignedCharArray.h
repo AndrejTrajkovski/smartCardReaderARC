@@ -12,6 +12,7 @@
 
 -(instancetype)initFromCArray:(unsigned char *)unsignedCharArray
                     withCount:(int)arrayCount;
+
 -(unsigned char *)cArrayFromBytes;
 
 @end

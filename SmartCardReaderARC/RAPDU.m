@@ -25,4 +25,9 @@
     return self;
 }
 
+-(NSData *)bytesAsData
+{
+    return [NSData dataWithBytes:[self.bytes cArrayFromBytes] length:self.bytes.count];
+}
+
 @end

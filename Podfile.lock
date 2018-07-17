@@ -1,0 +1,16 @@
+PODS:
+  - BerTlv (0.1.0)
+
+DEPENDENCIES:
+  - BerTlv (= 0.1.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BerTlv
+
+SPEC CHECKSUMS:
+  BerTlv: 03e30af56f0dcacafe8ed57553fb676456cbeb7a
+
+PODFILE CHECKSUM: 37187473f60edf0f1361a556d81e93bc6feeae65
+
+COCOAPODS: 1.5.2

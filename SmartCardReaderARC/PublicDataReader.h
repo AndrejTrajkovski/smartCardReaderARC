@@ -9,12 +9,13 @@
 
 @class CAPDU, RAPDU, PBSmartcard;
 
-@interface CommandProcessor : NSObject
+@interface PublicDataReader : NSObject
 
-//-(RAPDU*)executeCommand:(CAPDU *)capdu;
--(void)start;
 @property (strong, nonatomic) PBSmartcard *smartCard;
+-(instancetype)initWithSmartCard:(PBSmartcard *)smardCard;
 
--(instancetype)initWithCommandFlow:(NSArray *)commands andSmartCard:(PBSmartcard *)smardCard;
+-(void)selectPSEDir;
+-(void)selectPPSEDir;
+-(void)selectAID;
 
 @end

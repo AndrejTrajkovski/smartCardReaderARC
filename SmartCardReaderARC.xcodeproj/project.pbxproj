@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		826EE72220FBDA8500DB4EA7 /* GetResponseCAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 826EE72120FBDA8500DB4EA7 /* GetResponseCAPDU.m */; };
+		43F210228609D79682DCB263 /* libPods-SmartCardReaderARCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */; };
 		8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */; };
 		8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5720FB7EDD00DF4BC6 /* ViewController.m */; };
 		8277EF5B20FB7EDD00DF4BC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5920FB7EDD00DF4BC6 /* Main.storyboard */; };
@@ -16,12 +16,16 @@
 		8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6220FB7EDE00DF4BC6 /* main.m */; };
 		8277EF6D20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */; };
 		8277EF7920FB7F6800DF4BC6 /* libiOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */; };
-		8277EF9A20FB847800DF4BC6 /* CommandProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9220FB847800DF4BC6 /* CommandProcessor.m */; };
+		8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9220FB847800DF4BC6 /* PublicDataReader.m */; };
 		8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9620FB847800DF4BC6 /* CAPDU.m */; };
 		8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9920FB847800DF4BC6 /* RAPDU.m */; };
 		8277EFA020FB918B00DF4BC6 /* APDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9E20FB918B00DF4BC6 /* APDU.m */; };
 		8277EFA320FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */; };
 		8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */; };
+		8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1720FE146000224E26 /* RAPDUParser.m */; };
+		8913AF1B20FE2DCA00224E26 /* NSString+BytesFromString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1A20FE2DCA00224E26 /* NSString+BytesFromString.m */; };
+		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
+		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		826EE72020FBDA8500DB4EA7 /* GetResponseCAPDU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetResponseCAPDU.h; sourceTree = "<group>"; };
-		826EE72120FBDA8500DB4EA7 /* GetResponseCAPDU.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetResponseCAPDU.m; sourceTree = "<group>"; };
+		056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		338B2713C0CC1C13E01E1629 /* Pods-SmartCardReaderARCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARCTests/Pods-SmartCardReaderARCTests.release.xcconfig"; sourceTree = "<group>"; };
+		61A5E681FC7E0A2FBE338A05 /* Pods-SmartCardReaderARC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARC.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARC/Pods-SmartCardReaderARC.release.xcconfig"; sourceTree = "<group>"; };
 		8277EF5020FB7EDD00DF4BC6 /* SmartCardReaderARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCardReaderARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8277EF5320FB7EDD00DF4BC6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,17 +56,26 @@
 		8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartCardReaderARCTests.m; sourceTree = "<group>"; };
 		8277EF6E20FB7EDE00DF4BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiOSLibrary.a; path = lib/libiOSLibrary.a; sourceTree = "<group>"; };
-		8277EF9220FB847800DF4BC6 /* CommandProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandProcessor.m; sourceTree = "<group>"; };
+		8277EF9220FB847800DF4BC6 /* PublicDataReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicDataReader.m; sourceTree = "<group>"; };
 		8277EF9320FB847800DF4BC6 /* CAPDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPDU.h; sourceTree = "<group>"; };
 		8277EF9420FB847800DF4BC6 /* RAPDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPDU.h; sourceTree = "<group>"; };
 		8277EF9620FB847800DF4BC6 /* CAPDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPDU.m; sourceTree = "<group>"; };
-		8277EF9720FB847800DF4BC6 /* CommandProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandProcessor.h; sourceTree = "<group>"; };
+		8277EF9720FB847800DF4BC6 /* PublicDataReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicDataReader.h; sourceTree = "<group>"; };
 		8277EF9920FB847800DF4BC6 /* RAPDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPDU.m; sourceTree = "<group>"; };
 		8277EF9E20FB918B00DF4BC6 /* APDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDU.m; sourceTree = "<group>"; };
 		8277EF9F20FB918B00DF4BC6 /* APDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
 		8277EFA120FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+NSNumbersFromUnsignedCharArray.h"; sourceTree = "<group>"; };
 		8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NSNumbersFromUnsignedCharArray.m"; sourceTree = "<group>"; };
 		8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8913AF1620FE146000224E26 /* RAPDUParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAPDUParser.h; sourceTree = "<group>"; };
+		8913AF1720FE146000224E26 /* RAPDUParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RAPDUParser.m; sourceTree = "<group>"; };
+		8913AF1920FE2DCA00224E26 /* NSString+BytesFromString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+BytesFromString.h"; sourceTree = "<group>"; };
+		8913AF1A20FE2DCA00224E26 /* NSString+BytesFromString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+BytesFromString.m"; sourceTree = "<group>"; };
+		896EC5FA20FDD21E005BC89F /* CAPDUGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPDUGenerator.h; sourceTree = "<group>"; };
+		896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPDUGenerator.m; sourceTree = "<group>"; };
+		8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D28A030C0AB434E6807CB68 /* Pods-SmartCardReaderARC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARC/Pods-SmartCardReaderARC.debug.xcconfig"; sourceTree = "<group>"; };
+		C5CEC8C1C3D22C0CE27C1D0F /* Pods-SmartCardReaderARCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARCTests/Pods-SmartCardReaderARCTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +85,7 @@
 			files = (
 				8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */,
 				8277EF7920FB7F6800DF4BC6 /* libiOSLibrary.a in Frameworks */,
+				AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F210228609D79682DCB263 /* libPods-SmartCardReaderARCTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +107,7 @@
 				8277EF6B20FB7EDE00DF4BC6 /* SmartCardReaderARCTests */,
 				8277EF5120FB7EDD00DF4BC6 /* Products */,
 				8277EF7720FB7F6800DF4BC6 /* Frameworks */,
+				9185946349FD629875FCF36A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,12 +129,14 @@
 				8277EF9E20FB918B00DF4BC6 /* APDU.m */,
 				8277EF9320FB847800DF4BC6 /* CAPDU.h */,
 				8277EF9620FB847800DF4BC6 /* CAPDU.m */,
-				826EE72020FBDA8500DB4EA7 /* GetResponseCAPDU.h */,
-				826EE72120FBDA8500DB4EA7 /* GetResponseCAPDU.m */,
+				896EC5FA20FDD21E005BC89F /* CAPDUGenerator.h */,
+				896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */,
 				8277EF9420FB847800DF4BC6 /* RAPDU.h */,
 				8277EF9920FB847800DF4BC6 /* RAPDU.m */,
-				8277EF9720FB847800DF4BC6 /* CommandProcessor.h */,
-				8277EF9220FB847800DF4BC6 /* CommandProcessor.m */,
+				8913AF1620FE146000224E26 /* RAPDUParser.h */,
+				8913AF1720FE146000224E26 /* RAPDUParser.m */,
+				8277EF9720FB847800DF4BC6 /* PublicDataReader.h */,
+				8277EF9220FB847800DF4BC6 /* PublicDataReader.m */,
 				8277EF5320FB7EDD00DF4BC6 /* AppDelegate.h */,
 				8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */,
 				8277EF5620FB7EDD00DF4BC6 /* ViewController.h */,
@@ -127,6 +146,8 @@
 				8277EF5E20FB7EDE00DF4BC6 /* LaunchScreen.storyboard */,
 				8277EF6120FB7EDE00DF4BC6 /* Info.plist */,
 				8277EF6220FB7EDE00DF4BC6 /* main.m */,
+				8913AF1920FE2DCA00224E26 /* NSString+BytesFromString.h */,
+				8913AF1A20FE2DCA00224E26 /* NSString+BytesFromString.m */,
 			);
 			path = SmartCardReaderARC;
 			sourceTree = "<group>";
@@ -145,8 +166,21 @@
 			children = (
 				8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */,
 				8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */,
+				056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */,
+				8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9185946349FD629875FCF36A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D28A030C0AB434E6807CB68 /* Pods-SmartCardReaderARC.debug.xcconfig */,
+				61A5E681FC7E0A2FBE338A05 /* Pods-SmartCardReaderARC.release.xcconfig */,
+				C5CEC8C1C3D22C0CE27C1D0F /* Pods-SmartCardReaderARCTests.debug.xcconfig */,
+				338B2713C0CC1C13E01E1629 /* Pods-SmartCardReaderARCTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +190,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8277EF7120FB7EDE00DF4BC6 /* Build configuration list for PBXNativeTarget "SmartCardReaderARC" */;
 			buildPhases = (
+				44954A2D1E6E134DDD18E9C2 /* [CP] Check Pods Manifest.lock */,
 				8277EF4C20FB7EDD00DF4BC6 /* Sources */,
 				8277EF4D20FB7EDD00DF4BC6 /* Frameworks */,
 				8277EF4E20FB7EDD00DF4BC6 /* Resources */,
@@ -173,6 +208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8277EF7420FB7EDE00DF4BC6 /* Build configuration list for PBXNativeTarget "SmartCardReaderARCTests" */;
 			buildPhases = (
+				ADD778D5D2CC979A2B68F631 /* [CP] Check Pods Manifest.lock */,
 				8277EF6420FB7EDE00DF4BC6 /* Sources */,
 				8277EF6520FB7EDE00DF4BC6 /* Frameworks */,
 				8277EF6620FB7EDE00DF4BC6 /* Resources */,
@@ -244,18 +280,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44954A2D1E6E134DDD18E9C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartCardReaderARC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADD778D5D2CC979A2B68F631 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartCardReaderARCTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8277EF4C20FB7EDD00DF4BC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8277EF9A20FB847800DF4BC6 /* CommandProcessor.m in Sources */,
+				8913AF1B20FE2DCA00224E26 /* NSString+BytesFromString.m in Sources */,
+				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
+				8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */,
 				8277EFA320FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
 				8277EFA020FB918B00DF4BC6 /* APDU.m in Sources */,
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,
+				896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */,
 				8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */,
-				826EE72220FBDA8500DB4EA7 /* GetResponseCAPDU.m in Sources */,
 				8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */,
 				8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */,
 			);
@@ -411,10 +488,11 @@
 		};
 		8277EF7220FB7EDE00DF4BC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D28A030C0AB434E6807CB68 /* Pods-SmartCardReaderARC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DKV7Q87Z7J;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = LAA69LK8PF;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartCardReaderARC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -425,8 +503,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TactivoSDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrejtrajkovski.SmartCardReaderARC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netcetera.smartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2b7a75b3-f221-4cb8-8d9a-1ce815fe893e";
+				PROVISIONING_PROFILE_SPECIFIER = GenericDevelopmentNew;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/TactivoSDK/headers";
 			};
@@ -434,10 +514,11 @@
 		};
 		8277EF7320FB7EDE00DF4BC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61A5E681FC7E0A2FBE338A05 /* Pods-SmartCardReaderARC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DKV7Q87Z7J;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartCardReaderARC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -448,8 +529,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TactivoSDK/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrejtrajkovski.SmartCardReaderARC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netcetera.smartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/TactivoSDK/headers";
 			};
@@ -457,6 +539,7 @@
 		};
 		8277EF7520FB7EDE00DF4BC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5CEC8C1C3D22C0CE27C1D0F /* Pods-SmartCardReaderARCTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -475,6 +558,7 @@
 		};
 		8277EF7620FB7EDE00DF4BC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 338B2713C0CC1C13E01E1629 /* Pods-SmartCardReaderARCTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

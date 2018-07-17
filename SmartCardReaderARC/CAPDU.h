@@ -18,6 +18,12 @@
                        INS:(Byte)ins
                         p1:(Byte)p1
                         p2:(Byte)p2
+    expectedResponseLength:(Byte)le;
+
+-(instancetype)initWithCLA:(Byte)cla
+                       INS:(Byte)ins
+                        p1:(Byte)p1
+                        p2:(Byte)p2
              commandLength:(Byte)lc
                commandData:(Byte *)commandData;
 
@@ -29,12 +35,6 @@
                commandData:(Byte *)commandData
     expectedResponseLength:(Byte)le;
 
-@property (assign, nonatomic) Byte cla;
-@property (assign, nonatomic) Byte ins;
-@property (assign, nonatomic) Byte p1;
-@property (assign, nonatomic) Byte p2;
-@property (assign, nonatomic) Byte lc;
-@property (strong, nonatomic) NSArray* commandData;
-@property (assign, nonatomic) Byte le;
+-(void)replaceLengthByteWithCorrectLength:(Byte)le;
 
 @end
