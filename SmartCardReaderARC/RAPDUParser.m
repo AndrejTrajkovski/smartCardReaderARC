@@ -11,7 +11,10 @@
 #import "BerTag.h"
 #import "BerTlv.h"
 #import "BerTlvs.h"
+#import "CAPDU.h"
+#import "RAPDU.h"
 #import "NSArray+ByteManipulation.h"
+#import "NSData+ByteManipulation.h"
 
 @interface RAPDUParser()
 
@@ -33,8 +36,9 @@
     return self;
 }
 
--(NSArray *)aidFromData:(NSData *)data
+-(NSArray *)aidFromRAPDU:(RAPDU *)rapdu
 {
+    NSData *data = [NSData byteDataFromArray:rapdu.bytes];
     Byte aidTag = 0x4F;
     BerTag *aidBerTag = [[BerTag alloc] init:aidTag];
     
@@ -65,8 +69,79 @@
         //error, sfi should not be longer that 1 byte (even 5 bits)
     }
     const char *sfiUtf8Str = [sfiStr UTF8String];
-    unsigned char *sfiRawBytes = (unsigned char *)sfiUtf8Str;
-    int sfiAsInt = [[NSNumber numberWithUnsignedChar:*sfiRawBytes] intValue];;
+    unsigned char *sfiIndicatorRawBytes = (unsigned char *)sfiUtf8Str;
+    NSNumber *sfiIndicator = [NSNumber numberWithUnsignedChar:*sfiIndicatorRawBytes];
+    
+    return [self sfiWithShiftAndAddFourToByte:sfiIndicator];
+}
+
+-(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu
+{
+    NSData *data = [NSData byteDataFromArray:rapdu.bytes];
+    return [self sfiFromData:data];
+}
+
+-(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu
+{
+    
+//    NSAssert([rapdu.bytes.firstObject isEqualToNumber:@0x80], @"Only coding for primitive TLV with starting element 0x80");
+    NSArray *aflGroupsBytes;
+    
+    if ([rapdu.bytes.firstObject isEqualToNumber:@0x80]) {
+        
+        if (rapdu.bytes.count > 3) {
+            
+            NSUInteger numberOfBytesBeforeAFLGroups = 4;
+            NSRange aflGroupsRange = NSMakeRange(numberOfBytesBeforeAFLGroups, rapdu.bytes.count - 2  - numberOfBytesBeforeAFLGroups);
+            aflGroupsBytes = [rapdu.bytes subarrayWithRange:aflGroupsRange];
+        }
+        
+    }else if ([rapdu.bytes.firstObject isEqualToNumber:@0x77]){
+        
+        Byte aflTag = 0x94;
+        BerTag *aflBerTag = [[BerTag alloc] init:aflTag];
+        NSData *data = [NSData byteDataFromArray:rapdu.bytes];
+        BerTlv *tlv = [self.berTlvParser parseConstructed:data];
+        BerTlv *aflTLV = [tlv find:aflBerTag];
+        NSLog(@"afl hex : %@ \n", aflTLV.hexValue);
+        NSLog(@"afl hex : %@ \n", aflTLV.textValue);
+        aflGroupsBytes = [NSArray byteArrayFromData:aflTLV.value];
+
+    }
+    
+    return [self sfisWithRecordNumbersFromAFLGroupsBytes:aflGroupsBytes];
+}
+
+-(NSArray *)sfisWithRecordNumbersFromAFLGroupsBytes:(NSArray *)aflGroupsBytes
+{
+    NSMutableArray *sfisWithRecordNumbers = [NSMutableArray new];
+
+    //afl groups should be 4 bytes each
+    int numberOfAflGroups = (int)aflGroupsBytes.count / 4;
+    for (int aflGroupIndex = 0; aflGroupIndex < numberOfAflGroups * 4; aflGroupIndex += 4) {
+        
+        NSNumber *firstByteOfAflGroup = [aflGroupsBytes objectAtIndex:aflGroupIndex];
+        NSNumber *secondByteOfAflGroup = [aflGroupsBytes objectAtIndex:aflGroupIndex + 1];
+        NSNumber *thirdByteOfAflGroup = [aflGroupsBytes objectAtIndex:aflGroupIndex + 2];
+        //offline data authentication byte
+        //            NSNumber *fourthByteOfAflGroup = [aflGroups objectAtIndex:i + 3];
+        NSUInteger sfiIndicator = [firstByteOfAflGroup unsignedIntegerValue];
+        NSUInteger removeLast3Bits = sfiIndicator >> 3;
+        NSNumber *sfi = [self sfiWithShiftAndAddFourToByte:[NSNumber numberWithUnsignedInteger:removeLast3Bits]];
+        
+        SFIWithRecordNumbers *sfiWithRecords = [SFIWithRecordNumbers new];
+        sfiWithRecords.sfi = sfi;
+        sfiWithRecords.firstRecordNumber = secondByteOfAflGroup;
+        sfiWithRecords.lastRecordNumber = thirdByteOfAflGroup;
+        [sfisWithRecordNumbers addObject:sfiWithRecords];
+    }
+    
+    return sfisWithRecordNumbers;
+}
+
+-(NSNumber *)sfiWithShiftAndAddFourToByte:(NSNumber *)byte
+{
+    int sfiAsInt = [byte intValue];;
     if (sfiAsInt <= 10) {
         //ok
         sfiAsInt = sfiAsInt << 3;
@@ -79,8 +154,8 @@
     }else{
         //error
     }
-    Byte finalSFI = [[NSNumber numberWithInt:sfiAsInt] unsignedCharValue];
-    return [NSNumber numberWithUnsignedChar:finalSFI];
+    
+    return [NSNumber numberWithInt:sfiAsInt];
 }
 
 @end

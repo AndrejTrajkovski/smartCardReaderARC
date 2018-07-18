@@ -7,10 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SFIWithRecordNumbers.h"
 
+@class RAPDU, CAPDU;
 @interface RAPDUParser : NSObject
 
--(NSNumber *)sfiFromData:(NSData *)data;
--(NSArray *)aidFromData:(NSData *)data;
+-(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu;
+
+-(NSArray *)aidFromRAPDU:(RAPDU *)rapdu;
+
+-(NSNumber *)correctLengthNeededForRAPDU:(RAPDU *)rapdu;
+
+-(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu;
 
 @end

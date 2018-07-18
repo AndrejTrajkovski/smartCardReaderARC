@@ -26,6 +26,7 @@
 		8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */; };
 		8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1F20FF31D700224E26 /* NSArray+ByteManipulation.m */; };
 		8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2420FF35D200224E26 /* TactivoExecutioner.m */; };
+		8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
 		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,8 @@
 		8913AF2220FF359800224E26 /* CardReaderCommandExecutioner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardReaderCommandExecutioner.h; sourceTree = "<group>"; };
 		8913AF2320FF35D200224E26 /* TactivoExecutioner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TactivoExecutioner.h; sourceTree = "<group>"; };
 		8913AF2420FF35D200224E26 /* TactivoExecutioner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TactivoExecutioner.m; sourceTree = "<group>"; };
+		8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFIWithRecordNumbers.h; sourceTree = "<group>"; };
+		8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFIWithRecordNumbers.m; sourceTree = "<group>"; };
 		896EC5FA20FDD21E005BC89F /* CAPDUGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPDUGenerator.h; sourceTree = "<group>"; };
 		896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPDUGenerator.m; sourceTree = "<group>"; };
 		8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +133,8 @@
 		8277EF5220FB7EDD00DF4BC6 /* SmartCardReaderARC */ = {
 			isa = PBXGroup;
 			children = (
+				8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */,
+				8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */,
 				8913AF2220FF359800224E26 /* CardReaderCommandExecutioner.h */,
 				8913AF2320FF35D200224E26 /* TactivoExecutioner.h */,
 				8913AF2420FF35D200224E26 /* TactivoExecutioner.m */,
@@ -346,6 +351,7 @@
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,
 				8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */,
 				896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */,
+				8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */,
 				8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */,
 				8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */,
 				8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */,

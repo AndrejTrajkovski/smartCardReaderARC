@@ -15,8 +15,6 @@
 -(instancetype)initWithExecutioner:(id <CardReaderCommandExecutioner>)commandExecutioner;
 @property (strong, nonatomic) id <CardReaderCommandExecutioner> commandExecutioner;
 
--(void)selectPSEDir;
--(void)selectPPSEDir;
--(void)selectAID;
+-(void)readPublicDataViaPSE;
 
 @end

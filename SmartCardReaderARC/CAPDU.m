@@ -9,15 +9,6 @@
 #import "NSArray+ByteManipulation.h"
 
 @interface CAPDU()
-
-@property (strong, nonatomic) NSNumber* cla;
-@property (strong, nonatomic) NSNumber* ins;
-@property (strong, nonatomic) NSNumber* p1;
-@property (strong, nonatomic) NSNumber* p2;
-@property (strong, nonatomic) NSNumber* lc;
-@property (strong, nonatomic) NSArray* commandData;
-@property (strong, nonatomic) NSNumber* le;
-
 @end
 
 @implementation CAPDU

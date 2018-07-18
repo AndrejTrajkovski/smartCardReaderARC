@@ -26,7 +26,7 @@
     TactivoExecutioner *tactivoExecutioner = [TactivoExecutioner new];
     [tactivoExecutioner doInitialization];
     self.pdReader = [[PublicDataReader alloc] initWithExecutioner:tactivoExecutioner];
-    [self.pdReader selectPSEDir];
+    [self.pdReader readPublicDataViaPSE];
 }
 
 

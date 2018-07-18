@@ -40,6 +40,17 @@
     return getResponseCAPDU;
 }
 
++(CAPDU *)capduWithCAPDU:(CAPDU *)capdu withFixedLength:(NSNumber *)le
+{
+    CAPDU *fixedLengthCAPDU = [[CAPDU alloc] initWithCLA:capdu.cla
+                                                     INS:capdu.ins
+                                                      p1:capdu.p1
+                                                      p2:capdu.p2];
+    fixedLengthCAPDU.le = le;
+    
+    return fixedLengthCAPDU;
+}
+
 +(CAPDU *)selectApplicationWithAID:(NSArray*)aid
 {
     CAPDU *selectAID = [[CAPDU alloc] initWithCLA:@0x00
