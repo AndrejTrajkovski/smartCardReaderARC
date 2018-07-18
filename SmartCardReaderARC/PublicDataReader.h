@@ -6,13 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CardReaderCommandExecutioner.h"
 
 @class CAPDU, RAPDU, PBSmartcard;
 
 @interface PublicDataReader : NSObject
 
-@property (strong, nonatomic) PBSmartcard *smartCard;
--(instancetype)initWithSmartCard:(PBSmartcard *)smardCard;
+-(instancetype)initWithExecutioner:(id <CardReaderCommandExecutioner>)commandExecutioner;
+@property (strong, nonatomic) id <CardReaderCommandExecutioner> commandExecutioner;
 
 -(void)selectPSEDir;
 -(void)selectPPSEDir;

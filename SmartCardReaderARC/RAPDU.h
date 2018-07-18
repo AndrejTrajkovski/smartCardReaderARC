@@ -14,6 +14,5 @@
 -(instancetype)initWithResponseBytes:(unsigned char *)responseBytes
                            andLength:(int)length
                            andStatus:(PBSmartcardStatus)status;
--(NSData *)bytesAsData;
 
 @end

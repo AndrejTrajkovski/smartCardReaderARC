@@ -10,9 +10,11 @@
 #import "PBAccessory.h"
 #import "CAPDU.h"
 #import "PublicDataReader.h"
-#import "PBSmartcard.h"
+#import "TactivoExecutioner.h"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) PublicDataReader *pdReader;
 
 @end
 
@@ -21,13 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    PBSmartcardStatus status;
-    PBSmartcard *smartcard = [[PBSmartcard alloc] init];
-    status = [smartcard open];
-    status = [smartcard connect:PBSmartcardProtocolTx];
-    
-    PublicDataReader *pdr = [[PublicDataReader alloc] initWithSmartCard:smartcard];
-    [pdr selectPSEDir];
+    TactivoExecutioner *tactivoExecutioner = [TactivoExecutioner new];
+    [tactivoExecutioner doInitialization];
+    self.pdReader = [[PublicDataReader alloc] initWithExecutioner:tactivoExecutioner];
+    [self.pdReader selectPSEDir];
 }
 
 

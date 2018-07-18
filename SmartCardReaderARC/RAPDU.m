@@ -6,7 +6,7 @@
 //
 
 #import "RAPDU.h"
-#import "NSArray+NSNumbersFromUnsignedCharArray.h"
+#import "NSArray+ByteManipulation.h"
 
 @implementation RAPDU
 
@@ -19,15 +19,10 @@
     if (self) {
         
         self.status = status;
-        self.bytes = [[NSArray alloc] initFromCArray:responseBytes withCount:length];
+        self.bytes = [NSArray arrayWithUnsignedCharArray:responseBytes withCount:length];
     }
     
     return self;
-}
-
--(NSData *)bytesAsData
-{
-    return [NSData dataWithBytes:[self.bytes cArrayFromBytes] length:self.bytes.count];
 }
 
 @end

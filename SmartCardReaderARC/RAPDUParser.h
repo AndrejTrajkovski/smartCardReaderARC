@@ -10,7 +10,7 @@
 
 @interface RAPDUParser : NSObject
 
--(Byte)sfiFromData:(NSData *)data;
+-(NSNumber *)sfiFromData:(NSData *)data;
 -(NSArray *)aidFromData:(NSData *)data;
 
 @end

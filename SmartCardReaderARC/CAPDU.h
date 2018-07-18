@@ -9,32 +9,30 @@
 
 @interface CAPDU : APDU
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2;
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2;
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2
-    expectedResponseLength:(Byte)le;
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2
+    expectedResponseLength:(NSNumber*)le;
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2
-             commandLength:(Byte)lc
-               commandData:(Byte *)commandData;
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2
+               commandData:(NSArray*)commandData;
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2
-             commandLength:(Byte)lc
-               commandData:(Byte *)commandData
-    expectedResponseLength:(Byte)le;
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2
+               commandData:(NSArray*)commandData
+    expectedResponseLength:(NSNumber*)le;
 
--(void)replaceLengthByteWithCorrectLength:(Byte)le;
+-(void)replaceLengthByteWithCorrectLength:(NSNumber*)le;
 
 @end

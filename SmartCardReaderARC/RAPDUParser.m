@@ -11,7 +11,7 @@
 #import "BerTag.h"
 #import "BerTlv.h"
 #import "BerTlvs.h"
-#import "NSArray+NSNumbersFromUnsignedCharArray.h"
+#import "NSArray+ByteManipulation.h"
 
 @interface RAPDUParser()
 
@@ -45,10 +45,10 @@
     unsigned char *aidHexBytes = (unsigned char *)[aidAsData bytes];
 //    NSUInteger length = [aidAsData ];
     
-    return [[NSArray alloc] initFromCArray:aidHexBytes withCount:(int)[aidAsData length]];
+    return [NSArray arrayWithUnsignedCharArray:aidHexBytes withCount:(int)aidAsData.length];
 }
 
--(Byte)sfiFromData:(NSData *)data
+-(NSNumber *)sfiFromData:(NSData *)data
 {
     Byte sfiTag = 0x88;
     BerTag *sfiBerTag = [[BerTag alloc] init:sfiTag];
@@ -80,7 +80,7 @@
         //error
     }
     Byte finalSFI = [[NSNumber numberWithInt:sfiAsInt] unsignedCharValue];
-    return finalSFI;
+    return [NSNumber numberWithUnsignedChar:finalSFI];
 }
 
 @end

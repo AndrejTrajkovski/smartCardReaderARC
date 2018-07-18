@@ -20,10 +20,12 @@
 		8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9620FB847800DF4BC6 /* CAPDU.m */; };
 		8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9920FB847800DF4BC6 /* RAPDU.m */; };
 		8277EFA020FB918B00DF4BC6 /* APDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9E20FB918B00DF4BC6 /* APDU.m */; };
-		8277EFA320FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */; };
 		8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */; };
 		8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1720FE146000224E26 /* RAPDUParser.m */; };
 		8913AF1B20FE2DCA00224E26 /* NSString+BytesFromString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1A20FE2DCA00224E26 /* NSString+BytesFromString.m */; };
+		8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */; };
+		8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1F20FF31D700224E26 /* NSArray+ByteManipulation.m */; };
+		8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2420FF35D200224E26 /* TactivoExecutioner.m */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
 		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
 /* End PBXBuildFile section */
@@ -64,13 +66,18 @@
 		8277EF9920FB847800DF4BC6 /* RAPDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPDU.m; sourceTree = "<group>"; };
 		8277EF9E20FB918B00DF4BC6 /* APDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDU.m; sourceTree = "<group>"; };
 		8277EF9F20FB918B00DF4BC6 /* APDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
-		8277EFA120FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+NSNumbersFromUnsignedCharArray.h"; sourceTree = "<group>"; };
-		8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NSNumbersFromUnsignedCharArray.m"; sourceTree = "<group>"; };
 		8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8913AF1620FE146000224E26 /* RAPDUParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAPDUParser.h; sourceTree = "<group>"; };
 		8913AF1720FE146000224E26 /* RAPDUParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RAPDUParser.m; sourceTree = "<group>"; };
 		8913AF1920FE2DCA00224E26 /* NSString+BytesFromString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+BytesFromString.h"; sourceTree = "<group>"; };
 		8913AF1A20FE2DCA00224E26 /* NSString+BytesFromString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+BytesFromString.m"; sourceTree = "<group>"; };
+		8913AF1C20FF315500224E26 /* NSData+ByteManipulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ByteManipulation.h"; sourceTree = "<group>"; };
+		8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ByteManipulation.m"; sourceTree = "<group>"; };
+		8913AF1F20FF31D700224E26 /* NSArray+ByteManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ByteManipulation.m"; sourceTree = "<group>"; };
+		8913AF2020FF31D700224E26 /* NSArray+ByteManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ByteManipulation.h"; sourceTree = "<group>"; };
+		8913AF2220FF359800224E26 /* CardReaderCommandExecutioner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardReaderCommandExecutioner.h; sourceTree = "<group>"; };
+		8913AF2320FF35D200224E26 /* TactivoExecutioner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TactivoExecutioner.h; sourceTree = "<group>"; };
+		8913AF2420FF35D200224E26 /* TactivoExecutioner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TactivoExecutioner.m; sourceTree = "<group>"; };
 		896EC5FA20FDD21E005BC89F /* CAPDUGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPDUGenerator.h; sourceTree = "<group>"; };
 		896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPDUGenerator.m; sourceTree = "<group>"; };
 		8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,8 +130,15 @@
 		8277EF5220FB7EDD00DF4BC6 /* SmartCardReaderARC */ = {
 			isa = PBXGroup;
 			children = (
-				8277EFA120FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.h */,
-				8277EFA220FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m */,
+				8913AF2220FF359800224E26 /* CardReaderCommandExecutioner.h */,
+				8913AF2320FF35D200224E26 /* TactivoExecutioner.h */,
+				8913AF2420FF35D200224E26 /* TactivoExecutioner.m */,
+				8277EF9720FB847800DF4BC6 /* PublicDataReader.h */,
+				8277EF9220FB847800DF4BC6 /* PublicDataReader.m */,
+				8913AF1C20FF315500224E26 /* NSData+ByteManipulation.h */,
+				8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */,
+				8913AF2020FF31D700224E26 /* NSArray+ByteManipulation.h */,
+				8913AF1F20FF31D700224E26 /* NSArray+ByteManipulation.m */,
 				8277EF9F20FB918B00DF4BC6 /* APDU.h */,
 				8277EF9E20FB918B00DF4BC6 /* APDU.m */,
 				8277EF9320FB847800DF4BC6 /* CAPDU.h */,
@@ -135,8 +149,6 @@
 				8277EF9920FB847800DF4BC6 /* RAPDU.m */,
 				8913AF1620FE146000224E26 /* RAPDUParser.h */,
 				8913AF1720FE146000224E26 /* RAPDUParser.m */,
-				8277EF9720FB847800DF4BC6 /* PublicDataReader.h */,
-				8277EF9220FB847800DF4BC6 /* PublicDataReader.m */,
 				8277EF5320FB7EDD00DF4BC6 /* AppDelegate.h */,
 				8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */,
 				8277EF5620FB7EDD00DF4BC6 /* ViewController.h */,
@@ -326,11 +338,13 @@
 			files = (
 				8913AF1B20FE2DCA00224E26 /* NSString+BytesFromString.m in Sources */,
 				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
+				8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */,
 				8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */,
-				8277EFA320FBB91100DF4BC6 /* NSArray+NSNumbersFromUnsignedCharArray.m in Sources */,
+				8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
 				8277EFA020FB918B00DF4BC6 /* APDU.m in Sources */,
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,
+				8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */,
 				896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */,
 				8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */,
 				8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */,

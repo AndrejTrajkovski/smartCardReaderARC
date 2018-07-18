@@ -6,7 +6,7 @@
 //
 
 #import "CAPDU.h"
-#import "NSArray+NSNumbersFromUnsignedCharArray.h"
+#import "NSArray+ByteManipulation.h"
 
 @interface CAPDU()
 
@@ -22,82 +22,77 @@
 
 @implementation CAPDU
 
--(void)replaceLengthByteWithCorrectLength:(Byte)le
+-(void)replaceLengthByteWithCorrectLength:(NSNumber*)le
 {
-    self.le = [NSNumber numberWithUnsignedChar:le];
+    self.le = le;
 }
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2
 {
     self = [super init];
     if (self) {
-        self.cla = [NSNumber numberWithUnsignedChar:cla];
-        self.ins = [NSNumber numberWithUnsignedChar:ins];
-        self.p1 = [NSNumber numberWithUnsignedChar:p1];
-        self.p2 = [NSNumber numberWithUnsignedChar:p2];
+        self.cla = cla;
+        self.ins = ins;
+        self.p1 = p1;
+        self.p2 = p2;
         
     }
     
     return self;
 }
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2
-    expectedResponseLength:(Byte)le
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2
+    expectedResponseLength:(NSNumber*)le
 {
     self = [self initWithCLA:cla
                          INS:ins
                           p1:p1
                           p2:p2];
     if (self){
-        self.le = [NSNumber numberWithUnsignedChar:le];
+        self.le = le;
     }
     
     return self;
 }
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2
-             commandLength:(Byte)lc
-               commandData:(Byte *)commandData
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2
+               commandData:(NSArray*)commandData
 {
     self = [self initWithCLA:cla
                          INS:ins
                           p1:p1
                           p2:p2];
     if (self) {
-        self.lc = [NSNumber numberWithUnsignedChar:lc];
-        int commandLengthInt = (int)lc;
-        NSArray *commandDataArray = [[NSArray alloc] initFromCArray:commandData withCount:commandLengthInt];
-        self.commandData = commandDataArray;
+        self.lc = [NSNumber numberWithInteger:commandData.count];
+        self.commandData = commandData;
     }
     
     return self;
 }
 
--(instancetype)initWithCLA:(Byte)cla
-                       INS:(Byte)ins
-                        p1:(Byte)p1
-                        p2:(Byte)p2
-             commandLength:(Byte)lc
-               commandData:(Byte *)commandData
-    expectedResponseLength:(Byte)le
+-(instancetype)initWithCLA:(NSNumber*)cla
+                       INS:(NSNumber*)ins
+                        p1:(NSNumber*)p1
+                        p2:(NSNumber*)p2
+               commandData:(NSArray*)commandData
+    expectedResponseLength:(NSNumber*)le
 {
     self = [self initWithCLA:cla
                          INS:ins
                           p1:p1
                           p2:p2
-               commandLength:lc
                  commandData:commandData];
     if (self) {
-        self.le = [NSNumber numberWithUnsignedChar:le];
+        self.le = le;
     }
     
     return self;

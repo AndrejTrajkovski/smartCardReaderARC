@@ -15,12 +15,12 @@
 
 +(CAPDU *)selectPPSEDirectory;
 
-+(CAPDU *)getResponseWithLength:(Byte)le;
++(CAPDU *)getResponseWithLength:(NSNumber *)le;
 
-+(CAPDU *)selectApplicationWithAID:(Byte *)aid withLength:(Byte)commandLength;
++(CAPDU *)selectApplicationWithAID:(NSArray *)aid;
 
-+(CAPDU*)getProcessingOptionsWithPDOL:(Byte)PDOL;
++(CAPDU*)getProcessingOptionsWithPDOL:(NSNumber *)PDOL;
 
-+(CAPDU *)readRecordWithRecordNumber:(Byte)recordNumber andSFI:(Byte)sfi;
++(CAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber andSFI:(NSNumber *)sfi;
 
 @end
