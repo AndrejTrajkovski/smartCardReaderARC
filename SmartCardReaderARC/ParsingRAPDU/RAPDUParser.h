@@ -16,8 +16,11 @@
 
 -(NSArray *)aidFromRAPDU:(RAPDU *)rapdu;
 
--(NSNumber *)correctLengthNeededForRAPDU:(RAPDU *)rapdu;
-
 -(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu;
+
+-(NSString *)berTlvParseData:(NSData *)recordsData;
+
+//-(NSString *)decodeEMVData:(NSData *)emvData;
+-(NSString *)encodeEMVData:(NSData *)recordsData;
 
 @end

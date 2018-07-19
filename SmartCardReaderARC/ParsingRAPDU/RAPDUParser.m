@@ -15,6 +15,7 @@
 #import "RAPDU.h"
 #import "NSArray+ByteManipulation.h"
 #import "NSData+ByteManipulation.h"
+#import "HexUtil.h"
 
 @interface RAPDUParser()
 
@@ -84,7 +85,6 @@
 -(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu
 {
     
-//    NSAssert([rapdu.bytes.firstObject isEqualToNumber:@0x80], @"Only coding for primitive TLV with starting element 0x80");
     NSArray *aflGroupsBytes;
     
     if ([rapdu.bytes.firstObject isEqualToNumber:@0x80]) {
@@ -124,7 +124,7 @@
         NSNumber *secondByteOfAflGroup = [aflGroupsBytes objectAtIndex:aflGroupIndex + 1];
         NSNumber *thirdByteOfAflGroup = [aflGroupsBytes objectAtIndex:aflGroupIndex + 2];
         //offline data authentication byte
-        //            NSNumber *fourthByteOfAflGroup = [aflGroups objectAtIndex:i + 3];
+        //NSNumber *fourthByteOfAflGroup = [aflGroups objectAtIndex:i + 3];
         NSUInteger sfiIndicator = [firstByteOfAflGroup unsignedIntegerValue];
         NSUInteger removeLast3Bits = sfiIndicator >> 3;
         NSNumber *sfi = [self sfiWithShiftAndAddFourToByte:[NSNumber numberWithUnsignedInteger:removeLast3Bits]];
@@ -156,6 +156,38 @@
     }
     
     return [NSNumber numberWithInt:sfiAsInt];
+}
+
+-(NSString *)berTlvParseData:(NSData *)recordsData
+{
+    NSData * data         = [HexUtil parse:recordsData.description];
+    BerTlvParser * parser = [[BerTlvParser alloc] init];
+    BerTlv * tlv          = [parser parseConstructed:data];
+    return [tlv dump:@"  "];
+}
+
+-(NSString *)encodeEMVData:(NSData *)recordsData
+{
+    NSMutableArray *tagsAndStrings = [NSMutableArray new];
+    BerTag *cardNameTag = [[BerTag alloc] init:0x5f secondByte:0x20];
+    BerTag *cardRisk = [[BerTag alloc] init:0x8C];
+    
+    NSArray *emvBerTags = @[cardNameTag, cardRisk];
+    
+    NSData * data         = [HexUtil parse:recordsData.description];
+    BerTlvParser * parser = [[BerTlvParser alloc] init];
+    BerTlv * emvTlv          = [parser parseConstructed:data];
+    
+    for (int i = 0; i < emvBerTags.count; i++) {
+        BerTag *tag = emvBerTags[i];
+        [emvTlv findAll:tag];
+    }
+    
+    NSMutableString *decodedString = [[emvTlv dump:@""] mutableCopy];
+    
+    NSString *encodedString;
+    
+    return encodedString;
 }
 
 @end

@@ -8,11 +8,10 @@
 #import "APDU.h"
 #import "PBSmartcard.h"
 
-@interface RAPDU : APDU
+@interface RAPDU : NSObject <APDU>
 
 @property (assign, nonatomic) PBSmartcardStatus status;
 -(instancetype)initWithResponseBytes:(unsigned char *)responseBytes
                            andLength:(int)length
                            andStatus:(PBSmartcardStatus)status;
-
 @end

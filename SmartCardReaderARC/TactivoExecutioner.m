@@ -19,16 +19,29 @@
 
 @implementation TactivoExecutioner
 
--(void)doInitialization
+-(BOOL)prepareCard:(NSError **)error
 {
     self.smartCard = [[PBSmartcard alloc] init];
     PBSmartcardStatus status;
     
     status = [self.smartCard open];
     status = [self.smartCard connect:PBSmartcardProtocolTx];
+    
+    if (status != PBSmartcardStatusSuccess) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
+        }
+        
+        return NO;
+    }
+    
+    return YES;
 }
 
--(RAPDU *)executeCommand:(CAPDU *)capdu
+-(RAPDU *)executeCommand:(CAPDU *)capdu error:(NSError **)error
 {
     unsigned char buffer[255] = {0};
     unsigned char *command = [capdu.bytes cArrayFromBytes];
@@ -40,6 +53,17 @@
                                       andResponseBuffer:buffer
                                       andResponseLength:&rdl];
     int responseLength = (int)rdl;
+    
+    if (status != PBSmartcardStatusSuccess) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
+        }
+        
+        return nil;
+    }
     
     RAPDU *responseAPDU = [[RAPDU alloc] initWithResponseBytes:buffer
                                                      andLength:responseLength

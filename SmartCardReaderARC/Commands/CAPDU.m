@@ -9,6 +9,15 @@
 #import "NSArray+ByteManipulation.h"
 
 @interface CAPDU()
+
+@property (strong, nonatomic) NSNumber* cla;
+@property (strong, nonatomic) NSNumber* ins;
+@property (strong, nonatomic) NSNumber* p1;
+@property (strong, nonatomic) NSNumber* p2;
+@property (strong, nonatomic) NSNumber* lc;
+@property (strong, nonatomic) NSArray* commandData;
+@property (strong, nonatomic) NSNumber* le;
+
 @end
 
 @implementation CAPDU
@@ -16,6 +25,19 @@
 -(void)replaceLengthByteWithCorrectLength:(NSNumber*)le
 {
     self.le = le;
+}
+
+-(instancetype)initWithCAPDU:(CAPDU *)capdu
+{
+    self = [super init];
+    if (self) {
+        self.cla = capdu.cla;
+        self.ins = capdu.ins;
+        self.p1 = capdu.p1;
+        self.p2 = capdu.p2;
+    }
+    
+    return self;
 }
 
 -(instancetype)initWithCLA:(NSNumber*)cla
@@ -29,7 +51,6 @@
         self.ins = ins;
         self.p1 = p1;
         self.p2 = p2;
-        
     }
     
     return self;

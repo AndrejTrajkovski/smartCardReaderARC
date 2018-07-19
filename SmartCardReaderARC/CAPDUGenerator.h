@@ -23,6 +23,6 @@
 
 +(CAPDU *)getProcessingOptionsWithPDOL:(NSNumber *)PDOL;
 
-+(CAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber andSFI:(NSNumber *)sfi;
++(CAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber SFI:(NSNumber *)sfi andLe:(NSNumber *)le;
 
 @end

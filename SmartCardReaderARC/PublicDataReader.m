@@ -20,8 +20,8 @@
 @end
 
 @implementation PublicDataReader
-{
-}
+
+#pragma mark - Initialization
 
 -(instancetype)initWithExecutioner:(id<CardReaderCommandExecutioner>)commandExecutioner
 {
@@ -36,106 +36,142 @@
     return self;
 }
 
-//*If the response has 0x61 or 0x6C as the byte before last, a new CAPDU should be send with the correct length, which is the last byte of the response
--(RAPDU *)executeCorrectedLengthCAPDU:(CAPDU *)capdu withRapdu:(RAPDU *)rapdu
+#pragma mark - Read Public Data
+
+//TODO fix no SFI from parsing
+//-(void)readPublicDataViaPPSE
+//{
+//    RAPDU *ppseResponse = [self selectPPSEDir];
+//    NSNumber* sfi = [self.rapduParser sfiFromRAPDU:ppseResponse];
+//    NSArray *aid = [self getAidFromSFI:sfi];
+//    [self readPublicDataForAID:aid];
+//}
+
+-(NSString *)readPublicDataViaPSEWithError:(NSError **)error
+{
+    RAPDU *pseResponse = [self selectPSEDirError:error];
+    NSNumber* sfi = [self.rapduParser sfiFromRAPDU:pseResponse];
+    NSArray *aid = [self getAidFromSFI:sfi error:error];
+    return [self readPublicDataForAID:aid error:error];
+}
+
+-(NSString *)readPublicDataForAID:(NSArray *)aid error:(NSError **)error
+{
+    RAPDU *selectAIDResponse = [self selectAID:aid error:error];
+    if (!selectAIDResponse) {
+        return nil;
+    }
+    return [self readAFLRecordsFromSelectedAIDError:error];
+}
+
+#pragma mark - APDU
+
+-(RAPDU *)selectPSEDirError:(NSError **)error
+{
+    CAPDU *selectPSE = [CAPDUGenerator selectPSEDirectory];
+    RAPDU *responsePSE = [self.commandExecutioner executeCommand:selectPSE error:error];
+    responsePSE = [self executeCorrectedLengthCAPDU:selectPSE withRapdu:responsePSE error:error];
+    
+    return responsePSE;
+}
+
+-(RAPDU *)selectPPSEDirError:(NSError **)error
+{
+    CAPDU *selectPPSE = [CAPDUGenerator selectPPSEDirectory];
+    RAPDU *responsePPSE = [self.commandExecutioner executeCommand:selectPPSE error:error];
+    responsePPSE = [self executeCorrectedLengthCAPDU:selectPPSE withRapdu:responsePPSE error:error];
+    
+    return responsePPSE;
+}
+
+-(RAPDU *)selectAID:(NSArray *)aid error:(NSError **)error
+{
+    CAPDU *selectAid = [CAPDUGenerator selectApplicationWithAID:aid];
+    RAPDU *selectAidResponse = [self.commandExecutioner executeCommand:selectAid error:error];
+    selectAidResponse = [self executeCorrectedLengthCAPDU:selectAid withRapdu:selectAidResponse error:error];
+    
+    return selectAidResponse;
+}
+
+-(NSArray *)getAidFromSFI:(NSNumber *)sfi error:(NSError **)error
+{
+    RAPDU *readRecordResponse = [self readRecordWithRecordNumber:@0x01 andSFI:sfi error:error];
+    NSArray *aid = [self.rapduParser aidFromRAPDU:readRecordResponse];
+    return aid;
+}
+
+-(NSString *)readAFLRecordsFromSelectedAIDError:(NSError **)error
+{
+    RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@0x00 error:error];
+    NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse];
+    
+    NSMutableString *records = [NSMutableString new];
+    
+    for (NSUInteger i = 0; i < sfisWithRanges.count; i++) {
+        
+        SFIWithRecordNumbers *obj = sfisWithRanges[i];
+        for (NSUInteger j = [obj.firstRecordNumber unsignedIntegerValue]; j <= [obj.lastRecordNumber unsignedIntegerValue]; j++) {
+            
+            NSNumber *recordNumber = [NSNumber numberWithUnsignedInteger:j];
+            RAPDU *responseFromRecord = [self readRecordWithRecordNumber:recordNumber andSFI:obj.sfi error:error];
+            NSData *recordsData = [NSData byteDataFromArray:responseFromRecord.bytes];
+            NSString *oneRecordString = [self.rapduParser berTlvParseData:recordsData];
+            [records appendString:oneRecordString];
+            NSLog(@"\n\n%@", [self.rapduParser berTlvParseData:recordsData]);
+        }
+    }
+    
+    return records;
+}
+
+-(RAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber andSFI:(NSNumber *)sfi error:(NSError **)error
+{
+    //At first try Le is 0x00 to get the record location
+    CAPDU *readRecord = [CAPDUGenerator readRecordWithRecordNumber:recordNumber SFI:sfi andLe:@0x00];
+    RAPDU *responseReadRecord = [self.commandExecutioner executeCommand:readRecord error:error];
+    responseReadRecord = [self executeCorrectedLengthCAPDU:readRecord withRapdu:responseReadRecord error:error];
+    
+    return responseReadRecord;
+}
+
+-(RAPDU *)getProcessingOptionsWithPDOL:(NSNumber *)pdol error:(NSError **)error
+{
+    //TODO PDOL != @0x00
+    CAPDU *getProceessingOptions = [CAPDUGenerator getProcessingOptionsWithPDOL:pdol];
+    RAPDU *getProceessingOptionsResponse = [self.commandExecutioner executeCommand:getProceessingOptions error:error];
+    getProceessingOptionsResponse = [self executeCorrectedLengthCAPDU:getProceessingOptions withRapdu:getProceessingOptionsResponse error:error];
+    
+    return getProceessingOptionsResponse;
+}
+
+//*Called after every CAPDU execution.
+//If the response has 0x61 or 0x6C as the byte before last,
+//a new CAPDU should be executed with the correct length, which is the last byte of the response
+//*
+
+-(RAPDU *)executeCorrectedLengthCAPDU:(CAPDU *)capdu withRapdu:(RAPDU *)rapdu error:(NSError **)error
 {
     if (rapdu.bytes.count > 1) {
         
         NSNumber *byteBeforeLast = rapdu.bytes[rapdu.bytes.count - 2];
         NSNumber *lastByte = rapdu.bytes[rapdu.bytes.count - 1];
-
+        
         if ([byteBeforeLast isEqual:@0x61]) {
             
+            //response bytes still available
             CAPDU *commandToExecute = [CAPDUGenerator getResponseWithLength:lastByte];
-            rapdu = [self.commandExecutioner executeCommand:commandToExecute];
-
+            rapdu = [self.commandExecutioner executeCommand:commandToExecute error:error];
+            
         }else if ([byteBeforeLast isEqual:@0x6C]){
             
+            //same commmand, just fixed length
             CAPDU *commandToExecute = [CAPDUGenerator capduWithCAPDU:capdu withFixedLength:lastByte];
-            rapdu = [self.commandExecutioner executeCommand:commandToExecute];
+            rapdu = [self.commandExecutioner executeCommand:commandToExecute error:error];
             
         }
     }
     
     return rapdu;
-}
-
--(void)readPublicDataViaPSE
-{
-    RAPDU *pseResponse = [self selectPSEDir];
-    
-    NSNumber* sfi = [self.rapduParser sfiFromRAPDU:pseResponse];
-    
-    RAPDU *readRecordResponse = [self readRecordWithRecordNumber:@0x01 andSFI:sfi];
-    
-    NSArray *aid = [self.rapduParser aidFromRAPDU:readRecordResponse];
-    
-    [self selectAID:aid];
-    
-    RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@0x00];
-    
-    NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse];
-    
-    [sfisWithRanges enumerateObjectsUsingBlock:^(SFIWithRecordNumbers*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        NSLog(@"READING FOR SFI : %@ \n", obj.sfi);
-        
-        for (NSUInteger i = [obj.firstRecordNumber unsignedIntegerValue]; i <= [obj.lastRecordNumber unsignedIntegerValue]; i++) {
-
-            NSNumber *recordNumber = [NSNumber numberWithUnsignedInteger:i];
-            RAPDU *responseFromRecord = [self readRecordWithRecordNumber:recordNumber andSFI:obj.sfi];
-
-            NSLog(@"\t RECORD NUMBER : %@ \n", recordNumber);
-            NSData *recordsData = [NSData byteDataFromArray:responseFromRecord.bytes];
-            NSLog(@"\t RECORD NUMBER : %@ \n", [HexUtil prettyFormat:recordsData]);
-        }
-    }];
-    
-}
-
--(RAPDU *)getProcessingOptionsWithPDOL:(NSNumber *)pdol
-{
-    CAPDU *getProceessingOptions = [CAPDUGenerator getProcessingOptionsWithPDOL:pdol];
-    RAPDU *getProceessingOptionsResponse = [self.commandExecutioner executeCommand:getProceessingOptions];
-    getProceessingOptionsResponse = [self executeCorrectedLengthCAPDU:getProceessingOptions withRapdu:getProceessingOptionsResponse];
-    
-    return getProceessingOptionsResponse;
-}
-
--(RAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber andSFI:(NSNumber *)sfi
-{
-    CAPDU *readRecord = [CAPDUGenerator readRecordWithRecordNumber:recordNumber andSFI:sfi];
-    RAPDU *responseReadRecord = [self.commandExecutioner executeCommand:readRecord];
-    responseReadRecord = [self executeCorrectedLengthCAPDU:readRecord withRapdu:responseReadRecord];
-    
-    return responseReadRecord;
-}
-
--(RAPDU *)selectPSEDir
-{
-    CAPDU *selectPSE = [CAPDUGenerator selectPSEDirectory];
-    RAPDU *responsePSE = [self.commandExecutioner executeCommand:selectPSE];
-    responsePSE = [self executeCorrectedLengthCAPDU:selectPSE withRapdu:responsePSE];
-    
-    return responsePSE;
-}
-
--(RAPDU *)selectPPSEDir
-{
-    CAPDU *selectPPSE = [CAPDUGenerator selectPPSEDirectory];
-    RAPDU *responsePPSE = [self.commandExecutioner executeCommand:selectPPSE];
-    responsePPSE = [self executeCorrectedLengthCAPDU:selectPPSE withRapdu:responsePPSE];
-    
-    return responsePPSE;
-}
-
--(RAPDU *)selectAID:(NSArray *)aid
-{
-    CAPDU *selectAid = [CAPDUGenerator selectApplicationWithAID:aid];
-    RAPDU *selectAidResponse = [self.commandExecutioner executeCommand:selectAid];
-    selectAidResponse = [self executeCorrectedLengthCAPDU:selectAid withRapdu:selectAidResponse];
-    
-    return selectAidResponse;
 }
 
 @end

@@ -42,11 +42,9 @@
 
 +(CAPDU *)capduWithCAPDU:(CAPDU *)capdu withFixedLength:(NSNumber *)le
 {
-    CAPDU *fixedLengthCAPDU = [[CAPDU alloc] initWithCLA:capdu.cla
-                                                     INS:capdu.ins
-                                                      p1:capdu.p1
-                                                      p2:capdu.p2];
-    fixedLengthCAPDU.le = le;
+    CAPDU *fixedLengthCAPDU = [[CAPDU alloc] initWithCAPDU:capdu];
+    
+    [fixedLengthCAPDU replaceLengthByteWithCorrectLength:le];
     
     return fixedLengthCAPDU;
 }
@@ -74,14 +72,13 @@
     return getProcessingOptions;
 }
 
-+(CAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber andSFI:(NSNumber *)sfi
++(CAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber SFI:(NSNumber *)sfi andLe:(NSNumber *)le
 {
-    //Le is 0x00 at first to get the record location
     CAPDU *readRecord = [[CAPDU alloc] initWithCLA:@0x00
                                                INS:@0xB2
                                                 p1:recordNumber
                                                 p2:sfi
-                            expectedResponseLength:@0x00];
+                            expectedResponseLength:le];
 
     return readRecord;
 }

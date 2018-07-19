@@ -8,7 +8,10 @@
 #import "RAPDU.h"
 #import "NSArray+ByteManipulation.h"
 
-@implementation RAPDU
+@implementation RAPDU{
+    
+    NSArray *response;
+}
 
 -(instancetype)initWithResponseBytes:(unsigned char *)responseBytes
                            andLength:(int)length
@@ -19,10 +22,15 @@
     if (self) {
         
         self.status = status;
-        self.bytes = [NSArray arrayWithUnsignedCharArray:responseBytes withCount:length];
+        response = [NSArray arrayWithUnsignedCharArray:responseBytes withCount:length];
     }
     
     return self;
+}
+
+-(NSArray *)bytes
+{
+    return response;
 }
 
 @end

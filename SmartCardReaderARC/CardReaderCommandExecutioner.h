@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-@class CAPDU, RAPDU;
+@class CAPDU, RAPDU, PBSmartcard;
 @protocol CardReaderCommandExecutioner <NSObject>
 
--(RAPDU *)executeCommand:(CAPDU *)capdu;
--(void)doInitialization;
+-(RAPDU *)executeCommand:(CAPDU *)capdu error:(NSError **)error;
+-(BOOL)prepareCard:(NSError **)error;
 
 @end

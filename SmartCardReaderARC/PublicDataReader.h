@@ -15,6 +15,8 @@
 -(instancetype)initWithExecutioner:(id <CardReaderCommandExecutioner>)commandExecutioner;
 @property (strong, nonatomic) id <CardReaderCommandExecutioner> commandExecutioner;
 
--(void)readPublicDataViaPSE;
+-(NSString *)readPublicDataViaPSEWithError:(NSError **)error;
+//-(void)readPublicDataViaPPSE;
+-(NSString *)readPublicDataForAID:(NSArray *)aid error:(NSError **)error;
 
 @end
