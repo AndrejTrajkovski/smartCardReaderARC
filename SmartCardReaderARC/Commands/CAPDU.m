@@ -35,6 +35,8 @@
         self.ins = capdu.ins;
         self.p1 = capdu.p1;
         self.p2 = capdu.p2;
+        self.lc = capdu.lc;
+        self.commandData = capdu.commandData;
     }
     
     return self;

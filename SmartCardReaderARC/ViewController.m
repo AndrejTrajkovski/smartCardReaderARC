@@ -96,18 +96,18 @@
         //try via pse
         NSString *publicData = [self.pdReader readPublicDataViaPSEWithError:&pseError];
         if (!publicData) {
-            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@", pseError.localizedDescription]];
+            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", pseError.localizedDescription]];
         }else{
-            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@", publicData]];
+            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", publicData]];
         }
         
         NSError *aidError = nil;
         //try via AID
         NSString *publicDataViaAid = [self readPublicDataViaAIDsError:&aidError];
         if (!publicDataViaAid) {
-            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@", aidError.localizedDescription]];
+            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", aidError.localizedDescription]];
         }else{
-            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@", publicDataViaAid]];
+            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", publicDataViaAid]];
         }
         
     }else{
