@@ -90,7 +90,7 @@
     return [self sfiFromData:data error:error];
 }
 
--(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu
+-(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
 {
     
     NSArray *aflGroupsBytes;
@@ -112,15 +112,32 @@
         BerTlv *tlv = [self.berTlvParser parseConstructed:data];
         BerTlv *aflTLV = [tlv find:aflBerTag];
         NSLog(@"afl hex : %@ \n", aflTLV.hexValue);
-        NSLog(@"afl hex : %@ \n", aflTLV.textValue);
+        
+        if (!aflTLV.value) {
+            NSMutableDictionary* details = [NSMutableDictionary dictionary];
+            [details setValue:@"No 0x94 tag in afl data." forKey:NSLocalizedDescriptionKey];
+            if (error) {
+                *error = [NSError errorWithDomain:@"Error Reading From Card" code:205 userInfo:details];
+            }
+            return nil;
+        }
+        
         aflGroupsBytes = [NSArray byteArrayFromData:aflTLV.value];
 
+    }else{
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"AFL records first byte is neither 0x77 nor 0x80." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:205 userInfo:details];
+        }
+        return nil;
     }
     
-    return [self sfisWithRecordNumbersFromAFLGroupsBytes:aflGroupsBytes];
+    return [self sfisWithRecordNumbersFromAFLGroupsBytes:aflGroupsBytes error:error];
 }
 
--(NSArray *)sfisWithRecordNumbersFromAFLGroupsBytes:(NSArray *)aflGroupsBytes
+-(NSArray *)sfisWithRecordNumbersFromAFLGroupsBytes:(NSArray *)aflGroupsBytes error:(NSError **)error
 {
     NSMutableArray *sfisWithRecordNumbers = [NSMutableArray new];
 
@@ -135,13 +152,24 @@
         //NSNumber *fourthByteOfAflGroup = [aflGroups objectAtIndex:i + 3];
         NSUInteger sfiIndicator = [firstByteOfAflGroup unsignedIntegerValue];
         NSUInteger removeLast3Bits = sfiIndicator >> 3;
-        NSNumber *sfi = [self sfiWithShiftAndAddFourToByte:[NSNumber numberWithUnsignedInteger:removeLast3Bits]];
-        
+        NSNumber *sfi = [self sfiWithShiftAndAddFourToByte:[NSNumber numberWithUnsignedInteger:removeLast3Bits] error:error];
+        if (!sfi) {
+            return nil;
+        }
         SFIWithRecordNumbers *sfiWithRecords = [SFIWithRecordNumbers new];
         sfiWithRecords.sfi = sfi;
         sfiWithRecords.firstRecordNumber = secondByteOfAflGroup;
         sfiWithRecords.lastRecordNumber = thirdByteOfAflGroup;
         [sfisWithRecordNumbers addObject:sfiWithRecords];
+    }
+    
+    if (sfisWithRecordNumbers.count == 0) {
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"AFL records data shorter than 4 bytes." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:206 userInfo:details];
+        }
+        return nil;
     }
     
     return sfisWithRecordNumbers;
@@ -160,7 +188,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"SFI is payment system specific." forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:201 userInfo:details];
         }
         return nil;
     }else if (sfiAsInt > 20 && sfiAsInt <= 30){
@@ -168,7 +196,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"SFI is issuer specific." forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:202 userInfo:details];
         }
         return nil;
     }else{
@@ -176,7 +204,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"SFI is longer than 30 bits." forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:203 userInfo:details];
         }
         return nil;
     }

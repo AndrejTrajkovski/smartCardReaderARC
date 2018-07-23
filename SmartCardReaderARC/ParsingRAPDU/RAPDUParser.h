@@ -16,7 +16,7 @@
 
 -(NSArray *)aidFromRAPDU:(RAPDU *)rapdu;
 
--(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu;
+-(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu error:(NSError **)error;
 
 -(NSString *)berTlvParseData:(NSData *)recordsData;
 

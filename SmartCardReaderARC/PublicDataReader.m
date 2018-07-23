@@ -106,7 +106,10 @@
 -(NSString *)readAFLRecordsFromSelectedAIDError:(NSError **)error
 {
     RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@0x00 error:error];
-    NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse];
+    NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse error:error];
+    if (!sfisWithRanges) {
+        return nil;
+    }
     
     NSMutableString *records = [NSMutableString new];
     
