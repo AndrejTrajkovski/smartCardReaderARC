@@ -26,6 +26,8 @@
 		8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1F20FF31D700224E26 /* NSArray+ByteManipulation.m */; };
 		8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2420FF35D200224E26 /* TactivoExecutioner.m */; };
 		8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */; };
+		894FC4E82105BCC300E9A686 /* VisaElectronPDParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */; };
+		894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 894FC4E92105C08900E9A686 /* pd data example.rtf */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
 		899C6AD82100E1BC0022CA84 /* EmvTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C6AD72100E1BC0022CA84 /* EmvTag.m */; };
 		899C6ADE2100E3A50022CA84 /* BerTlv+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C6ADD2100E3A50022CA84 /* BerTlv+Util.m */; };
@@ -81,6 +83,8 @@
 		8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFIWithRecordNumbers.h; sourceTree = "<group>"; };
 		8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFIWithRecordNumbers.m; sourceTree = "<group>"; };
 		8913AF2A2100763100224E26 /* APDU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
+		894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisaElectronPDParsingTest.m; sourceTree = "<group>"; };
+		894FC4E92105C08900E9A686 /* pd data example.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "pd data example.rtf"; sourceTree = "<group>"; };
 		896EC5FA20FDD21E005BC89F /* CAPDUGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPDUGenerator.h; sourceTree = "<group>"; };
 		896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPDUGenerator.m; sourceTree = "<group>"; };
 		899C6AD62100E1BC0022CA84 /* EmvTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvTag.h; sourceTree = "<group>"; };
@@ -170,8 +174,10 @@
 		8277EF6B20FB7EDE00DF4BC6 /* SmartCardReaderARCTests */ = {
 			isa = PBXGroup;
 			children = (
+				894FC4E92105C08900E9A686 /* pd data example.rtf */,
 				8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */,
 				8277EF6E20FB7EDE00DF4BC6 /* Info.plist */,
+				894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */,
 			);
 			path = SmartCardReaderARCTests;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8277EF6D20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m in Sources */,
+				894FC4E82105BCC300E9A686 /* VisaElectronPDParsingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +595,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LZ86CHHGV2;
 				INFOPLIST_FILE = SmartCardReaderARCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -606,6 +615,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LZ86CHHGV2;
 				INFOPLIST_FILE = SmartCardReaderARCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -86,13 +86,17 @@
 {
     NSError *error = nil;
     TactivoExecutioner *tactivoExecutioner = [TactivoExecutioner new];
-    [tactivoExecutioner prepareCard:&error];
-    self.pdReader = [[PublicDataReader alloc] initWithExecutioner:tactivoExecutioner];
-    NSString *publicData = [self.pdReader readPublicDataViaPSEWithError:&error];
-    if (!publicData) {
-        [self printStatus:error.localizedDescription];
+    BOOL success = [tactivoExecutioner prepareCard:&error];
+    if (success) {
+        self.pdReader = [[PublicDataReader alloc] initWithExecutioner:tactivoExecutioner];
+        NSString *publicData = [self.pdReader readPublicDataViaPSEWithError:&error];
+        if (!publicData) {
+            [self printStatus:error.localizedDescription];
+        }else{
+            [self printStatus:publicData];
+        }
     }else{
-        [self printStatus:publicData];
+        [self printStatus:error.localizedDescription];
     }
 }
 

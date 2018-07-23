@@ -171,6 +171,8 @@
     NSMutableArray *tagsAndStrings = [NSMutableArray new];
     BerTag *cardNameTag = [[BerTag alloc] init:0x5f secondByte:0x20];
     BerTag *cardRisk = [[BerTag alloc] init:0x8C];
+    [tagsAndStrings addObject:cardRisk];
+    [tagsAndStrings addObject:cardNameTag];
     
     NSArray *emvBerTags = @[cardNameTag, cardRisk];
     
@@ -180,7 +182,8 @@
     
     for (int i = 0; i < emvBerTags.count; i++) {
         BerTag *tag = emvBerTags[i];
-        [emvTlv findAll:tag];
+        NSArray *valuesForTag = [emvTlv findAll:tag];
+        NSLog(@"vft : %@", valuesForTag.firstObject);
     }
     
     NSMutableString *decodedString = [[emvTlv dump:@""] mutableCopy];
