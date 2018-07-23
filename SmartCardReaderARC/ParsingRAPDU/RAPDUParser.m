@@ -81,7 +81,7 @@
     unsigned char *sfiIndicatorRawBytes = (unsigned char *)sfiUtf8Str;
     NSNumber *sfiIndicator = [NSNumber numberWithUnsignedChar:*sfiIndicatorRawBytes];
     
-    return [self sfiWithShiftAndAddFourToByte:sfiIndicator];
+    return [self sfiWithShiftAndAddFourToByte:sfiIndicator error:error];
 }
 
 -(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
@@ -147,7 +147,7 @@
     return sfisWithRecordNumbers;
 }
 
--(NSNumber *)sfiWithShiftAndAddFourToByte:(NSNumber *)byte
+-(NSNumber *)sfiWithShiftAndAddFourToByte:(NSNumber *)byte error:(NSError **)error
 {
     int sfiAsInt = [byte intValue];;
     if (sfiAsInt <= 10) {
@@ -157,10 +157,28 @@
         
     }else if (sfiAsInt > 10 && sfiAsInt <= 20){
         //payment system specific
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"SFI is payment system specific." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        return nil;
     }else if (sfiAsInt > 20 && sfiAsInt <= 30){
         //issuer specific
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"SFI is issuer specific." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        return nil;
     }else{
         //error
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"SFI is longer than 30 bits." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        return nil;
     }
     
     return [NSNumber numberWithInt:sfiAsInt];
