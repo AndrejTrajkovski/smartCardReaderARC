@@ -14,7 +14,7 @@
 
 -(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu error:(NSError **)error;
 
--(NSArray *)aidFromRAPDU:(RAPDU *)rapdu;
+-(NSArray *)aidFromRAPDU:(RAPDU *)rapdu error:(NSError **)error;
 
 -(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu error:(NSError **)error;
 

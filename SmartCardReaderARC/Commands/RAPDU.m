@@ -33,4 +33,41 @@
     return response;
 }
 
+-(RAPDUStatus)responseStatus
+{
+    if (self.bytes.count > 1) {
+        
+        if ([[self byteBeforeLast] isEqual:@0x61]) {
+            
+            return RAPDUStatusResponseBytesStillAvailable;
+            
+        }else if ([[self byteBeforeLast] isEqual:@0x6C]){
+            
+            return RAPDUStatusWrongLength;
+            
+        }else if ([[self byteBeforeLast] isEqual:@0x90] && [[self lastByte] isEqual:@0x00]){
+            
+            return RAPDUStatusSuccess;
+            
+        }else{
+            
+            return RAPDUStatusOther;
+        }
+        
+    }else{
+        
+        return RAPDUStatusNoBytes;
+    }
+}
+
+-(NSNumber *)lastByte
+{
+    return self.bytes[self.bytes.count - 1];
+}
+
+-(NSNumber *)byteBeforeLast
+{
+    return self.bytes[self.bytes.count - 2];
+}
+
 @end

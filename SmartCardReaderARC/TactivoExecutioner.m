@@ -69,6 +69,27 @@
                                                      andLength:responseLength
                                                      andStatus:status];
     
+    if (responseAPDU.status == RAPDUStatusOther) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:[NSString stringWithFormat:@"ERROR FOR CAPDU: %@.\nRAPDU STATUS BYTES: %@ %@", capdu.bytes, responseAPDU.byteBeforeLast, responseAPDU.lastByte] forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        
+        return nil;
+        
+    }else if (responseAPDU.status == RAPDUStatusNoBytes) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
+        }
+        
+        return nil;
+    }
+        
     return responseAPDU;
 }
 

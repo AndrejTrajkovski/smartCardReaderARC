@@ -51,20 +51,22 @@
 {
     RAPDU *pseResponse = [self selectPSEDirError:error];
     NSNumber* sfi = [self.rapduParser sfiFromRAPDU:pseResponse error:error];
-    if (!sfi) {
-        return nil;
-    }
     NSArray *aid = [self getAidFromSFI:sfi error:error];
-    return [self readPublicDataForAID:aid error:error];
+    NSString *publicData =  [self readPublicDataForAID:aid error:error];
+    return publicData;
 }
 
 -(NSString *)readPublicDataForAID:(NSArray *)aid error:(NSError **)error
 {
-    RAPDU *selectAIDResponse = [self selectAID:aid error:error];
-    if (!selectAIDResponse) {
+    if (!aid) {
         return nil;
     }
-    return [self readAFLRecordsFromSelectedAIDError:error];
+    BOOL selectAIDSuccess = [self selectAID:aid error:error];
+    if (!selectAIDSuccess) {
+        return nil;
+    }
+    NSString *aflRecords = [self readAFLRecordsFromSelectedAIDError:error];
+    return aflRecords;
 }
 
 #pragma mark - APDU
@@ -74,6 +76,16 @@
     CAPDU *selectPSE = [CAPDUGenerator selectPSEDirectory];
     RAPDU *responsePSE = [self.commandExecutioner executeCommand:selectPSE error:error];
     responsePSE = [self executeCorrectedLengthCAPDU:selectPSE withRapdu:responsePSE error:error];
+    
+    if (!responsePSE) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        return nil;
+    }
     
     return responsePSE;
 }
@@ -87,19 +99,30 @@
     return responsePPSE;
 }
 
--(RAPDU *)selectAID:(NSArray *)aid error:(NSError **)error
+-(BOOL)selectAID:(NSArray *)aid error:(NSError **)error
 {
+    if (!aid) {
+        return nil;
+    }
     CAPDU *selectAid = [CAPDUGenerator selectApplicationWithAID:aid];
     RAPDU *selectAidResponse = [self.commandExecutioner executeCommand:selectAid error:error];
     selectAidResponse = [self executeCorrectedLengthCAPDU:selectAid withRapdu:selectAidResponse error:error];
     
-    return selectAidResponse;
+    if (selectAidResponse.responseStatus != RAPDUStatusSuccess) {
+        //TODO : add check if AID is contained in RAPDU
+        return NO;
+    }
+    
+    return YES;
 }
 
 -(NSArray *)getAidFromSFI:(NSNumber *)sfi error:(NSError **)error
 {
+    if (!sfi) {
+        return nil;
+    }
     RAPDU *readRecordResponse = [self readRecordWithRecordNumber:@0x01 andSFI:sfi error:error];
-    NSArray *aid = [self.rapduParser aidFromRAPDU:readRecordResponse];
+    NSArray *aid = [self.rapduParser aidFromRAPDU:readRecordResponse error:error];
     return aid;
 }
 
@@ -159,8 +182,8 @@
 {
     if (rapdu.bytes.count > 1) {
         
-        NSNumber *byteBeforeLast = rapdu.bytes[rapdu.bytes.count - 2];
-        NSNumber *lastByte = rapdu.bytes[rapdu.bytes.count - 1];
+        NSNumber *byteBeforeLast = [rapdu byteBeforeLast];
+        NSNumber *lastByte = [rapdu lastByte];
         
         if ([byteBeforeLast isEqual:@0x61]) {
             
