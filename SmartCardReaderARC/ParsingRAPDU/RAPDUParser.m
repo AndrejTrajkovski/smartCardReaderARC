@@ -53,7 +53,7 @@
     return [NSArray arrayWithUnsignedCharArray:aidHexBytes withCount:(int)aidAsData.length];
 }
 
--(NSNumber *)sfiFromData:(NSData *)data
+-(NSNumber *)sfiFromData:(NSData *)data error:(NSError **)error
 {
     Byte sfiTag = 0x88;
     BerTag *sfiBerTag = [[BerTag alloc] init:sfiTag];
@@ -63,6 +63,14 @@
     BerTlv *sfiTLV = [tlv find:sfiBerTag];
     NSLog(@"sfi : %@", sfiTLV.hexValue);
     
+    if (!sfiTLV) {
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"No sfi found." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        return nil;
+    }
     NSString *sfiStr = sfiTLV.textValue;
     
     NSUInteger length = [sfiStr lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
@@ -76,10 +84,10 @@
     return [self sfiWithShiftAndAddFourToByte:sfiIndicator];
 }
 
--(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu
+-(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
 {
     NSData *data = [NSData byteDataFromArray:rapdu.bytes];
-    return [self sfiFromData:data];
+    return [self sfiFromData:data error:error];
 }
 
 -(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu

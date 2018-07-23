@@ -50,7 +50,7 @@
 -(NSString *)readPublicDataViaPSEWithError:(NSError **)error
 {
     RAPDU *pseResponse = [self selectPSEDirError:error];
-    NSNumber* sfi = [self.rapduParser sfiFromRAPDU:pseResponse];
+    NSNumber* sfi = [self.rapduParser sfiFromRAPDU:pseResponse error:error];
     NSArray *aid = [self getAidFromSFI:sfi error:error];
     return [self readPublicDataForAID:aid error:error];
 }

@@ -12,7 +12,7 @@
 @class RAPDU, CAPDU;
 @interface RAPDUParser : NSObject
 
--(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu;
+-(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu error:(NSError **)error;
 
 -(NSArray *)aidFromRAPDU:(RAPDU *)rapdu;
 
