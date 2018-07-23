@@ -191,7 +191,7 @@
             CAPDU *commandToExecute = [CAPDUGenerator getResponseWithLength:lastByte];
             rapdu = [self.commandExecutioner executeCommand:commandToExecute error:error];
             
-        }else if ([byteBeforeLast isEqual:@0x6C]){
+        }else if ([byteBeforeLast isEqual:@0x6C] || [byteBeforeLast isEqual:@0x67]){
             
             //same commmand, just fixed length
             CAPDU *commandToExecute = [CAPDUGenerator capduWithCAPDU:capdu withFixedLength:lastByte];
