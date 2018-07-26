@@ -16,6 +16,8 @@
 #import "NSArray+ByteManipulation.h"
 #import "NSData+ByteManipulation.h"
 #import "HexUtil.h"
+#import "EmvTlvList.h"
+#import "EMVTlv.h"
 
 @interface RAPDUParser()
 
@@ -248,29 +250,39 @@
 
 -(NSString *)encodeEMVData:(NSData *)recordsData
 {
-    NSMutableArray *tagsAndStrings = [NSMutableArray new];
-    BerTag *cardNameTag = [[BerTag alloc] init:0x5f secondByte:0x20];
-    BerTag *cardRisk = [[BerTag alloc] init:0x8C];
-    [tagsAndStrings addObject:cardRisk];
-    [tagsAndStrings addObject:cardNameTag];
-    
-    NSArray *emvBerTags = @[cardNameTag, cardRisk];
-    
     NSData * data         = [HexUtil parse:recordsData.description];
     BerTlvParser * parser = [[BerTlvParser alloc] init];
     BerTlv * emvTlv          = [parser parseConstructed:data];
+ 
+    NSArray *listOfEMVTlv = [EmvTlvList list];
     
-    for (int i = 0; i < emvBerTags.count; i++) {
-        BerTag *tag = emvBerTags[i];
-        NSArray *valuesForTag = [emvTlv findAll:tag];
-        NSLog(@"vft : %@", valuesForTag.firstObject);
-    }
+    [listOfEMVTlv enumerateObjectsUsingBlock:^(EMVTlv *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        BerTlv *oneBerTlv = [emvTlv find:obj.tag];
+        
+        NSString *oneBerTlvValue = oneBerTlv.value;
+        
+        switch (obj.type) {
+            case Binary:
+                break;
+            case Numeric:
+                break;
+            case Text:
+                
+                break;
+            case Mixed:
+                break;
+            case Template:
+                break;
+            case DOL:
+                break;
+            default:
+                break;
+        }
+        NSLog(@"%@ - %@ : %@", obj.tag.hex, obj.name, )
+    }];
     
-    NSMutableString *decodedString = [[emvTlv dump:@""] mutableCopy];
-    
-    NSString *encodedString;
-    
-    return encodedString;
+    return nil;
 }
 
 @end
