@@ -31,4 +31,20 @@
              ];
 }
 
++(EMVTlv *)emvTlvWithTag:(BerTag *)berTag error:(NSError **)error
+{
+    __block EMVTlv *emvTlv = nil;
+    [[self list] enumerateObjectsUsingBlock:^(EMVTlv* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([berTag isEqualToTag:obj.tag]) {
+            emvTlv = obj;
+        }
+    }];
+    
+    NSMutableDictionary* details = [NSMutableDictionary dictionary];
+    [details setValue:[NSString stringWithFormat:@"Could not find emv tag %@", berTag.hex] forKey:NSLocalizedDescriptionKey];
+    *error = [NSError errorWithDomain:@"Error parsing emv tags."
+                                 code:200
+                             userInfo:details];
+    return emvTlv;
+}
 @end

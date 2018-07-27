@@ -18,6 +18,7 @@
 #import "HexUtil.h"
 #import "EmvTlvList.h"
 #import "EMVTlv.h"
+#import "BerTlv+Emv.h"
 
 @interface RAPDUParser()
 
@@ -245,44 +246,42 @@
     NSData * data         = [HexUtil parse:recordsData.description];
     BerTlvParser * parser = [[BerTlvParser alloc] init];
     BerTlv * tlv          = [parser parseConstructed:data];
-    return [tlv dump:@"  "];
+    return [tlv emvDump:@"  "];
 }
 
--(NSString *)encodeEMVData:(NSData *)recordsData
-{
-    NSData * data         = [HexUtil parse:recordsData.description];
-    BerTlvParser * parser = [[BerTlvParser alloc] init];
-    BerTlv * emvTlv          = [parser parseConstructed:data];
- 
-    NSArray *listOfEMVTlv = [EmvTlvList list];
-    
-    [listOfEMVTlv enumerateObjectsUsingBlock:^(EMVTlv *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        BerTlv *oneBerTlv = [emvTlv find:obj.tag];
-        
-        NSString *oneBerTlvValue = oneBerTlv.value;
-        
-        switch (obj.type) {
-            case Binary:
-                break;
-            case Numeric:
-                break;
-            case Text:
-                
-                break;
-            case Mixed:
-                break;
-            case Template:
-                break;
-            case DOL:
-                break;
-            default:
-                break;
-        }
-        NSLog(@"%@ - %@ : %@", obj.tag.hex, obj.name, )
-    }];
-    
-    return nil;
-}
+//-(NSString *)encodeEMVData:(NSData *)recordsData
+//{
+//    NSData * data         = [HexUtil parse:recordsData.description];
+//    BerTlvParser * parser = [[BerTlvParser alloc] init];
+//    BerTlv * emvTlv          = [parser parseConstructed:data];
+//
+//
+//
+//
+//        BerTlv *oneBerTlv = [emvTlv find:obj.tag];
+//
+//        NSString *oneBerTlvValue = oneBerTlv.textValue;
+//
+//        switch (obj.type) {
+//            case Binary:
+//                break;
+//            case Numeric:
+//                break;
+//            case Text:
+//
+//                break;
+//            case Mixed:
+//                break;
+//            case Template:
+//                break;
+//            case DOL:
+//                break;
+//            default:
+//                break;
+//        }
+////        NSString
+//        NSLog(@"%@ - %@ : %@", obj.tag.hex, obj.name, oneBerTlvValue);
+//    return nil;
+//}
 
 @end

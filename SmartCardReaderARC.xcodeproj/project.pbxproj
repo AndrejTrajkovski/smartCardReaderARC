@@ -32,8 +32,8 @@
 		894FC4E82105BCC300E9A686 /* VisaElectronPDParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */; };
 		894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 894FC4E92105C08900E9A686 /* pd data example.rtf */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
+		897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD954210B18BB00950723 /* BerTlv+Emv.m */; };
 		899C6AD82100E1BC0022CA84 /* EmvTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C6AD72100E1BC0022CA84 /* EmvTag.m */; };
-		899C6ADE2100E3A50022CA84 /* BerTlv+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C6ADD2100E3A50022CA84 /* BerTlv+Util.m */; };
 		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
 /* End PBXBuildFile section */
 
@@ -96,10 +96,10 @@
 		894FC4E92105C08900E9A686 /* pd data example.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "pd data example.rtf"; sourceTree = "<group>"; };
 		896EC5FA20FDD21E005BC89F /* CAPDUGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPDUGenerator.h; sourceTree = "<group>"; };
 		896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPDUGenerator.m; sourceTree = "<group>"; };
+		897DD953210B18BB00950723 /* BerTlv+Emv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BerTlv+Emv.h"; sourceTree = "<group>"; };
+		897DD954210B18BB00950723 /* BerTlv+Emv.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BerTlv+Emv.m"; sourceTree = "<group>"; };
 		899C6AD62100E1BC0022CA84 /* EmvTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvTag.h; sourceTree = "<group>"; };
 		899C6AD72100E1BC0022CA84 /* EmvTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvTag.m; sourceTree = "<group>"; };
-		899C6ADC2100E3A50022CA84 /* BerTlv+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BerTlv+Util.h"; sourceTree = "<group>"; };
-		899C6ADD2100E3A50022CA84 /* BerTlv+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BerTlv+Util.m"; sourceTree = "<group>"; };
 		8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D28A030C0AB434E6807CB68 /* Pods-SmartCardReaderARC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARC/Pods-SmartCardReaderARC.debug.xcconfig"; sourceTree = "<group>"; };
 		C5CEC8C1C3D22C0CE27C1D0F /* Pods-SmartCardReaderARCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARCTests/Pods-SmartCardReaderARCTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +136,8 @@
 				82268BFE21067E450044591C /* EmvTlvList.m */,
 				82268BFB21067AF30044591C /* EMVTlv.h */,
 				82268BFA21067AF30044591C /* EMVTlv.m */,
+				897DD953210B18BB00950723 /* BerTlv+Emv.h */,
+				897DD954210B18BB00950723 /* BerTlv+Emv.m */,
 			);
 			path = EmvTlv;
 			sourceTree = "<group>";
@@ -235,8 +237,6 @@
 				8913AF1720FE146000224E26 /* RAPDUParser.m */,
 				899C6AD62100E1BC0022CA84 /* EmvTag.h */,
 				899C6AD72100E1BC0022CA84 /* EmvTag.m */,
-				899C6ADC2100E3A50022CA84 /* BerTlv+Util.h */,
-				899C6ADD2100E3A50022CA84 /* BerTlv+Util.m */,
 			);
 			path = ParsingRAPDU;
 			sourceTree = "<group>";
@@ -396,12 +396,12 @@
 			files = (
 				8913AF1B20FE2DCA00224E26 /* NSString+BytesFromString.m in Sources */,
 				82268BFC21067AF30044591C /* EMVTlv.m in Sources */,
-				899C6ADE2100E3A50022CA84 /* BerTlv+Util.m in Sources */,
 				82268BFF21067E450044591C /* EmvTlvList.m in Sources */,
 				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
 				8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */,
 				8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */,
 				8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */,
+				897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,
 				8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */,
