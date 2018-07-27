@@ -72,7 +72,7 @@
     }
     
     
-    RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@[@0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00] error:error];
+    RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@[@0x00] error:error];
     NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse error:error];
     if (!sfisWithRanges) {
         return nil;
