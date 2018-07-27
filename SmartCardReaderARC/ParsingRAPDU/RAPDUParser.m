@@ -47,7 +47,6 @@
     }
     NSData *data = [NSData byteDataFromArray:rapdu.bytes];
     BerTag *aidBerTag = [[BerTag alloc] init:0x9f secondByte:0x38];
-    
     BerTlv *tlv = [self.berTlvParser parseConstructed:data];
     
     BerTlv *aidTLV = [tlv find:aidBerTag];

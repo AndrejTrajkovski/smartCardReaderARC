@@ -66,11 +66,18 @@
     if (!aid) {
         return nil;
     }
-    BOOL selectAIDSuccess = [self selectAID:aid error:error];
-    if (!selectAIDSuccess) {
+    RAPDU* selectAid = [self selectAID:aid error:error];
+    if (!selectAid) {
         return nil;
     }
-    NSString *aflRecords = [self readAFLRecordsFromSelectedAIDError:error];
+    
+    
+    RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@[@0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00, @0x00] error:error];
+    NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse error:error];
+    if (!sfisWithRanges) {
+        return nil;
+    }
+    NSString *aflRecords = [self readAFLRecordsForSFIs:sfisWithRanges error:error];
     return aflRecords;
 }
 
@@ -104,7 +111,7 @@
     return responsePPSE;
 }
 
--(BOOL)selectAID:(NSArray *)aid error:(NSError **)error
+-(RAPDU *)selectAID:(NSArray *)aid error:(NSError **)error
 {
     if (!aid) {
         return nil;
@@ -115,10 +122,10 @@
     
     if (selectAidResponse.responseStatus != RAPDUStatusSuccess) {
         //TODO : add check if AID is contained in RAPDU
-        return NO;
+        return nil;
     }
     
-    return YES;
+    return selectAidResponse;
 }
 
 -(NSArray *)getAidFromSFI:(NSNumber *)sfi error:(NSError **)error
@@ -131,19 +138,13 @@
     return aid;
 }
 
--(NSString *)readAFLRecordsFromSelectedAIDError:(NSError **)error
+-(NSString *)readAFLRecordsForSFIs:(NSArray *)sfiArray error:(NSError **)error
 {
-    RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@0x00 error:error];
-    NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse error:error];
-    if (!sfisWithRanges) {
-        return nil;
-    }
-    
     NSMutableString *records = [NSMutableString new];
     
-    for (NSUInteger i = 0; i < sfisWithRanges.count; i++) {
+    for (NSUInteger i = 0; i < sfiArray.count; i++) {
         
-        SFIWithRecordNumbers *obj = sfisWithRanges[i];
+        SFIWithRecordNumbers *obj = sfiArray[i];
         for (NSUInteger j = [obj.firstRecordNumber unsignedIntegerValue]; j <= [obj.lastRecordNumber unsignedIntegerValue]; j++) {
             
             NSNumber *recordNumber = [NSNumber numberWithUnsignedInteger:j];
@@ -168,7 +169,8 @@
     return responseReadRecord;
 }
 
--(RAPDU *)getProcessingOptionsWithPDOL:(NSNumber *)pdol error:(NSError **)error
+-(RAPDU *)getProcessingOptionsWithPDOL:(NSArray *)pdol
+                                 error:(NSError **)error
 {
     //TODO PDOL != @0x00
     CAPDU *getProceessingOptions = [CAPDUGenerator getProcessingOptionsWithPDOL:pdol];

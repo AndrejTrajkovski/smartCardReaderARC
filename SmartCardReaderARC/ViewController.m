@@ -101,32 +101,32 @@
         //card and reader connected
         self.pdReader = [[PublicDataReader alloc] initWithExecutioner:tactivoExecutioner];
         
-//        NSError *pseError = nil;
-//        //try via pse
-//        NSString *publicData = [self.pdReader readPublicDataViaPSEWithError:&pseError];
-//        if (!publicData) {
-//            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", pseError.localizedDescription]];
-//        }else{
-//            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", publicData]];
-//        }
-//
-//        NSError *aidError = nil;
-//        //try via AID
-//        NSString *publicDataViaAid = [self readPublicDataViaAIDsError:&aidError];
-//        if (!publicDataViaAid) {
-//            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", aidError.localizedDescription]];
-//        }else{
-//            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", publicDataViaAid]];
-//        }
-        
-        NSError *ppseError = nil;
+        NSError *pseError = nil;
         //try via pse
-        NSString *publicData = [self.pdReader readPublicDataViaPPSEWithError:&ppseError];
+        NSString *publicData = [self.pdReader readPublicDataViaPSEWithError:&pseError];
         if (!publicData) {
-            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", ppseError.localizedDescription]];
+            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", pseError.localizedDescription]];
         }else{
             [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", publicData]];
         }
+
+        NSError *aidError = nil;
+        //try via AID
+        NSString *publicDataViaAid = [self readPublicDataViaAIDsError:&aidError];
+        if (!publicDataViaAid) {
+            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", aidError.localizedDescription]];
+        }else{
+            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", publicDataViaAid]];
+        }
+//        
+//        NSError *ppseError = nil;
+//        //try via pse
+//        NSString *publicData = [self.pdReader readPublicDataViaPPSEWithError:&ppseError];
+//        if (!publicData) {
+//            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", ppseError.localizedDescription]];
+//        }else{
+//            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", publicData]];
+//        }
 
         
     }else{
