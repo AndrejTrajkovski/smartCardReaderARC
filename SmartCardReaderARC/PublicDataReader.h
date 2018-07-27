@@ -16,7 +16,7 @@
 @property (strong, nonatomic) id <CardReaderCommandExecutioner> commandExecutioner;
 
 -(NSString *)readPublicDataViaPSEWithError:(NSError **)error;
-//-(void)readPublicDataViaPPSE;
+-(NSString *)readPublicDataViaPPSEWithError:(NSError **)error;
 -(NSString *)readPublicDataForAID:(NSArray *)aid error:(NSError **)error;
 
 @end

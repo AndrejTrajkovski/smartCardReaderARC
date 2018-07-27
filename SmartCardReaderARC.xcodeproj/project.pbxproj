@@ -33,7 +33,9 @@
 		894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 894FC4E92105C08900E9A686 /* pd data example.rtf */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
 		897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD954210B18BB00950723 /* BerTlv+Emv.m */; };
-		899C6AD82100E1BC0022CA84 /* EmvTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 899C6AD72100E1BC0022CA84 /* EmvTag.m */; };
+		897DD95A210B2F6700950723 /* EmvAID.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD959210B2F6700950723 /* EmvAID.m */; };
+		897DD95D210B30E000950723 /* EmvAIDList.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD95C210B30E000950723 /* EmvAIDList.m */; };
+		897DD95F210B326A00950723 /* AIDList.csv in Resources */ = {isa = PBXBuildFile; fileRef = 897DD95E210B326A00950723 /* AIDList.csv */; };
 		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +100,11 @@
 		896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPDUGenerator.m; sourceTree = "<group>"; };
 		897DD953210B18BB00950723 /* BerTlv+Emv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BerTlv+Emv.h"; sourceTree = "<group>"; };
 		897DD954210B18BB00950723 /* BerTlv+Emv.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BerTlv+Emv.m"; sourceTree = "<group>"; };
-		899C6AD62100E1BC0022CA84 /* EmvTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvTag.h; sourceTree = "<group>"; };
-		899C6AD72100E1BC0022CA84 /* EmvTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvTag.m; sourceTree = "<group>"; };
+		897DD958210B2F6700950723 /* EmvAID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvAID.h; sourceTree = "<group>"; };
+		897DD959210B2F6700950723 /* EmvAID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvAID.m; sourceTree = "<group>"; };
+		897DD95B210B30E000950723 /* EmvAIDList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvAIDList.h; sourceTree = "<group>"; };
+		897DD95C210B30E000950723 /* EmvAIDList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvAIDList.m; sourceTree = "<group>"; };
+		897DD95E210B326A00950723 /* AIDList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AIDList.csv; sourceTree = "<group>"; };
 		8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D28A030C0AB434E6807CB68 /* Pods-SmartCardReaderARC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARC/Pods-SmartCardReaderARC.debug.xcconfig"; sourceTree = "<group>"; };
 		C5CEC8C1C3D22C0CE27C1D0F /* Pods-SmartCardReaderARCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARCTests/Pods-SmartCardReaderARCTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 		82268C0021067E4B0044591C /* EmvTlv */ = {
 			isa = PBXGroup;
 			children = (
+				897DD95E210B326A00950723 /* AIDList.csv */,
 				82268C01210683C80044591C /* EMVBerTags.h */,
 				82268C02210683C80044591C /* EMVBerTags.m */,
 				82268BFD21067E450044591C /* EmvTlvList.h */,
@@ -138,6 +144,10 @@
 				82268BFA21067AF30044591C /* EMVTlv.m */,
 				897DD953210B18BB00950723 /* BerTlv+Emv.h */,
 				897DD954210B18BB00950723 /* BerTlv+Emv.m */,
+				897DD958210B2F6700950723 /* EmvAID.h */,
+				897DD959210B2F6700950723 /* EmvAID.m */,
+				897DD95B210B30E000950723 /* EmvAIDList.h */,
+				897DD95C210B30E000950723 /* EmvAIDList.m */,
 			);
 			path = EmvTlv;
 			sourceTree = "<group>";
@@ -235,8 +245,6 @@
 				82268C0021067E4B0044591C /* EmvTlv */,
 				8913AF1620FE146000224E26 /* RAPDUParser.h */,
 				8913AF1720FE146000224E26 /* RAPDUParser.m */,
-				899C6AD62100E1BC0022CA84 /* EmvTag.h */,
-				899C6AD72100E1BC0022CA84 /* EmvTag.m */,
 			);
 			path = ParsingRAPDU;
 			sourceTree = "<group>";
@@ -336,6 +344,7 @@
 			files = (
 				8277EF6020FB7EDE00DF4BC6 /* LaunchScreen.storyboard in Resources */,
 				8277EF5D20FB7EDE00DF4BC6 /* Assets.xcassets in Resources */,
+				897DD95F210B326A00950723 /* AIDList.csv in Resources */,
 				8277EF5B20FB7EDD00DF4BC6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +409,7 @@
 				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
 				8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */,
 				8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */,
+				897DD95D210B30E000950723 /* EmvAIDList.m in Sources */,
 				8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */,
 				897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
@@ -407,8 +417,8 @@
 				8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */,
 				896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */,
 				8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */,
+				897DD95A210B2F6700950723 /* EmvAID.m in Sources */,
 				8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */,
-				899C6AD82100E1BC0022CA84 /* EmvTag.m in Sources */,
 				82268C03210683C80044591C /* EMVBerTags.m in Sources */,
 				8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */,
 				8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */,

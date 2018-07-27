@@ -1,16 +1,20 @@
 PODS:
   - BerTlv (0.1.0)
+  - CHCSVParser (2.1.0)
 
 DEPENDENCIES:
   - BerTlv (= 0.1.0)
+  - CHCSVParser
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BerTlv
+    - CHCSVParser
 
 SPEC CHECKSUMS:
   BerTlv: 03e30af56f0dcacafe8ed57553fb676456cbeb7a
+  CHCSVParser: 3bcc7bdb72111a31222e95d57eacceefe4e537e8
 
-PODFILE CHECKSUM: 37187473f60edf0f1361a556d81e93bc6feeae65
+PODFILE CHECKSUM: 9e4181e26e43016d1eafb5f0cc11dc63954c59e4
 
 COCOAPODS: 1.5.2

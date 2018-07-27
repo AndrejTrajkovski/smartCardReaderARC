@@ -7,78 +7,101 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A4FA2991B791D9E206E413629A409C4 /* Pods-SmartCardReaderARC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA55EC531EAF542F1470E34F8339D /* Pods-SmartCardReaderARC-dummy.m */; };
-		0CA96BC896B3EABCF31402F5D9A1949C /* BerTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E8C97ABE7A2979F3795DD0F29023D /* BerTag.m */; };
+		0CA96BC896B3EABCF31402F5D9A1949C /* BerTag.m in Sources */ = {isa = PBXBuildFile; fileRef = B49523DD79B3554A2B630844FD9328A6 /* BerTag.m */; };
 		2D307D5A86789DAF62A68E5D4D6BE1C6 /* Pods-SmartCardReaderARCTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 20106BBEA5C03DE6C3951E1BB8B20C5D /* Pods-SmartCardReaderARCTests-dummy.m */; };
-		32256BDED0002FF0E1A14A4313214DCB /* BerTlvBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 98691D4148882B3429C382361B76473C /* BerTlvBuilder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3A2946AA2B7D7AF99E7518DDEE973C40 /* HexUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9C5F52F59D32C787105F346CC9B4BA /* HexUtil.m */; };
-		4AF57C8A432FD0950352ECB2386C416B /* BerTlvs.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F53C09F486772E1DEE77EB14E9756A /* BerTlvs.m */; };
-		509A5B8F9AE3FD05A3AA6028A65FABD4 /* BerTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 6392B28DFAD96BB25E7400082E9BC48C /* BerTag.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		63CFE7C2CD9F41A6D4A59A84479DBF2B /* HexUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 615EEA92BCFA612A3A0B376C3D7CBEC6 /* HexUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		87646BC8EF45942AB411E1C05040DE3A /* BerTlvParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A897FC06DAA21D315B034443353D32 /* BerTlvParser.m */; };
-		A7D46A8851F064C5361227799687EDF0 /* BerTlvParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B39ADF2F3B79D3CA39D5E6389B5C179E /* BerTlvParser.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A8BC51BE9D9426A965499F315B831CCD /* BerTlvs.h in Headers */ = {isa = PBXBuildFile; fileRef = BC83314EC95E903E086385CC1F331E88 /* BerTlvs.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		BE513B40557D077E0988324D0A4FA1F8 /* BerTlvBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1833CDB52D7B0531D2443BE1201F4C /* BerTlvBuilder.m */; };
-		D37CE374B012D63BA8009343A86CEB3C /* BerTlv-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C44062C74DA2F1489EEA045CC0DAB063 /* BerTlv-dummy.m */; };
-		EBD82B64F92696AB3B6F0129DD4CDBD4 /* BerTlv.h in Headers */ = {isa = PBXBuildFile; fileRef = F332BF4CFC6ECC6F78B8352BA6BF0FF1 /* BerTlv.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		FAFE9882A0A693E9521ADD5FDB3B18A6 /* BerTlv.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E219BA560423E198E76BFF488BEB78 /* BerTlv.m */; };
+		32256BDED0002FF0E1A14A4313214DCB /* BerTlvBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 114F11DDBD9EFF9D68B904CF4D74AB46 /* BerTlvBuilder.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3A2946AA2B7D7AF99E7518DDEE973C40 /* HexUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5CB76CB1847BB2FB690F65FB86B6D /* HexUtil.m */; };
+		416AD1B5674A81A03161295FD25DE4A1 /* CHCSVParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 81924CCC381DB1B40653B8CD6C92849A /* CHCSVParser.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4AF57C8A432FD0950352ECB2386C416B /* BerTlvs.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4B29BD216D2126A8D05E5E8CD8263 /* BerTlvs.m */; };
+		509A5B8F9AE3FD05A3AA6028A65FABD4 /* BerTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2BBE888AE6EBDAE2E783B2287948D9 /* BerTag.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		53C570AC5549512190FC5CC75A794F5C /* CHCSVParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 310802693EFDAF81CA1EB42D11466DA9 /* CHCSVParser-dummy.m */; };
+		63CFE7C2CD9F41A6D4A59A84479DBF2B /* HexUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 64A6285C4F179DBE49877F79FCA4BAD9 /* HexUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		87646BC8EF45942AB411E1C05040DE3A /* BerTlvParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 39896E6E51E4FAC6F4AC296EDA48F90E /* BerTlvParser.m */; };
+		99CBEC4753F71C26E10F226763467E5B /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE779994FE9397D528DEA670B9B7405 /* CHCSVParser.m */; };
+		A7D46A8851F064C5361227799687EDF0 /* BerTlvParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B3A379642E8CD7A171E0CD261F38FB /* BerTlvParser.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A8BC51BE9D9426A965499F315B831CCD /* BerTlvs.h in Headers */ = {isa = PBXBuildFile; fileRef = F0FF9BE130E5D52A71C99B0CC3A4BF78 /* BerTlvs.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BE513B40557D077E0988324D0A4FA1F8 /* BerTlvBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C00003DB28C051EDC44563982F8492 /* BerTlvBuilder.m */; };
+		C83424767EF3A714B9E3DA6D65D46234 /* Pods-SmartCardReaderARC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DA55EC531EAF542F1470E34F8339D /* Pods-SmartCardReaderARC-dummy.m */; };
+		D37CE374B012D63BA8009343A86CEB3C /* BerTlv-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E03C069F54CB68D2DE418316425C2A8 /* BerTlv-dummy.m */; };
+		EBD82B64F92696AB3B6F0129DD4CDBD4 /* BerTlv.h in Headers */ = {isa = PBXBuildFile; fileRef = 63A26CC3B23F990281D360A8BB4EA054 /* BerTlv.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		FAFE9882A0A693E9521ADD5FDB3B18A6 /* BerTlv.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F7541C64CE4290100D4655EAEE81B8 /* BerTlv.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		143619D29F7B70ECEEE227F9AA2C1760 /* PBXContainerItemProxy */ = {
+		88732C0FAECBFCD4B6431EBAEDC3FC20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9656881A1D321BE79549680B37452294;
+			remoteInfo = CHCSVParser;
+		};
+		9D4275BFA8ADAA454448647F1CDFFFEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FC5488DAB412C56D2B0963E72DC722F;
+			remoteInfo = "Pods-SmartCardReaderARC";
+		};
+		A0EC0914E1071D35BDB61D478EB14B05 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B05D82661BDF4525605136F2D7C8F2FF;
 			remoteInfo = BerTlv;
 		};
-		9D4275BFA8ADAA454448647F1CDFFFEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45518C607B33DD4872D2FBD887922143;
-			remoteInfo = "Pods-SmartCardReaderARC";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0213505C09CAB5DE7B5BCA2FF13F3860 /* libCHCSVParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCHCSVParser.a; path = libCHCSVParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		114F11DDBD9EFF9D68B904CF4D74AB46 /* BerTlvBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvBuilder.h; path = BerTlv/BerTlvBuilder.h; sourceTree = "<group>"; };
 		14847483735E6A68A5770F48002CEFDC /* Pods-SmartCardReaderARC-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCardReaderARC-resources.sh"; sourceTree = "<group>"; };
 		1E23DC5CCE157C4D6A74662BB342D430 /* Pods-SmartCardReaderARC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SmartCardReaderARC-acknowledgements.plist"; sourceTree = "<group>"; };
 		20106BBEA5C03DE6C3951E1BB8B20C5D /* Pods-SmartCardReaderARCTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SmartCardReaderARCTests-dummy.m"; sourceTree = "<group>"; };
 		2161AF973E92C84F175102B8B561D110 /* Pods-SmartCardReaderARC-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCardReaderARC-frameworks.sh"; sourceTree = "<group>"; };
-		3E2E8C97ABE7A2979F3795DD0F29023D /* BerTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTag.m; path = BerTlv/BerTag.m; sourceTree = "<group>"; };
-		40D7CC2BE8ADD181F643B6CD00B62651 /* libPods-SmartCardReaderARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SmartCardReaderARC.a"; path = "libPods-SmartCardReaderARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		310802693EFDAF81CA1EB42D11466DA9 /* CHCSVParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CHCSVParser-dummy.m"; sourceTree = "<group>"; };
+		39896E6E51E4FAC6F4AC296EDA48F90E /* BerTlvParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlvParser.m; path = BerTlv/BerTlvParser.m; sourceTree = "<group>"; };
 		43CCD860B04695989C8EE57178E46D3B /* Pods-SmartCardReaderARCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCardReaderARCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D9DA55EC531EAF542F1470E34F8339D /* Pods-SmartCardReaderARC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SmartCardReaderARC-dummy.m"; sourceTree = "<group>"; };
-		55A897FC06DAA21D315B034443353D32 /* BerTlvParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlvParser.m; path = BerTlv/BerTlvParser.m; sourceTree = "<group>"; };
-		57F53C09F486772E1DEE77EB14E9756A /* BerTlvs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlvs.m; path = BerTlv/BerTlvs.m; sourceTree = "<group>"; };
-		615EEA92BCFA612A3A0B376C3D7CBEC6 /* HexUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HexUtil.h; path = BerTlv/HexUtil.h; sourceTree = "<group>"; };
+		5D2BBE888AE6EBDAE2E783B2287948D9 /* BerTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTag.h; path = BerTlv/BerTag.h; sourceTree = "<group>"; };
 		61825FCB59966EA6F7F1DCE39AA98AE9 /* Pods-SmartCardReaderARC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCardReaderARC.debug.xcconfig"; sourceTree = "<group>"; };
-		6392B28DFAD96BB25E7400082E9BC48C /* BerTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTag.h; path = BerTlv/BerTag.h; sourceTree = "<group>"; };
-		68BEAC91B011D3A542E8CF69359E9035 /* libBerTlv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libBerTlv.a; path = libBerTlv.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A26CC3B23F990281D360A8BB4EA054 /* BerTlv.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlv.h; path = BerTlv/BerTlv.h; sourceTree = "<group>"; };
+		64A6285C4F179DBE49877F79FCA4BAD9 /* HexUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HexUtil.h; path = BerTlv/HexUtil.h; sourceTree = "<group>"; };
+		72D791250C963CAD6855F9B5B5F7E5A8 /* libBerTlv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libBerTlv.a; path = libBerTlv.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		76FC0164BFC6ABF40037543F71FA1B8F /* CHCSVParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CHCSVParser.xcconfig; sourceTree = "<group>"; };
+		791A8AE64B83775E26C1E45ACA8746EF /* BerTlv-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BerTlv-prefix.pch"; sourceTree = "<group>"; };
+		81924CCC381DB1B40653B8CD6C92849A /* CHCSVParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = CHCSVParser/CHCSVParser/CHCSVParser.h; sourceTree = "<group>"; };
+		84B3A379642E8CD7A171E0CD261F38FB /* BerTlvParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvParser.h; path = BerTlv/BerTlvParser.h; sourceTree = "<group>"; };
 		8D12AADB66EE7BDC62AB08BD7D3F1778 /* Pods-SmartCardReaderARC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCardReaderARC.release.xcconfig"; sourceTree = "<group>"; };
+		8E7908A4546070AFD75AFD64399ADB31 /* BerTlv.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BerTlv.xcconfig; sourceTree = "<group>"; };
+		8E84B3F958EDCB9B3A5BAA8A65A5335B /* libPods-SmartCardReaderARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SmartCardReaderARC.a"; path = "libPods-SmartCardReaderARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		98691D4148882B3429C382361B76473C /* BerTlvBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvBuilder.h; path = BerTlv/BerTlvBuilder.h; sourceTree = "<group>"; };
-		B39ADF2F3B79D3CA39D5E6389B5C179E /* BerTlvParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvParser.h; path = BerTlv/BerTlvParser.h; sourceTree = "<group>"; };
-		BC83314EC95E903E086385CC1F331E88 /* BerTlvs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvs.h; path = BerTlv/BerTlvs.h; sourceTree = "<group>"; };
-		C44062C74DA2F1489EEA045CC0DAB063 /* BerTlv-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BerTlv-dummy.m"; sourceTree = "<group>"; };
+		9E03C069F54CB68D2DE418316425C2A8 /* BerTlv-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BerTlv-dummy.m"; sourceTree = "<group>"; };
+		A9E4B29BD216D2126A8D05E5E8CD8263 /* BerTlvs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlvs.m; path = BerTlv/BerTlvs.m; sourceTree = "<group>"; };
+		B43438F8C082DDA1101EB02D95FED2AF /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SmartCardReaderARCTests.a"; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B49523DD79B3554A2B630844FD9328A6 /* BerTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTag.m; path = BerTlv/BerTag.m; sourceTree = "<group>"; };
+		BBE779994FE9397D528DEA670B9B7405 /* CHCSVParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = CHCSVParser/CHCSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		C5AD3BC4C991F3B342AADE7F69BAFA34 /* Pods-SmartCardReaderARCTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCardReaderARCTests-frameworks.sh"; sourceTree = "<group>"; };
-		CC8AA172127502AEF1EC7A0A1EFC560A /* BerTlv-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BerTlv-prefix.pch"; sourceTree = "<group>"; };
-		D7BFB1E6AAA15F5CF588952FAEFF06C9 /* BerTlv.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BerTlv.xcconfig; sourceTree = "<group>"; };
+		C9C00003DB28C051EDC44563982F8492 /* BerTlvBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlvBuilder.m; path = BerTlv/BerTlvBuilder.m; sourceTree = "<group>"; };
 		DA2D10D62E994DA061699C406F272D69 /* Pods-SmartCardReaderARC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SmartCardReaderARC-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DE85684208FD0A16D0700FB971C0E081 /* Pods-SmartCardReaderARCTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SmartCardReaderARCTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		E1E219BA560423E198E76BFF488BEB78 /* BerTlv.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlv.m; path = BerTlv/BerTlv.m; sourceTree = "<group>"; };
-		E53F8CBDD18D5842DEC580BE2C49F7F5 /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SmartCardReaderARCTests.a"; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E992A85B3516CC12FDBE34E71D6980EC /* Pods-SmartCardReaderARCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCardReaderARCTests.release.xcconfig"; sourceTree = "<group>"; };
-		EA1833CDB52D7B0531D2443BE1201F4C /* BerTlvBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlvBuilder.m; path = BerTlv/BerTlvBuilder.m; sourceTree = "<group>"; };
-		F332BF4CFC6ECC6F78B8352BA6BF0FF1 /* BerTlv.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlv.h; path = BerTlv/BerTlv.h; sourceTree = "<group>"; };
-		FC9C5F52F59D32C787105F346CC9B4BA /* HexUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HexUtil.m; path = BerTlv/HexUtil.m; sourceTree = "<group>"; };
+		ECEF062EB9A54275A0FFE091DD52FE58 /* CHCSVParser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CHCSVParser-prefix.pch"; sourceTree = "<group>"; };
+		F0FF9BE130E5D52A71C99B0CC3A4BF78 /* BerTlvs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvs.h; path = BerTlv/BerTlvs.h; sourceTree = "<group>"; };
+		F3F7541C64CE4290100D4655EAEE81B8 /* BerTlv.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlv.m; path = BerTlv/BerTlv.m; sourceTree = "<group>"; };
+		F7E5CB76CB1847BB2FB690F65FB86B6D /* HexUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HexUtil.m; path = BerTlv/HexUtil.m; sourceTree = "<group>"; };
 		FDB92A89136E47552D5565512A291907 /* Pods-SmartCardReaderARCTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SmartCardReaderARCTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FDF35DDDC7C8431DC2376A50C5FBA32D /* Pods-SmartCardReaderARCTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCardReaderARCTests-resources.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8D08ADDE7395C2E2E4D7703002DA0521 /* Frameworks */ = {
+		2F970001C0328EAB1A67A665DC8EE84C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7261FB9FDF63BA897B8714569943AD01 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -102,16 +125,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02BECEDB89DC85FE837B92586AA66FD2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				68BEAC91B011D3A542E8CF69359E9035 /* libBerTlv.a */,
-				40D7CC2BE8ADD181F643B6CD00B62651 /* libPods-SmartCardReaderARC.a */,
-				E53F8CBDD18D5842DEC580BE2C49F7F5 /* libPods-SmartCardReaderARCTests.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,33 +132,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2C601E6453CBE4B688E126F7CFF8B3E0 /* Pods */ = {
+		1050F6B4D55BA2A62403B262BDA4D633 /* BerTlv */ = {
 			isa = PBXGroup;
 			children = (
-				31E5E4D40C3ABAF1F737F9C81FA2AFDA /* BerTlv */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		31E5E4D40C3ABAF1F737F9C81FA2AFDA /* BerTlv */ = {
-			isa = PBXGroup;
-			children = (
-				6392B28DFAD96BB25E7400082E9BC48C /* BerTag.h */,
-				3E2E8C97ABE7A2979F3795DD0F29023D /* BerTag.m */,
-				F332BF4CFC6ECC6F78B8352BA6BF0FF1 /* BerTlv.h */,
-				E1E219BA560423E198E76BFF488BEB78 /* BerTlv.m */,
-				98691D4148882B3429C382361B76473C /* BerTlvBuilder.h */,
-				EA1833CDB52D7B0531D2443BE1201F4C /* BerTlvBuilder.m */,
-				B39ADF2F3B79D3CA39D5E6389B5C179E /* BerTlvParser.h */,
-				55A897FC06DAA21D315B034443353D32 /* BerTlvParser.m */,
-				BC83314EC95E903E086385CC1F331E88 /* BerTlvs.h */,
-				57F53C09F486772E1DEE77EB14E9756A /* BerTlvs.m */,
-				615EEA92BCFA612A3A0B376C3D7CBEC6 /* HexUtil.h */,
-				FC9C5F52F59D32C787105F346CC9B4BA /* HexUtil.m */,
-				FCBC3F2217E286B99FC723D530278A8C /* Support Files */,
+				5D2BBE888AE6EBDAE2E783B2287948D9 /* BerTag.h */,
+				B49523DD79B3554A2B630844FD9328A6 /* BerTag.m */,
+				63A26CC3B23F990281D360A8BB4EA054 /* BerTlv.h */,
+				F3F7541C64CE4290100D4655EAEE81B8 /* BerTlv.m */,
+				114F11DDBD9EFF9D68B904CF4D74AB46 /* BerTlvBuilder.h */,
+				C9C00003DB28C051EDC44563982F8492 /* BerTlvBuilder.m */,
+				84B3A379642E8CD7A171E0CD261F38FB /* BerTlvParser.h */,
+				39896E6E51E4FAC6F4AC296EDA48F90E /* BerTlvParser.m */,
+				F0FF9BE130E5D52A71C99B0CC3A4BF78 /* BerTlvs.h */,
+				A9E4B29BD216D2126A8D05E5E8CD8263 /* BerTlvs.m */,
+				64A6285C4F179DBE49877F79FCA4BAD9 /* HexUtil.h */,
+				F7E5CB76CB1847BB2FB690F65FB86B6D /* HexUtil.m */,
+				8A3CBE63AC960CEC5A876E4EFD79CB7C /* Support Files */,
 			);
 			name = BerTlv;
 			path = BerTlv;
+			sourceTree = "<group>";
+		};
+		2050509EB6224160A83C80D9B42FA733 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72D791250C963CAD6855F9B5B5F7E5A8 /* libBerTlv.a */,
+				0213505C09CAB5DE7B5BCA2FF13F3860 /* libCHCSVParser.a */,
+				8E84B3F958EDCB9B3A5BAA8A65A5335B /* libPods-SmartCardReaderARC.a */,
+				B43438F8C082DDA1101EB02D95FED2AF /* libPods-SmartCardReaderARCTests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52145F7EDB702CB13BB3F59307683650 /* CHCSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				81924CCC381DB1B40653B8CD6C92849A /* CHCSVParser.h */,
+				BBE779994FE9397D528DEA670B9B7405 /* CHCSVParser.m */,
+				7AA21DE39493511C9A337448F2D62ECA /* Support Files */,
+			);
+			name = CHCSVParser;
+			path = CHCSVParser;
 			sourceTree = "<group>";
 		};
 		58F63C1AB338D82CC08DB8D99F1B8166 /* Pods-SmartCardReaderARC */ = {
@@ -163,13 +190,24 @@
 			path = "Target Support Files/Pods-SmartCardReaderARC";
 			sourceTree = "<group>";
 		};
+		7AA21DE39493511C9A337448F2D62ECA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				76FC0164BFC6ABF40037543F71FA1B8F /* CHCSVParser.xcconfig */,
+				310802693EFDAF81CA1EB42D11466DA9 /* CHCSVParser-dummy.m */,
+				ECEF062EB9A54275A0FFE091DD52FE58 /* CHCSVParser-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CHCSVParser";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
-				2C601E6453CBE4B688E126F7CFF8B3E0 /* Pods */,
-				02BECEDB89DC85FE837B92586AA66FD2 /* Products */,
+				FE8C108765D918EB99B7CC2CE782B118 /* Pods */,
+				2050509EB6224160A83C80D9B42FA733 /* Products */,
 				89BE1975DEB308E11F10A09AD8461DFD /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -181,6 +219,17 @@
 				F5436C0C37F112EC89FC25285E69FBE1 /* Pods-SmartCardReaderARCTests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		8A3CBE63AC960CEC5A876E4EFD79CB7C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E7908A4546070AFD75AFD64399ADB31 /* BerTlv.xcconfig */,
+				9E03C069F54CB68D2DE418316425C2A8 /* BerTlv-dummy.m */,
+				791A8AE64B83775E26C1E45ACA8746EF /* BerTlv-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BerTlv";
 			sourceTree = "<group>";
 		};
 		F5436C0C37F112EC89FC25285E69FBE1 /* Pods-SmartCardReaderARCTests */ = {
@@ -198,20 +247,26 @@
 			path = "Target Support Files/Pods-SmartCardReaderARCTests";
 			sourceTree = "<group>";
 		};
-		FCBC3F2217E286B99FC723D530278A8C /* Support Files */ = {
+		FE8C108765D918EB99B7CC2CE782B118 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D7BFB1E6AAA15F5CF588952FAEFF06C9 /* BerTlv.xcconfig */,
-				C44062C74DA2F1489EEA045CC0DAB063 /* BerTlv-dummy.m */,
-				CC8AA172127502AEF1EC7A0A1EFC560A /* BerTlv-prefix.pch */,
+				1050F6B4D55BA2A62403B262BDA4D633 /* BerTlv */,
+				52145F7EDB702CB13BB3F59307683650 /* CHCSVParser */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/BerTlv";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		E64D596D5645B2ED6D5FA19C2E81DCE6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				416AD1B5674A81A03161295FD25DE4A1 /* CHCSVParser.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FD98FFCD7246A99AAE314ED600631A6E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,21 +283,39 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		45518C607B33DD4872D2FBD887922143 /* Pods-SmartCardReaderARC */ = {
+		5FC5488DAB412C56D2B0963E72DC722F /* Pods-SmartCardReaderARC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6471D34138AAFBB3E2E2E8FB56626A0 /* Build configuration list for PBXNativeTarget "Pods-SmartCardReaderARC" */;
+			buildConfigurationList = E4AECC7C1B53A6258145393E6E013723 /* Build configuration list for PBXNativeTarget "Pods-SmartCardReaderARC" */;
 			buildPhases = (
-				74AF3F6435EC095B192410F4D0075DA5 /* Sources */,
-				8D08ADDE7395C2E2E4D7703002DA0521 /* Frameworks */,
+				00C21FEEBBE4A67154AFB7BDDF618665 /* Sources */,
+				7261FB9FDF63BA897B8714569943AD01 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B436DAF22D80D13B26417A01B305A997 /* PBXTargetDependency */,
+				1C80B6D7F0F3D8943BF02923BE04C549 /* PBXTargetDependency */,
+				E04A78471FB90BA0A7D878B2E2B1A02F /* PBXTargetDependency */,
 			);
 			name = "Pods-SmartCardReaderARC";
 			productName = "Pods-SmartCardReaderARC";
-			productReference = 40D7CC2BE8ADD181F643B6CD00B62651 /* libPods-SmartCardReaderARC.a */;
+			productReference = 8E84B3F958EDCB9B3A5BAA8A65A5335B /* libPods-SmartCardReaderARC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9656881A1D321BE79549680B37452294 /* CHCSVParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 962812B3EBB2BF83D86BEB3DAA7B8A24 /* Build configuration list for PBXNativeTarget "CHCSVParser" */;
+			buildPhases = (
+				C185B26BC19D7A492F1C1715B9F5A11A /* Sources */,
+				2F970001C0328EAB1A67A665DC8EE84C /* Frameworks */,
+				E64D596D5645B2ED6D5FA19C2E81DCE6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CHCSVParser;
+			productName = CHCSVParser;
+			productReference = 0213505C09CAB5DE7B5BCA2FF13F3860 /* libCHCSVParser.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		B05D82661BDF4525605136F2D7C8F2FF /* BerTlv */ = {
@@ -259,7 +332,7 @@
 			);
 			name = BerTlv;
 			productName = BerTlv;
-			productReference = 68BEAC91B011D3A542E8CF69359E9035 /* libBerTlv.a */;
+			productReference = 72D791250C963CAD6855F9B5B5F7E5A8 /* libBerTlv.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D50CE4C5209C01BEB01D5881190093CB /* Pods-SmartCardReaderARCTests */ = {
@@ -276,7 +349,7 @@
 			);
 			name = "Pods-SmartCardReaderARCTests";
 			productName = "Pods-SmartCardReaderARCTests";
-			productReference = E53F8CBDD18D5842DEC580BE2C49F7F5 /* libPods-SmartCardReaderARCTests.a */;
+			productReference = B43438F8C082DDA1101EB02D95FED2AF /* libPods-SmartCardReaderARCTests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -296,31 +369,32 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 02BECEDB89DC85FE837B92586AA66FD2 /* Products */;
+			productRefGroup = 2050509EB6224160A83C80D9B42FA733 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				B05D82661BDF4525605136F2D7C8F2FF /* BerTlv */,
-				45518C607B33DD4872D2FBD887922143 /* Pods-SmartCardReaderARC */,
+				9656881A1D321BE79549680B37452294 /* CHCSVParser */,
+				5FC5488DAB412C56D2B0963E72DC722F /* Pods-SmartCardReaderARC */,
 				D50CE4C5209C01BEB01D5881190093CB /* Pods-SmartCardReaderARCTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00C21FEEBBE4A67154AFB7BDDF618665 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C83424767EF3A714B9E3DA6D65D46234 /* Pods-SmartCardReaderARC-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2B31CABB3D77A83FCD2802E1D7EB2DCE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2D307D5A86789DAF62A68E5D4D6BE1C6 /* Pods-SmartCardReaderARCTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		74AF3F6435EC095B192410F4D0075DA5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0A4FA2991B791D9E206E413629A409C4 /* Pods-SmartCardReaderARC-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,25 +412,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C185B26BC19D7A492F1C1715B9F5A11A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C570AC5549512190FC5CC75A794F5C /* CHCSVParser-dummy.m in Sources */,
+				99CBEC4753F71C26E10F226763467E5B /* CHCSVParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3D83245504CA5C3E7AFD8AF3B8090A7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-SmartCardReaderARC";
-			target = 45518C607B33DD4872D2FBD887922143 /* Pods-SmartCardReaderARC */;
-			targetProxy = 9D4275BFA8ADAA454448647F1CDFFFEC /* PBXContainerItemProxy */;
-		};
-		B436DAF22D80D13B26417A01B305A997 /* PBXTargetDependency */ = {
+		1C80B6D7F0F3D8943BF02923BE04C549 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BerTlv;
 			target = B05D82661BDF4525605136F2D7C8F2FF /* BerTlv */;
-			targetProxy = 143619D29F7B70ECEEE227F9AA2C1760 /* PBXContainerItemProxy */;
+			targetProxy = A0EC0914E1071D35BDB61D478EB14B05 /* PBXContainerItemProxy */;
+		};
+		3D83245504CA5C3E7AFD8AF3B8090A7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SmartCardReaderARC";
+			target = 5FC5488DAB412C56D2B0963E72DC722F /* Pods-SmartCardReaderARC */;
+			targetProxy = 9D4275BFA8ADAA454448647F1CDFFFEC /* PBXContainerItemProxy */;
+		};
+		E04A78471FB90BA0A7D878B2E2B1A02F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CHCSVParser;
+			target = 9656881A1D321BE79549680B37452294 /* CHCSVParser */;
+			targetProxy = 88732C0FAECBFCD4B6431EBAEDC3FC20 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */ = {
+		12899ACACA0B5ABA3ED534698E497DCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E992A85B3516CC12FDBE34E71D6980EC /* Pods-SmartCardReaderARCTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		199D972A13F2B4C56847F7A89CCA83BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -409,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -419,17 +530,16 @@
 			};
 			name = Debug;
 		};
-		6F227A7AD52F09CB35AC47F9F27C74BE /* Release */ = {
+		4C2125234657C52750DF031638609EB5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D12AADB66EE7BDC62AB08BD7D3F1778 /* Pods-SmartCardReaderARC.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -442,9 +552,56 @@
 			};
 			name = Release;
 		};
+		66411284DAB0BBDAF55D2B6D6796A348 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76FC0164BFC6ABF40037543F71FA1B8F /* CHCSVParser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CHCSVParser/CHCSVParser-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CHCSVParser;
+				PRODUCT_NAME = CHCSVParser;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7322B7445E30AA84C5608033439548DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76FC0164BFC6ABF40037543F71FA1B8F /* CHCSVParser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CHCSVParser/CHCSVParser-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CHCSVParser;
+				PRODUCT_NAME = CHCSVParser;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		7690243DDBE7D339EF343C39005BA22E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7BFB1E6AAA15F5CF588952FAEFF06C9 /* BerTlv.xcconfig */;
+			baseConfigurationReference = 8E7908A4546070AFD75AFD64399ADB31 /* BerTlv.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -466,39 +623,16 @@
 			};
 			name = Release;
 		};
-		9272E15529F3E077569C2CB27C0D042E /* Debug */ = {
+		7A67F0B1E4FA55E0B9A9D84A15513F96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 61825FCB59966EA6F7F1DCE39AA98AE9 /* Pods-SmartCardReaderARC.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		9C88E3E23D238DEF2124B36EAF373CC3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43CCD860B04695989C8EE57178E46D3B /* Pods-SmartCardReaderARCTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -512,7 +646,7 @@
 		};
 		9F40D31055EABD29D2A4EC9645033528 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7BFB1E6AAA15F5CF588952FAEFF06C9 /* BerTlv.xcconfig */;
+			baseConfigurationReference = 8E7908A4546070AFD75AFD64399ADB31 /* BerTlv.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -533,7 +667,28 @@
 			};
 			name = Debug;
 		};
-		AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */ = {
+		D52131F9A476B8A09C45DB5FBD1DF016 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43CCD860B04695989C8EE57178E46D3B /* Pods-SmartCardReaderARCTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FDB2FC4A1E5891381CD9D922145497F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -583,34 +738,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		D261105C16C142EFF5FD0D5B2BBAE98F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E992A85B3516CC12FDBE34E71D6980EC /* Pods-SmartCardReaderARCTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -620,8 +752,8 @@
 		0FEF93E27E54322BFDAF1F467914AB7B /* Build configuration list for PBXNativeTarget "Pods-SmartCardReaderARCTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9C88E3E23D238DEF2124B36EAF373CC3 /* Debug */,
-				D261105C16C142EFF5FD0D5B2BBAE98F /* Release */,
+				D52131F9A476B8A09C45DB5FBD1DF016 /* Debug */,
+				12899ACACA0B5ABA3ED534698E497DCC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -629,17 +761,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */,
-				AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */,
+				199D972A13F2B4C56847F7A89CCA83BC /* Debug */,
+				FDB2FC4A1E5891381CD9D922145497F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6471D34138AAFBB3E2E2E8FB56626A0 /* Build configuration list for PBXNativeTarget "Pods-SmartCardReaderARC" */ = {
+		962812B3EBB2BF83D86BEB3DAA7B8A24 /* Build configuration list for PBXNativeTarget "CHCSVParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9272E15529F3E077569C2CB27C0D042E /* Debug */,
-				6F227A7AD52F09CB35AC47F9F27C74BE /* Release */,
+				7322B7445E30AA84C5608033439548DF /* Debug */,
+				66411284DAB0BBDAF55D2B6D6796A348 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4AECC7C1B53A6258145393E6E013723 /* Build configuration list for PBXNativeTarget "Pods-SmartCardReaderARC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A67F0B1E4FA55E0B9A9D84A15513F96 /* Debug */,
+				4C2125234657C52750DF031638609EB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45518C607B33DD4872D2FBD887922143"
+               BlueprintIdentifier = "5FC5488DAB412C56D2B0963E72DC722F"
                BlueprintName = "Pods-SmartCardReaderARC"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-SmartCardReaderARC.a">

@@ -39,13 +39,18 @@
 #pragma mark - Read Public Data
 
 //TODO fix no SFI from parsing
-//-(void)readPublicDataViaPPSE
-//{
-//    RAPDU *ppseResponse = [self selectPPSEDir];
-//    NSNumber* sfi = [self.rapduParser sfiFromRAPDU:ppseResponse];
-//    NSArray *aid = [self getAidFromSFI:sfi];
-//    [self readPublicDataForAID:aid];
-//}
+-(NSString *)readPublicDataViaPPSEWithError:(NSError **)error
+{
+    RAPDU *ppseResponse = [self selectPPSEDirError:error];
+    NSArray *aid = [self.rapduParser aidFromRAPDU:ppseResponse error:error];
+    if (!aid) {
+        NSNumber* sfi = [self.rapduParser sfiFromRAPDU:ppseResponse error:error];
+        aid = [self getAidFromSFI:sfi error:error];
+    }
+    
+    NSString *publicData =  [self readPublicDataForAID:aid error:error];
+    return publicData;
+}
 
 -(NSString *)readPublicDataViaPSEWithError:(NSError **)error
 {

@@ -1,13 +1,15 @@
 //
-//  EmvTag.h
+//  EmvAIDList.h
 //  SmartCardReaderARC
 //
-//  Created by Andrej Trajkovski on 7/19/18.
+//  Created by Andrej Trajkovski on 7/27/18.
 //  Copyright © 2018 Andrej Trajkovski. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface EmvTag : NSObject
+@interface EmvAIDList : NSObject
+
++ (NSArray *)list;
 
 @end

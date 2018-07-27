@@ -40,6 +40,35 @@
     return self;
 }
 
+-(NSArray *)PDOLFromRAPDU:(RAPDU *)rapdu error:(NSError **)error{
+    
+    if (!rapdu) {
+        
+    }
+    NSData *data = [NSData byteDataFromArray:rapdu.bytes];
+    BerTag *aidBerTag = [[BerTag alloc] init:0x9f secondByte:0x38];
+    
+    BerTlv *tlv = [self.berTlvParser parseConstructed:data];
+    
+    BerTlv *aidTLV = [tlv find:aidBerTag];
+    NSData *aidAsData = aidTLV.value;
+    
+    if (!aidAsData) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"No aid found. No 0x4f tag." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        return nil;
+    }
+    
+    unsigned char *aidHexBytes = (unsigned char *)[aidAsData bytes];
+    //    NSUInteger length = [aidAsData ];
+    
+    return [NSArray arrayWithUnsignedCharArray:aidHexBytes withCount:(int)aidAsData.length];
+}
+
 -(NSArray *)aidFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
 {
     if (!rapdu) {
