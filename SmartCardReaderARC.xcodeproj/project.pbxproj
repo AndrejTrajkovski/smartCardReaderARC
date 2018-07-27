@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		43F210228609D79682DCB263 /* libPods-SmartCardReaderARCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */; };
+		82268BFC21067AF30044591C /* EMVTlv.m in Sources */ = {isa = PBXBuildFile; fileRef = 82268BFA21067AF30044591C /* EMVTlv.m */; };
+		82268BFF21067E450044591C /* EmvTlvList.m in Sources */ = {isa = PBXBuildFile; fileRef = 82268BFE21067E450044591C /* EmvTlvList.m */; };
+		82268C03210683C80044591C /* EMVBerTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 82268C02210683C80044591C /* EMVBerTags.m */; };
 		8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */; };
 		8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5720FB7EDD00DF4BC6 /* ViewController.m */; };
 		8277EF5B20FB7EDD00DF4BC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5920FB7EDD00DF4BC6 /* Main.storyboard */; };
@@ -48,6 +51,12 @@
 		056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		338B2713C0CC1C13E01E1629 /* Pods-SmartCardReaderARCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARCTests/Pods-SmartCardReaderARCTests.release.xcconfig"; sourceTree = "<group>"; };
 		61A5E681FC7E0A2FBE338A05 /* Pods-SmartCardReaderARC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCardReaderARC.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCardReaderARC/Pods-SmartCardReaderARC.release.xcconfig"; sourceTree = "<group>"; };
+		82268BFA21067AF30044591C /* EMVTlv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVTlv.m; sourceTree = "<group>"; };
+		82268BFB21067AF30044591C /* EMVTlv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVTlv.h; sourceTree = "<group>"; };
+		82268BFD21067E450044591C /* EmvTlvList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvTlvList.h; sourceTree = "<group>"; };
+		82268BFE21067E450044591C /* EmvTlvList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvTlvList.m; sourceTree = "<group>"; };
+		82268C01210683C80044591C /* EMVBerTags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMVBerTags.h; sourceTree = "<group>"; };
+		82268C02210683C80044591C /* EMVBerTags.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMVBerTags.m; sourceTree = "<group>"; };
 		8277EF5020FB7EDD00DF4BC6 /* SmartCardReaderARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCardReaderARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8277EF5320FB7EDD00DF4BC6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,6 +127,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82268C0021067E4B0044591C /* EmvTlv */ = {
+			isa = PBXGroup;
+			children = (
+				82268C01210683C80044591C /* EMVBerTags.h */,
+				82268C02210683C80044591C /* EMVBerTags.m */,
+				82268BFD21067E450044591C /* EmvTlvList.h */,
+				82268BFE21067E450044591C /* EmvTlvList.m */,
+				82268BFB21067AF30044591C /* EMVTlv.h */,
+				82268BFA21067AF30044591C /* EMVTlv.m */,
+			);
+			path = EmvTlv;
+			sourceTree = "<group>";
+		};
 		8277EF4720FB7EDD00DF4BC6 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +230,7 @@
 		8913AF3321009DD400224E26 /* ParsingRAPDU */ = {
 			isa = PBXGroup;
 			children = (
+				82268C0021067E4B0044591C /* EmvTlv */,
 				8913AF1620FE146000224E26 /* RAPDUParser.h */,
 				8913AF1720FE146000224E26 /* RAPDUParser.m */,
 				899C6AD62100E1BC0022CA84 /* EmvTag.h */,
@@ -372,7 +395,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8913AF1B20FE2DCA00224E26 /* NSString+BytesFromString.m in Sources */,
+				82268BFC21067AF30044591C /* EMVTlv.m in Sources */,
 				899C6ADE2100E3A50022CA84 /* BerTlv+Util.m in Sources */,
+				82268BFF21067E450044591C /* EmvTlvList.m in Sources */,
 				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
 				8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */,
 				8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */,
@@ -384,6 +409,7 @@
 				8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */,
 				8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */,
 				899C6AD82100E1BC0022CA84 /* EmvTag.m in Sources */,
+				82268C03210683C80044591C /* EMVBerTags.m in Sources */,
 				8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */,
 				8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */,
 			);
