@@ -13,7 +13,5 @@
 @protocol CardReaderCommandExecutioner;
 @interface TactivoExecutioner : NSObject <CardReaderCommandExecutioner>
 
-@property (strong, nonatomic) PBSmartcard *smartCard;
-
 @end
 

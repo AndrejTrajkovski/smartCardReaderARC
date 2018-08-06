@@ -6,7 +6,6 @@
 //
 
 #import "APDU.h"
-#import "PBSmartcard.h"
 
 typedef enum {
     RAPDUStatusResponseBytesStillAvailable,
@@ -18,12 +17,10 @@ typedef enum {
 
 @interface RAPDU : NSObject <APDU>
 
--(RAPDUStatus)responseStatus;
-@property (assign, nonatomic) PBSmartcardStatus status;
 -(instancetype)initWithResponseBytes:(unsigned char *)responseBytes
-                           andLength:(int)length
-                           andStatus:(PBSmartcardStatus)status;
+                           andLength:(int)length;
 
+-(RAPDUStatus)responseStatus;
 -(NSNumber *)lastByte;
 -(NSNumber *)byteBeforeLast;
 

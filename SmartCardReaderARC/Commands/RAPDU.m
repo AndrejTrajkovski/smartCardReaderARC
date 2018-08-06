@@ -15,13 +15,11 @@
 
 -(instancetype)initWithResponseBytes:(unsigned char *)responseBytes
                            andLength:(int)length
-                           andStatus:(PBSmartcardStatus)status
 {
     self = [super init];
     
     if (self) {
         
-        self.status = status;
         response = [NSArray arrayWithUnsignedCharArray:responseBytes withCount:length];
     }
     

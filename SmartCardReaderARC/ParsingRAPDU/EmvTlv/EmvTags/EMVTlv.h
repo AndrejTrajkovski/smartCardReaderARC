@@ -22,9 +22,14 @@ typedef enum TagValueType : NSUInteger {
 @property (assign, nonatomic) TagValueType type;
 @property (strong, nonatomic) BerTag *tag;
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *details;
+@property (assign, nonatomic) NSUInteger minLength;
+@property (assign, nonatomic) NSUInteger maxLength;
+//@property (assign, nonatomic) BOOL isConstructed;
 
--(instancetype)initWithBerTag:(BerTag *)berTag
-                      andType:(TagValueType)type
-                      andName:(NSString *)name;
+//-(instancetype)initWithBerTag:(BerTag *)berTag
+//                      andName:(NSString *)name;
+
+-(instancetype)initFromCSVArray:(NSArray *)csvArray;
 
 @end

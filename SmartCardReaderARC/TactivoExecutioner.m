@@ -15,6 +15,8 @@
 
 @interface TactivoExecutioner()
 
+@property (strong, nonatomic) PBSmartcard *smartCard;
+
 @end
 
 @implementation TactivoExecutioner
@@ -25,7 +27,10 @@
     PBSmartcardStatus status;
     
     status = [self.smartCard open];
-    status = [self.smartCard connect:PBSmartcardProtocolTx];
+    
+    if (status == PBSmartcardStatusSuccess) {
+        status = [self.smartCard connect:PBSmartcardProtocolTx];
+    }
     
     if (status != PBSmartcardStatusSuccess) {
         
@@ -66,20 +71,19 @@
     }
     
     RAPDU *responseAPDU = [[RAPDU alloc] initWithResponseBytes:buffer
-                                                     andLength:responseLength
-                                                     andStatus:status];
+                                                     andLength:responseLength];
     
-    if (responseAPDU.status == RAPDUStatusOther) {
+    if (responseAPDU.responseStatus == RAPDUStatusOther) {
         
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:[NSString stringWithFormat:@"ERROR FOR CAPDU: %@.\nRAPDU STATUS BYTES: %@ %@", capdu.bytes, responseAPDU.byteBeforeLast, responseAPDU.lastByte] forKey:NSLocalizedDescriptionKey];
+        [details setValue:[NSString stringWithFormat:@"ERROR FOR CAPDU: %@.\nRAPDU STATUS BYTES: %c %c", capdu.bytes, responseAPDU.byteBeforeLast.unsignedShortValue, responseAPDU.lastByte.unsignedShortValue] forKey:NSLocalizedDescriptionKey];
         if (error) {
             *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
         }
         
         return nil;
         
-    }else if (responseAPDU.status == RAPDUStatusNoBytes) {
+    }else if (responseAPDU.responseStatus == RAPDUStatusNoBytes) {
         
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];

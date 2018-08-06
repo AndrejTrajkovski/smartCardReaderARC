@@ -44,4 +44,8 @@
     return sb;
 }
 
+- (NSString *)binaryValue {
+    return [[NSString alloc] initWithData:self.value encoding:NSUTF8StringEncoding];
+}
+
 @end

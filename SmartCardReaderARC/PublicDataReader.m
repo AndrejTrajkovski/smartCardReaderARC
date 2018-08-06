@@ -92,7 +92,7 @@
     if (!responsePSE) {
         
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:@"." forKey:NSLocalizedDescriptionKey];
+        [details setValue:@"No PSE Dir found." forKey:NSLocalizedDescriptionKey];
         if (error) {
             *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
         }
@@ -108,6 +108,17 @@
     RAPDU *responsePPSE = [self.commandExecutioner executeCommand:selectPPSE error:error];
     responsePPSE = [self executeCorrectedLengthCAPDU:selectPPSE withRapdu:responsePPSE error:error];
     
+    if (!responsePPSE) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"No PPSE Dir found." forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+        }
+        return nil;
+    }
+    
+
     return responsePPSE;
 }
 

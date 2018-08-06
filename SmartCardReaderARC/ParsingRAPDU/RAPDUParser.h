@@ -20,7 +20,4 @@
 
 -(NSString *)berTlvParseData:(NSData *)recordsData;
 
-//-(NSString *)decodeEMVData:(NSData *)emvData;
--(NSString *)encodeEMVData:(NSData *)recordsData;
-
 @end

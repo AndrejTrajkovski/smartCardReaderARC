@@ -21,7 +21,7 @@
 
 +(CAPDU *)selectApplicationWithAID:(NSArray *)aid;
 
-+(CAPDU*)getProcessingOptionsWithPDOL:(NSArray *)PDOL;
++(CAPDU *)getProcessingOptionsWithPDOL:(NSArray *)PDOL;
 
 +(CAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber SFI:(NSNumber *)sfi andLe:(NSNumber *)le;
 

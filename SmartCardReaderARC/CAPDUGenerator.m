@@ -60,7 +60,7 @@
     return selectAID;
 }
 
-+(CAPDU*)getProcessingOptionsWithPDOL:(NSArray *)PDOL
++(CAPDU *)getProcessingOptionsWithPDOL:(NSArray *)PDOL
 {
     NSMutableArray *pdolCommand = [NSMutableArray new];
     [pdolCommand addObjectsFromArray:PDOL];
