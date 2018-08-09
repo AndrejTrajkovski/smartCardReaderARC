@@ -28,6 +28,8 @@
 
 @implementation RAPDUParser
 
+NSString *const RAPDUParsingErrorDomain = @"RAPDUParsingErrorDomain";
+
 -(instancetype)init
 {
     self = [super init];
@@ -42,84 +44,31 @@
 
 -(NSArray *)PDOLFromRAPDU:(RAPDU *)rapdu error:(NSError **)error{
     
-    if (!rapdu) {
-        
-    }
-    NSData *data = [NSData byteDataFromArray:rapdu.bytes];
-    BerTag *aidBerTag = [[BerTag alloc] init:0x9f secondByte:0x38];
-    BerTlv *tlv = [self.berTlvParser parseConstructed:data];
-    
-    BerTlv *aidTLV = [tlv find:aidBerTag];
-    NSData *aidAsData = aidTLV.value;
-    
-    if (!aidAsData) {
-        
-        NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:@"No aid found. No 0x4f tag." forKey:NSLocalizedDescriptionKey];
-        if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
-        }
+    BerTag *pdolTag = [[BerTag alloc] init:0x9f secondByte:0x38];
+    NSData *pdolData = [self valueForTag:pdolTag fromRAPDU:rapdu andError:error];
+    if (!pdolData) {
         return nil;
     }
+    unsigned char *aidHexBytes = (unsigned char *)[pdolData bytes];
     
-    unsigned char *aidHexBytes = (unsigned char *)[aidAsData bytes];
-    //    NSUInteger length = [aidAsData ];
-    
-    return [NSArray arrayWithUnsignedCharArray:aidHexBytes withCount:(int)aidAsData.length];
+    return [NSArray arrayWithUnsignedCharArray:aidHexBytes withCount:(int)pdolData.length];
 }
 
 -(NSArray *)aidFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
 {
-    if (!rapdu) {
-        
-    }
-    NSData *data = [NSData byteDataFromArray:rapdu.bytes];
-    Byte aidTag = 0x4F;
-    BerTag *aidBerTag = [[BerTag alloc] init:aidTag];
-    
-    BerTlv *tlv = [self.berTlvParser parseConstructed:data];
-    
-    BerTlv *aidTLV = [tlv find:aidBerTag];
-    NSData *aidAsData = aidTLV.value;
-    
-    if (!aidAsData) {
-        
-        NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:@"No aid found. No 0x4f tag." forKey:NSLocalizedDescriptionKey];
-        if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
-        }
+    BerTag *aidTag = [[BerTag alloc] init:0x4f];
+    NSData *aidData = [self valueForTag:aidTag fromRAPDU:rapdu andError:error];
+    if (!aidData) {
         return nil;
     }
-    
-    unsigned char *aidHexBytes = (unsigned char *)[aidAsData bytes];
-//    NSUInteger length = [aidAsData ];
-    
-    return [NSArray arrayWithUnsignedCharArray:aidHexBytes withCount:(int)aidAsData.length];
+    unsigned char *aidHexBytes = (unsigned char *)[aidData bytes];
+    return [NSArray arrayWithUnsignedCharArray:aidHexBytes withCount:(int)aidData.length];
 }
 
 -(NSNumber *)sfiFromData:(NSData *)data error:(NSError **)error
 {
-    if (!data) {
-        return nil;
-    }
-    Byte sfiTag = 0x88;
-    BerTag *sfiBerTag = [[BerTag alloc] init:sfiTag];
     
-    BerTlv *tlv = [self.berTlvParser parseConstructed:data];
-    
-    BerTlv *sfiTLV = [tlv find:sfiBerTag];
-    NSLog(@"sfi : %@", sfiTLV.hexValue);
-    
-    if (!sfiTLV.value) {
-        NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:@"No sfi found. No 0x88 tag." forKey:NSLocalizedDescriptionKey];
-        if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
-        }
-        return nil;
-    }
-    NSString *sfiStr = sfiTLV.textValue;
+    NSString *sfiStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];;
     
     NSUInteger length = [sfiStr lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     if (length > 1) {
@@ -127,7 +76,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:[NSString stringWithFormat:@"Sfi should not be longer that 1 byte (even 5 bits). SFI : %@", sfiStr] forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:RAPDUParsingErrorCodeSFIInvalid userInfo:details];
         }
         return nil;
     }
@@ -140,11 +89,10 @@
 
 -(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
 {
-    if (!rapdu) {
-        return nil;
-    }
-    NSData *data = [NSData byteDataFromArray:rapdu.bytes];
-    return [self sfiFromData:data error:error];
+    BerTag *sfiTag = [[BerTag alloc] init:0x88];
+    NSData *sfiData = [self valueForTag:sfiTag fromRAPDU:rapdu andError:error];
+    
+    return [self sfiFromData:sfiData error:error];
 }
 
 -(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
@@ -174,7 +122,7 @@
             NSMutableDictionary* details = [NSMutableDictionary dictionary];
             [details setValue:@"No 0x94 tag in afl data." forKey:NSLocalizedDescriptionKey];
             if (error) {
-                *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+                *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:RAPDUParsingErrorCodeUnexpectedAFLData userInfo:details];
             }
             return nil;
         }
@@ -186,7 +134,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"AFL records first byte is neither 0x77 nor 0x80." forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:RAPDUParsingErrorCodeUnexpectedAFLData userInfo:details];
         }
         return nil;
     }
@@ -224,7 +172,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"AFL records data shorter than 4 bytes." forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:RAPDUParsingErrorCodeUnexpectedAFLData userInfo:details];
         }
         return nil;
     }
@@ -245,7 +193,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:[NSString stringWithFormat:@"SFI is payment system specific. SFI : %d", sfiAsInt] forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:RAPDUParsingErrorCodeSFIOutOfScope userInfo:details];
         }
         return nil;
     }else if (sfiAsInt > 20 && sfiAsInt <= 30){
@@ -253,7 +201,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:[NSString stringWithFormat:@"SFI is issuer specific. SFI : %d", sfiAsInt] forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:RAPDUParsingErrorCodeSFIOutOfScope userInfo:details];
         }
         return nil;
     }else{
@@ -261,7 +209,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:[NSString stringWithFormat:@"SFI is longer than 30 bits. SFI : %d", sfiAsInt] forKey:NSLocalizedDescriptionKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:RAPDUParsingErrorCodeSFIInvalid userInfo:details];
         }
         return nil;
     }
@@ -277,39 +225,26 @@
     return [tlv emvDump:@"  "];
 }
 
-//-(NSString *)encodeEMVData:(NSData *)recordsData
-//{
-//    NSData * data         = [HexUtil parse:recordsData.description];
-//    BerTlvParser * parser = [[BerTlvParser alloc] init];
-//    BerTlv * emvTlv          = [parser parseConstructed:data];
-//
-//
-//
-//
-//        BerTlv *oneBerTlv = [emvTlv find:obj.tag];
-//
-//        NSString *oneBerTlvValue = oneBerTlv.textValue;
-//
-//        switch (obj.type) {
-//            case Binary:
-//                break;
-//            case Numeric:
-//                break;
-//            case Text:
-//
-//                break;
-//            case Mixed:
-//                break;
-//            case Template:
-//                break;
-//            case DOL:
-//                break;
-//            default:
-//                break;
-//        }
-////        NSString
-//        NSLog(@"%@ - %@ : %@", obj.tag.hex, obj.name, oneBerTlvValue);
-//    return nil;
-//}
+-(NSData *)valueForTag:(BerTag *)tag fromRAPDU:(RAPDU *)rapdu andError:(NSError **)error
+{
+    if (!rapdu) {
+        return nil;
+    }
+    
+    NSData *data = [NSData byteDataFromArray:rapdu.bytes];
+    BerTlv *tlv = [self.berTlvParser parseConstructed:data];
+    BerTlv *sfiTLV = [tlv find:tag];
+    
+    if (!sfiTLV) {
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:[NSString stringWithFormat:@"No %@ tag present.", tag.hex] forKey:NSLocalizedDescriptionKey];
+        if (error) {
+            *error = [NSError errorWithDomain:RAPDUParsingErrorDomain code:1 userInfo:details];
+        }
+        return nil;
+    }
+    
+    return sfiTLV.value;
+}
 
 @end
