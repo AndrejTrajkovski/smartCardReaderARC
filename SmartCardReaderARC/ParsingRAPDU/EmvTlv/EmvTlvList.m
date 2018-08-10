@@ -15,12 +15,12 @@
 
 +(EMVTlv *)CARDHOLDER_NAME
 {
-    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags CARDHOLDER_NAME] andType:Binary andName:@"CARDHOLDER NAME"];
+    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags CARDHOLDER_NAME] andType:Text andName:@"CARDHOLDER NAME"];
 }
 
 +(EMVTlv *)APPLICATION_EXPIRATION_DATE
 {
-    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags APPLICATION_EXPIRATION_DATE] andType:Binary andName:@"APPLICATION EXPIRATION DATE"];
+    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags APPLICATION_EXPIRATION_DATE] andType:Numeric andName:@"APPLICATION EXPIRATION DATE"];
 }
 
 +(NSArray *)list
