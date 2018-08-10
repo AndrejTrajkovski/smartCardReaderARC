@@ -66,12 +66,21 @@
     if (!aid) {
         return nil;
     }
+    
     RAPDU* selectAid = [self selectAID:aid error:error];
-    if (!selectAid) {
+    
+    NSArray *pdolBytes = [self.rapduParser PDOLFromRAPDU:selectAid error:error];
+    
+    if (pdolBytes) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"Processing options data object list required by card." forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:ReadingPublicDataErrorDomain
+                                    code:ReadingPublicDataErrorCodePDOLRequired
+                                userInfo:details];
         return nil;
     }
-    
-    
+    //continue if no PDOL is required
     RAPDU *processingOptionsResponse = [self getProcessingOptionsWithPDOL:@[@0x00] error:error];
     NSArray *sfisWithRanges = [self.rapduParser sfisWithRecordNumbersFromRAPDU:processingOptionsResponse error:error];
     if (!sfisWithRanges) {
@@ -85,16 +94,19 @@
 
 -(RAPDU *)selectPSEDirError:(NSError **)error
 {
+    NSError *executionerError = nil;
     CAPDU *selectPSE = [CAPDUGenerator selectPSEDirectory];
-    RAPDU *responsePSE = [self.commandExecutioner executeCommand:selectPSE error:error];
-    responsePSE = [self executeCorrectedLengthCAPDU:selectPSE withRapdu:responsePSE error:error];
+    RAPDU *responsePSE = [self.commandExecutioner executeCommand:selectPSE error:&executionerError];
+    responsePSE = [self executeCorrectedLengthCAPDU:selectPSE withRapdu:responsePSE error:&executionerError];
     
     if (!responsePSE) {
         
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No PSE Dir found." forKey:NSLocalizedDescriptionKey];
+        [details setValue:executionerError forKey:NSUnderlyingErrorKey];
+
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:ReadingPublicDataErrorDomain code:2 userInfo:details];
         }
         return nil;
     }
@@ -104,16 +116,18 @@
 
 -(RAPDU *)selectPPSEDirError:(NSError **)error
 {
+    NSError *executionerError = nil;
     CAPDU *selectPPSE = [CAPDUGenerator selectPPSEDirectory];
-    RAPDU *responsePPSE = [self.commandExecutioner executeCommand:selectPPSE error:error];
-    responsePPSE = [self executeCorrectedLengthCAPDU:selectPPSE withRapdu:responsePPSE error:error];
+    RAPDU *responsePPSE = [self.commandExecutioner executeCommand:selectPPSE error:&executionerError];
+    responsePPSE = [self executeCorrectedLengthCAPDU:selectPPSE withRapdu:responsePPSE error:&executionerError];
     
     if (!responsePPSE) {
         
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No PPSE Dir found." forKey:NSLocalizedDescriptionKey];
+        [details setValue:executionerError forKey:NSUnderlyingErrorKey];
         if (error) {
-            *error = [NSError errorWithDomain:@"Error Reading From Card" code:200 userInfo:details];
+            *error = [NSError errorWithDomain:ReadingPublicDataErrorDomain code:3 userInfo:details];
         }
         return nil;
     }
@@ -127,12 +141,20 @@
     if (!aid) {
         return nil;
     }
+    NSError *executionerError = nil;
+
     CAPDU *selectAid = [CAPDUGenerator selectApplicationWithAID:aid];
-    RAPDU *selectAidResponse = [self.commandExecutioner executeCommand:selectAid error:error];
-    selectAidResponse = [self executeCorrectedLengthCAPDU:selectAid withRapdu:selectAidResponse error:error];
+    RAPDU *selectAidResponse = [self.commandExecutioner executeCommand:selectAid error:&executionerError];
+    selectAidResponse = [self executeCorrectedLengthCAPDU:selectAid withRapdu:selectAidResponse error:&executionerError];
     
-    if (selectAidResponse.responseStatus != RAPDUStatusSuccess) {
-        //TODO : add check if AID is contained in RAPDU
+    //TODO : add check if AID is contained in RAPDU
+    if (!selectAidResponse) {
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:[NSString stringWithFormat:@"Error selecting AID: %@", aid] forKey:NSLocalizedDescriptionKey];
+        [details setValue:executionerError forKey:NSUnderlyingErrorKey];
+        if (error) {
+            *error = [NSError errorWithDomain:ReadingPublicDataErrorDomain code:ReadingPublicDataErrorCodeSelectAID userInfo:details];
+        }
         return nil;
     }
     
@@ -172,6 +194,9 @@
 
 -(RAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber andSFI:(NSNumber *)sfi error:(NSError **)error
 {
+    if (!recordNumber || !sfi) {
+        return nil;
+    }
     //At first try Le is 0x00 to get the record location
     CAPDU *readRecord = [CAPDUGenerator readRecordWithRecordNumber:recordNumber SFI:sfi andLe:@0x00];
     RAPDU *responseReadRecord = [self.commandExecutioner executeCommand:readRecord error:error];

@@ -67,7 +67,9 @@ NSString *const RAPDUParsingErrorDomain = @"RAPDUParsingErrorDomain";
 
 -(NSNumber *)sfiFromData:(NSData *)data error:(NSError **)error
 {
-    
+    if (!data) {
+        return nil;
+    }
     NSString *sfiStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];;
     
     NSUInteger length = [sfiStr lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
@@ -97,7 +99,6 @@ NSString *const RAPDUParsingErrorDomain = @"RAPDUParsingErrorDomain";
 
 -(NSArray *)sfisWithRecordNumbersFromRAPDU:(RAPDU *)rapdu error:(NSError **)error
 {
-    
     NSArray *aflGroupsBytes;
     
     if ([rapdu.bytes.firstObject isEqualToNumber:@0x80]) {
@@ -229,6 +230,10 @@ NSString *const RAPDUParsingErrorDomain = @"RAPDUParsingErrorDomain";
 {
     if (!rapdu) {
         return nil;
+    }
+    
+    if (!tag) {
+        @throw [NSException exceptionWithName:@"No tag specified." reason:@"Must specify tag." userInfo:nil];
     }
     
     NSData *data = [NSData byteDataFromArray:rapdu.bytes];

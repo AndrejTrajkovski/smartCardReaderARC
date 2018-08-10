@@ -10,6 +10,16 @@
 
 @class CAPDU, RAPDU, PBSmartcard;
 
+extern NSString * const ReadingPublicDataErrorDomain;
+
+typedef NS_ENUM(NSInteger, ReadingPublicDataErrorCode) {
+    ReadingPublicDataErrorCodePDOLRequired = 1,
+    ReadingPublicDataErrorCodeNoPSEDir = 2,
+    ReadingPublicDataErrorCodeNoPPSEDir = 3,
+    ReadingPublicDataErrorCodeSelectAID
+    
+};
+
 @interface PublicDataReader : NSObject
 
 -(instancetype)initWithExecutioner:(id <CardReaderCommandExecutioner>)commandExecutioner;

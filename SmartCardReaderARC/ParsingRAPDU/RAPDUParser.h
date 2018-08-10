@@ -30,4 +30,6 @@ typedef NS_ENUM(NSInteger, RAPDUParsingErrorCode) {
 
 -(NSString *)berTlvParseData:(NSData *)recordsData;
 
+-(NSArray *)PDOLFromRAPDU:(RAPDU *)rapdu error:(NSError **)error;
+
 @end
