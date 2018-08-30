@@ -21,6 +21,8 @@
 
 @implementation PublicDataReader
 
+NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
+
 #pragma mark - Initialization
 
 -(instancetype)initWithExecutioner:(id<CardReaderCommandExecutioner>)commandExecutioner
@@ -39,7 +41,7 @@
 #pragma mark - Read Public Data
 
 //TODO fix no SFI from parsing
--(NSString *)readPublicDataViaPPSEWithError:(NSError **)error
+-(NSArray *)readPublicDataViaPPSEWithError:(NSError **)error
 {
     RAPDU *ppseResponse = [self selectPPSEDirError:error];
     NSArray *aid = [self.rapduParser aidFromRAPDU:ppseResponse error:error];
@@ -48,20 +50,20 @@
         aid = [self getAidFromSFI:sfi error:error];
     }
     
-    NSString *publicData =  [self readPublicDataForAID:aid error:error];
+    NSArray *publicData = [self readPublicDataForAID:aid error:error];
     return publicData;
 }
 
--(NSString *)readPublicDataViaPSEWithError:(NSError **)error
+-(NSArray *)readPublicDataViaPSEWithError:(NSError **)error
 {
     RAPDU *pseResponse = [self selectPSEDirError:error];
     NSNumber* sfi = [self.rapduParser sfiFromRAPDU:pseResponse error:error];
     NSArray *aid = [self getAidFromSFI:sfi error:error];
-    NSString *publicData =  [self readPublicDataForAID:aid error:error];
+    NSArray *publicData =  [self readPublicDataForAID:aid error:error];
     return publicData;
 }
 
--(NSString *)readPublicDataForAID:(NSArray *)aid error:(NSError **)error
+-(NSArray *)readPublicDataForAID:(NSArray *)aid error:(NSError **)error
 {
     if (!aid) {
         return nil;
@@ -86,7 +88,7 @@
     if (!sfisWithRanges) {
         return nil;
     }
-    NSString *aflRecords = [self readAFLRecordsForSFIs:sfisWithRanges error:error];
+    NSArray *aflRecords = [self aflRecordsForSFIs:sfisWithRanges error:error];
     return aflRecords;
 }
 
@@ -171,9 +173,9 @@
     return aid;
 }
 
--(NSString *)readAFLRecordsForSFIs:(NSArray *)sfiArray error:(NSError **)error
+-(NSArray *)aflRecordsForSFIs:(NSArray *)sfiArray error:(NSError **)error
 {
-    NSMutableString *records = [NSMutableString new];
+    NSMutableArray *records = [NSMutableArray new];
     
     for (NSUInteger i = 0; i < sfiArray.count; i++) {
         
@@ -183,8 +185,9 @@
             NSNumber *recordNumber = [NSNumber numberWithUnsignedInteger:j];
             RAPDU *responseFromRecord = [self readRecordWithRecordNumber:recordNumber andSFI:obj.sfi error:error];
             NSData *recordsData = [NSData byteDataFromArray:responseFromRecord.bytes];
-            NSString *oneRecordString = [self.rapduParser berTlvParseData:recordsData];
-            [records appendString:oneRecordString];
+//            NSString *oneRecordString = [self.rapduParser berTlvParseData:recordsData];
+//            [records appendString:oneRecordString];
+            [records addObject:recordsData];
             NSLog(@"\n\n%@", [self.rapduParser berTlvParseData:recordsData]);
         }
     }

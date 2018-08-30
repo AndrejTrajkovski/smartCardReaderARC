@@ -11,8 +11,8 @@
 @class EMVTlv, BerTag;
 @interface EmvTlvList : NSObject
 
-//+(EMVTlv *)CARDHOLDER_NAME;
-//+(EMVTlv *)APPLICATION_EXPIRATION_DATE;
++(EMVTlv *)CARDHOLDER_NAME;
++(EMVTlv *)APPLICATION_EXPIRATION_DATE;
 
 +(NSArray *)list;
 +(EMVTlv *)emvTlvWithTag:(BerTag *)berTag error:(NSError **)error;

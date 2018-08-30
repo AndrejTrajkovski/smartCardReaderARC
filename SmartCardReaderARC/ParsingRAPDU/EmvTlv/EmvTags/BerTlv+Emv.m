@@ -26,7 +26,17 @@
         valueString = error.localizedDescription;
         tagName = self.tag.hex;
     }else {
-        valueString = self.textValue;
+        switch (myEmv.type) {
+            case Text:
+                    valueString = self.textValue;
+                break;
+            case Numeric:
+                    valueString = self.hexValue;
+                break;
+            default:
+                    valueString = self.hexValue;
+                break;
+        }
         tagName = myEmv.name;
     }
     

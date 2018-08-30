@@ -29,6 +29,7 @@
 		8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */; };
 		894FC4E82105BCC300E9A686 /* VisaElectronPDParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */; };
 		894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 894FC4E92105C08900E9A686 /* pd data example.rtf */; };
+		896440A8211DBD2F0024CDDD /* EMVCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 896440A7211DBD2F0024CDDD /* EMVCard.m */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
 		897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD954210B18BB00950723 /* BerTlv+Emv.m */; };
 		897DD95A210B2F6700950723 /* EmvAID.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD959210B2F6700950723 /* EmvAID.m */; };
@@ -91,6 +92,8 @@
 		8913AF2A2100763100224E26 /* APDU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
 		894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisaElectronPDParsingTest.m; sourceTree = "<group>"; };
 		894FC4E92105C08900E9A686 /* pd data example.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "pd data example.rtf"; sourceTree = "<group>"; };
+		896440A6211DBD2F0024CDDD /* EMVCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMVCard.h; sourceTree = "<group>"; };
+		896440A7211DBD2F0024CDDD /* EMVCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMVCard.m; sourceTree = "<group>"; };
 		896EC5FA20FDD21E005BC89F /* CAPDUGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPDUGenerator.h; sourceTree = "<group>"; };
 		896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPDUGenerator.m; sourceTree = "<group>"; };
 		897DD953210B18BB00950723 /* BerTlv+Emv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BerTlv+Emv.h"; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				82268C0021067E4B0044591C /* EmvTlv */,
 				8913AF1620FE146000224E26 /* RAPDUParser.h */,
 				8913AF1720FE146000224E26 /* RAPDUParser.m */,
+				896440A6211DBD2F0024CDDD /* EMVCard.h */,
+				896440A7211DBD2F0024CDDD /* EMVCard.m */,
 			);
 			path = ParsingRAPDU;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */,
 				897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
+				896440A8211DBD2F0024CDDD /* EMVCard.m in Sources */,
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,
 				8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */,
 				896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */,

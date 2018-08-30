@@ -14,6 +14,8 @@
 #import "EmvAIDList.h"
 #import "CHCSVParser.h"
 #import "EmvAID.h"
+#import "EMVCard.h"
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
@@ -92,6 +94,7 @@
 #pragma mark - Read Public Data
 -(void)readPublicData
 {
+    EMVCard *card;
     [self printStatus:@"Reading public data..."];
     NSMutableString *statusString = [NSMutableString new];
     NSError *cardConnectError = nil;
@@ -103,29 +106,35 @@
         
         NSError *pseError = nil;
         //try via pse
-        NSString *publicDataPSE = [self.pdReader readPublicDataViaPSEWithError:&pseError];
-        if (!publicDataPSE) {
-            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", pseError.localizedDescription]];
+        NSArray *aflRecordsPSE = [self.pdReader readPublicDataViaPSEWithError:&pseError];
+        if (!aflRecordsPSE) {
+            [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n", pseError.localizedDescription]];
         }else{
-            [statusString appendString:[NSString stringWithFormat:@"PSE : \n%@\n", publicDataPSE]];
+            card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPSE];
+            [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@", card.holderName, card.expirationDateString]];
+            return;
         }
 
         NSError *aidError = nil;
         //try via AID
-        NSString *publicDataViaAid = [self readPublicDataViaAIDsError:&aidError];
-        if (!publicDataViaAid) {
-            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", aidError.localizedDescription]];
+        NSArray *aflRecordsAID = [self readPublicDataViaAIDsError:&aidError];
+        if (!aflRecordsAID) {
+            [statusString appendString:[NSString stringWithFormat:@"\nAID : \n%@\n", aidError.localizedDescription]];
         }else{
-            [statusString appendString:[NSString stringWithFormat:@"AID : \n%@\n", publicDataViaAid]];
+            card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPSE];
+            [statusString appendString:[NSString stringWithFormat:@"\nAID : \n%@\n%@", card.holderName, card.expirationDateString]];
+            return;
         }
         
         NSError *ppseError = nil;
         //try via ppse
-        NSString *publicDataPPSE = [self.pdReader readPublicDataViaPPSEWithError:&ppseError];
-        if (!publicDataPPSE) {
-            [statusString appendString:[NSString stringWithFormat:@"PPSE : \n%@\n", ppseError.localizedDescription]];
+        NSArray *aflRecordsPPSE = [self.pdReader readPublicDataViaPPSEWithError:&ppseError];
+        if (!aflRecordsPPSE) {
+            [statusString appendString:[NSString stringWithFormat:@"\nPPSE : \n%@\n", ppseError.localizedDescription]];
         }else{
-            [statusString appendString:[NSString stringWithFormat:@"PPSE : \n%@\n", publicDataPPSE]];
+            card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPPSE];
+            [statusString appendString:[NSString stringWithFormat:@"\nPPSE : \n%@\n%@", card.holderName, card.expirationDateString]];
+            return;
         }
 
         
@@ -136,15 +145,58 @@
     [self printStatus:statusString];
 }
 
--(NSString *)readPublicDataViaAIDsError:(NSError **)error
-{    
+-(NSArray *)readPublicDataViaAIDsError:(NSError **)error
+{
+//    NSArray *aidList = @[
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x00,@0x00,@0x00],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x05,@0x07,@0x60,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x10,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x10,@0x10,@0x01],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x10,@0x10,@0x02],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x20,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x20,@0x20],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x30,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x40,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x50,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x53,@0x44,@0x41],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x53,@0x50],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x53,@0x50,@0x41],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x60,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x60,@0x20],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x80,@0x02],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x80,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x90,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x99,@0x99,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x00,@0x00],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x01],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x10,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x10,@0x10,@0x12,@0x13],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x10,@0x10,@0x12,@0x15],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x10,@0x10,@0xBB,@0x54,@0x49,@0x43,@0x53,@0x01],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x20,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x30,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x30,@0x60],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x30,@0x60,@0x01],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x40,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x50,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x55,@0x55],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x60,@0x00],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x80,@0x02],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x99,@0x99],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x05,@0x00,@0x01],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x05,@0x00,@0x02],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x03,@0x20,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x10,@0x10],
+//        @[@0xA0,@0x00,@0x00,@0x00,@0x04,@0x30,@0x60]
+//        ];
+    
     NSArray *aidList = [EmvAIDList list];
     
-    NSString *pd;
+    NSArray *pd;
     for (int i = 0; i < aidList.count; i++) {
         EmvAID *aid = aidList[i];
         NSArray *aidAsNSNumbersArray = [aid aidAsNSNumbersArray];
-        NSString *publicData = [self.pdReader readPublicDataForAID:aidAsNSNumbersArray error:error];
+        NSArray *publicData = [self.pdReader readPublicDataForAID:aidAsNSNumbersArray error:error];
         if (publicData) {
             pd = publicData;
             break;
