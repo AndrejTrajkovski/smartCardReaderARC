@@ -12,21 +12,19 @@
 
 @implementation EMVTlv
 
-//-(instancetype)initWithBerTag:(BerTag *)berTag
-//                      andType:(TagValueType)type
-//                      andName:(NSString *)name
-//{
-//    self = [super init];
-//    
-//    if (self) {
-//        
-//        self.tag = berTag;
-//        self.type = type;
-//        self.name = name;
-//    }
-//    
-//    return self;
-//}
+-(instancetype)initWithBerTag:(BerTag *)berTag
+                      andName:(NSString *)name
+{
+    self = [super init];
+    
+    if (self) {
+        
+        self.tag = berTag;
+        self.name = name;
+    }
+    
+    return self;
+}
 
 -(instancetype)initFromCSVArray:(NSArray *)csvArray
 {

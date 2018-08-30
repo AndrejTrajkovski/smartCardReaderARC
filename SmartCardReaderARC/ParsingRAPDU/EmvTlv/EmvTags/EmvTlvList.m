@@ -10,6 +10,7 @@
 #import "EMVTlv.h"
 #import "BerTag.h"
 #import "CHCSVParser.h"
+#import "EMVBerTags.h"
 
 static NSArray *list = nil;
 
@@ -42,33 +43,33 @@ static NSArray *list = nil;
     return nil;
 }
 
-+(NSArray *)list
-{
-    if (!list) {
-        
-        list = [EmvTlvList getEmvTagsListFromResourceFileError:nil];
-    }
-    
-    return list;
-}
-
-//+(EMVTlv *)CARDHOLDER_NAME
-//{
-//    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags CARDHOLDER_NAME] andType:Binary andName:@"CARDHOLDER NAME"];
-//}
-//
-//+(EMVTlv *)APPLICATION_EXPIRATION_DATE
-//{
-//    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags APPLICATION_EXPIRATION_DATE] andType:Binary andName:@"APPLICATION EXPIRATION DATE"];
-//}
-//
 //+(NSArray *)list
 //{
-//    return @[
-//             [EmvTlvList CARDHOLDER_NAME],
-//             [EmvTlvList APPLICATION_EXPIRATION_DATE]
-//             ];
+//    if (!list) {
+//
+//        list = [EmvTlvList getEmvTagsListFromResourceFileError:nil];
+//    }
+//
+//    return list;
 //}
+
++(EMVTlv *)CARDHOLDER_NAME
+{
+    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags CARDHOLDER_NAME] andName:@"CARDHOLDER NAME"];
+}
+
++(EMVTlv *)APPLICATION_EXPIRATION_DATE
+{
+    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags APPLICATION_EXPIRATION_DATE] andName:@"APPLICATION EXPIRATION DATE"];
+}
+
++(NSArray *)list
+{
+    return @[
+             [EmvTlvList CARDHOLDER_NAME],
+             [EmvTlvList APPLICATION_EXPIRATION_DATE]
+             ];
+}
 
 +(EMVTlv *)emvTlvWithTag:(BerTag *)berTag error:(NSError **)error
 {

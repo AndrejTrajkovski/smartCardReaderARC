@@ -22,6 +22,7 @@
     NSString *valueString;
     NSString *tagName;
 
+    //FIXME: Parsing for each type
     if (!myEmv) {
         valueString = error.localizedDescription;
         tagName = self.tag.hex;

@@ -27,8 +27,8 @@ typedef enum TagValueType : NSUInteger {
 @property (assign, nonatomic) NSUInteger maxLength;
 //@property (assign, nonatomic) BOOL isConstructed;
 
-//-(instancetype)initWithBerTag:(BerTag *)berTag
-//                      andName:(NSString *)name;
+-(instancetype)initWithBerTag:(BerTag *)berTag
+                      andName:(NSString *)name;
 
 -(instancetype)initFromCSVArray:(NSArray *)csvArray;
 
