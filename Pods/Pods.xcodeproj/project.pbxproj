@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -52,7 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0213505C09CAB5DE7B5BCA2FF13F3860 /* libCHCSVParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCHCSVParser.a; path = libCHCSVParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0213505C09CAB5DE7B5BCA2FF13F3860 /* libCHCSVParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCHCSVParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		114F11DDBD9EFF9D68B904CF4D74AB46 /* BerTlvBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvBuilder.h; path = BerTlv/BerTlvBuilder.h; sourceTree = "<group>"; };
 		14847483735E6A68A5770F48002CEFDC /* Pods-SmartCardReaderARC-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCardReaderARC-resources.sh"; sourceTree = "<group>"; };
 		1E23DC5CCE157C4D6A74662BB342D430 /* Pods-SmartCardReaderARC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SmartCardReaderARC-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -66,18 +66,18 @@
 		61825FCB59966EA6F7F1DCE39AA98AE9 /* Pods-SmartCardReaderARC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCardReaderARC.debug.xcconfig"; sourceTree = "<group>"; };
 		63A26CC3B23F990281D360A8BB4EA054 /* BerTlv.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlv.h; path = BerTlv/BerTlv.h; sourceTree = "<group>"; };
 		64A6285C4F179DBE49877F79FCA4BAD9 /* HexUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HexUtil.h; path = BerTlv/HexUtil.h; sourceTree = "<group>"; };
-		72D791250C963CAD6855F9B5B5F7E5A8 /* libBerTlv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libBerTlv.a; path = libBerTlv.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		72D791250C963CAD6855F9B5B5F7E5A8 /* libBerTlv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBerTlv.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		76FC0164BFC6ABF40037543F71FA1B8F /* CHCSVParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CHCSVParser.xcconfig; sourceTree = "<group>"; };
 		791A8AE64B83775E26C1E45ACA8746EF /* BerTlv-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BerTlv-prefix.pch"; sourceTree = "<group>"; };
 		81924CCC381DB1B40653B8CD6C92849A /* CHCSVParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = CHCSVParser/CHCSVParser/CHCSVParser.h; sourceTree = "<group>"; };
 		84B3A379642E8CD7A171E0CD261F38FB /* BerTlvParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BerTlvParser.h; path = BerTlv/BerTlvParser.h; sourceTree = "<group>"; };
 		8D12AADB66EE7BDC62AB08BD7D3F1778 /* Pods-SmartCardReaderARC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SmartCardReaderARC.release.xcconfig"; sourceTree = "<group>"; };
 		8E7908A4546070AFD75AFD64399ADB31 /* BerTlv.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BerTlv.xcconfig; sourceTree = "<group>"; };
-		8E84B3F958EDCB9B3A5BAA8A65A5335B /* libPods-SmartCardReaderARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SmartCardReaderARC.a"; path = "libPods-SmartCardReaderARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8E84B3F958EDCB9B3A5BAA8A65A5335B /* libPods-SmartCardReaderARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E03C069F54CB68D2DE418316425C2A8 /* BerTlv-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BerTlv-dummy.m"; sourceTree = "<group>"; };
 		A9E4B29BD216D2126A8D05E5E8CD8263 /* BerTlvs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTlvs.m; path = BerTlv/BerTlvs.m; sourceTree = "<group>"; };
-		B43438F8C082DDA1101EB02D95FED2AF /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SmartCardReaderARCTests.a"; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B43438F8C082DDA1101EB02D95FED2AF /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49523DD79B3554A2B630844FD9328A6 /* BerTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BerTag.m; path = BerTlv/BerTag.m; sourceTree = "<group>"; };
 		BBE779994FE9397D528DEA670B9B7405 /* CHCSVParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = CHCSVParser/CHCSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		C5AD3BC4C991F3B342AADE7F69BAFA34 /* Pods-SmartCardReaderARCTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SmartCardReaderARCTests-frameworks.sh"; sourceTree = "<group>"; };
@@ -149,7 +149,6 @@
 				F7E5CB76CB1847BB2FB690F65FB86B6D /* HexUtil.m */,
 				8A3CBE63AC960CEC5A876E4EFD79CB7C /* Support Files */,
 			);
-			name = BerTlv;
 			path = BerTlv;
 			sourceTree = "<group>";
 		};
@@ -171,7 +170,6 @@
 				BBE779994FE9397D528DEA670B9B7405 /* CHCSVParser.m */,
 				7AA21DE39493511C9A337448F2D62ECA /* Support Files */,
 			);
-			name = CHCSVParser;
 			path = CHCSVParser;
 			sourceTree = "<group>";
 		};
@@ -359,7 +357,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -561,7 +559,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/CHCSVParser/CHCSVParser-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -585,7 +583,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/CHCSVParser/CHCSVParser-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -608,7 +606,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/BerTlv/BerTlv-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -653,7 +651,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/BerTlv/BerTlv-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
