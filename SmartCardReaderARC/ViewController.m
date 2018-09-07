@@ -109,9 +109,11 @@
         NSArray *aflRecordsPSE = [self.pdReader readPublicDataViaPSEWithError:&pseError];
         if (!aflRecordsPSE) {
             [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n", pseError.localizedDescription]];
+            [self printStatus:statusString];
         }else{
             card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPSE];
-            [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@", card.holderName, card.expirationDateString]];
+            [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@\n%@", card.panNumber,card.holderName, card.expirationDateString]];
+            [self printStatus:statusString];
             return;
         }
 
@@ -120,9 +122,11 @@
         NSArray *aflRecordsAID = [self readPublicDataViaAIDsError:&aidError];
         if (!aflRecordsAID) {
             [statusString appendString:[NSString stringWithFormat:@"\nAID : \n%@\n", aidError.localizedDescription]];
+            [self printStatus:statusString];
         }else{
             card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPSE];
-            [statusString appendString:[NSString stringWithFormat:@"\nAID : \n%@\n%@", card.holderName, card.expirationDateString]];
+            [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@\n%@", card.panNumber,card.holderName, card.expirationDateString]];
+            [self printStatus:statusString];
             return;
         }
         
@@ -131,9 +135,11 @@
         NSArray *aflRecordsPPSE = [self.pdReader readPublicDataViaPPSEWithError:&ppseError];
         if (!aflRecordsPPSE) {
             [statusString appendString:[NSString stringWithFormat:@"\nPPSE : \n%@\n", ppseError.localizedDescription]];
+            [self printStatus:statusString];
         }else{
             card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPPSE];
-            [statusString appendString:[NSString stringWithFormat:@"\nPPSE : \n%@\n%@", card.holderName, card.expirationDateString]];
+            [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@\n%@", card.panNumber,card.holderName, card.expirationDateString]];
+            [self printStatus:statusString];
             return;
         }
 

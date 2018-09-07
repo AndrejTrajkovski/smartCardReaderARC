@@ -11,6 +11,7 @@
 @class BerTlv;
 @interface EMVCard : NSObject
 
+@property (strong, nonatomic) NSString *panNumber;
 @property (strong, nonatomic) NSString *holderName;
 @property (strong, nonatomic) NSString *expirationDateString;
 

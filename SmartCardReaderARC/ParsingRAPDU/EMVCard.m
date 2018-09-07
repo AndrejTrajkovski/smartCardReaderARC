@@ -61,6 +61,19 @@
                 *stop = YES;
             }
         }];
+        
+        [aflRecords enumerateObjectsUsingBlock:^(NSData *aflRecord, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSData * dataAfl         = [HexUtil parse:aflRecord.description];
+            BerTlv * tlvAfl          = [parser parseConstructed:dataAfl];
+            
+            EMVTlv *panNmbEmvTlv = [EmvTlvList PAN_NUMBER];
+            BerTlv *panNmbBerTlv = [tlvAfl find:panNmbEmvTlv.tag];
+            
+            if (panNmbBerTlv) {
+                self.panNumber = panNmbBerTlv.hexValue;
+                *stop = YES;
+            }
+        }];
     }
     
     return self;

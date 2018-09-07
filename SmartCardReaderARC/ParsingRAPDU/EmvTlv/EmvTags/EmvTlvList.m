@@ -53,6 +53,11 @@ static NSArray *list = nil;
 //    return list;
 //}
 
++(EMVTlv *)PAN_NUMBER
+{
+    return [[EMVTlv alloc] initWithBerTag:[EMVBerTags PAN_NUMBER] andName:@"PAN NUMBER"];
+}
+
 +(EMVTlv *)CARDHOLDER_NAME
 {
     return [[EMVTlv alloc] initWithBerTag:[EMVBerTags CARDHOLDER_NAME] andName:@"CARDHOLDER NAME"];
@@ -67,7 +72,8 @@ static NSArray *list = nil;
 {
     return @[
              [EmvTlvList CARDHOLDER_NAME],
-             [EmvTlvList APPLICATION_EXPIRATION_DATE]
+             [EmvTlvList APPLICATION_EXPIRATION_DATE],
+             [EmvTlvList PAN_NUMBER]
              ];
 }
 
