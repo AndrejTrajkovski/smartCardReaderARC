@@ -30,7 +30,7 @@
             EMVTlv *cardholderNameEmvTlv = [EmvTlvList CARDHOLDER_NAME];
             BerTlv *cardholderNameBerTlv = [tlvAfl find:cardholderNameEmvTlv.tag];
             if (cardholderNameBerTlv) {
-                self.holderName = cardholderNameBerTlv.textValue;
+                self.holderName = [cardholderNameBerTlv.textValue stringByReplacingOccurrencesOfString:@"/" withString:@" "];
                 *stop = YES;
             }
         }];
