@@ -21,8 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.smartEid = [SmartEID new];
-    self.smartEid.delegate = self;
+    self.smartEid = [[SmartEID alloc] initWithDelegate:self];
     [self.smartEid readEMVPublicData];
 }
 

@@ -30,27 +30,29 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_REMOVED" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_INSERTED" object:nil];
 
-    self.smartCard = [[PBSmartcard alloc] init];
-    __block PBSmartcardStatus status;
-    
-    status = [self.smartCard open];
-    
-    if (status == PBSmartcardStatusSuccess) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_barrier_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
+
+        self.smartCard = [[PBSmartcard alloc] init];
+        __block PBSmartcardStatus status;
+        
+        status = [self.smartCard open];
+        
+        if (status == PBSmartcardStatusSuccess) {
             status = [self.smartCard connect:PBSmartcardProtocolTx];
-        });
-    }
-    
-    if (status != PBSmartcardStatusSuccess) {
+        }
         
-        NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];
-        NSError *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
+        if (status != PBSmartcardStatusSuccess) {
+            
+            NSMutableDictionary* details = [NSMutableDictionary dictionary];
+            [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];
+            NSError *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
+            
+            [self.delegate didFailPrepareCardWithError:error];
+        }
         
-        [self.delegate didFailPrepareCardWithError:error];
-    }
-    
-    [self.delegate didPrepareCardSuccessfully];
+        [self.delegate didPrepareCardSuccessfully];
+        
+    });
 }
 
 -(RAPDU *)executeCommand:(CAPDU *)capdu error:(NSError **)error

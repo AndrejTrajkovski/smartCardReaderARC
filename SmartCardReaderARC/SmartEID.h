@@ -47,4 +47,6 @@ typedef enum {
 -(void)readEMVPublicData;
 -(CardType)currentCardType;
 
+- (instancetype)initWithDelegate:(id <SmartEIDDelegate>)delegate;
+
 @end

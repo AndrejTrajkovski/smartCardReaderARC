@@ -35,6 +35,7 @@
     if (self) {
         self.delegate = delegate;
         [self startListeningDeviceEvents];
+        [self startListeningCardEvents];
     }
     return self;
 }
@@ -63,6 +64,7 @@
 
 -(void)startListeningDeviceEvents
 {
+    [[EAAccessoryManager sharedAccessoryManager] registerForLocalNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(accessoryDidConnect:)
                                                  name:EAAccessoryDidConnectNotification
@@ -81,6 +83,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:EAAccessoryDidDisconnectNotification
                                                   object:nil];
+    [[EAAccessoryManager sharedAccessoryManager] unregisterForLocalNotifications];
 }
 
 -(void)accessoryDidConnect:(NSNotification *)notification
@@ -114,7 +117,7 @@
                                                     name:DidInsertCardNotification
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:DidInsertCardNotification
+                                                    name:DidRemoveCardNotification
                                                   object:nil];
 }
 

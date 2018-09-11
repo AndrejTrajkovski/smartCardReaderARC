@@ -117,52 +117,60 @@
 
 - (void)didConnectLBRReader:(int *)iConnectionStatus
 {
-    dispatch_barrier_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
-
-        int status = LTERR;
-        int cardStatus = SC_CARD_ABSENT;
-        
-        NSError *error;
-        
-        status = [self.reader ConfigReader];
-        if(status != LT_OK) {
+    int b = *iConnectionStatus;
+    NSLog(@"status b : %i", b);
+    if (b == 1) {
+        //prepare
+        dispatch_barrier_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
             
-            NSMutableDictionary* details = [NSMutableDictionary dictionary];
-            [details setValue:@"Config Reader Failed" forKey:NSLocalizedDescriptionKey];
-            error = [NSError errorWithDomain:@"Nefcom Reader Error" code:200 userInfo:details];
+            int status = LTERR;
+            int cardStatus = SC_CARD_ABSENT;
             
-            [self.delegate didFailPrepareCardWithError:error];
-            return;
-        }
-        
-        status = [self.reader GetCardStatus :&cardStatus];
-        if(status == LT_OK)
-        {
-            if(cardStatus == SC_CARD_ABSENT) {
+            NSError *error;
+            
+            status = [self.reader ConfigReader];
+            if(status != LT_OK) {
                 
                 NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                [details setValue:@"No Card!" forKey:NSLocalizedDescriptionKey];
+                [details setValue:@"Config Reader Failed" forKey:NSLocalizedDescriptionKey];
                 error = [NSError errorWithDomain:@"Nefcom Reader Error" code:200 userInfo:details];
                 
                 [self.delegate didFailPrepareCardWithError:error];
                 return;
             }
-        }
-        
-        status = [self.reader ConnectSCCard];
-        if(status != LT_OK) {
-            NSMutableDictionary* details = [NSMutableDictionary dictionary];
-            [details setValue:@"Connect Card Failed" forKey:NSLocalizedDescriptionKey];
-            error = [NSError errorWithDomain:@"Nefcom Reader Error" code:200 userInfo:details];
             
-            [self.delegate didFailPrepareCardWithError:error];
-            return;
-        }
-        else {
+            status = [self.reader GetCardStatus :&cardStatus];
+            if(status == LT_OK)
+            {
+                if(cardStatus == SC_CARD_ABSENT) {
+                    
+                    NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                    [details setValue:@"No Card!" forKey:NSLocalizedDescriptionKey];
+                    error = [NSError errorWithDomain:@"Nefcom Reader Error" code:200 userInfo:details];
+                    
+                    [self.delegate didFailPrepareCardWithError:error];
+                    return;
+                }
+            }
             
-            [self.delegate didPrepareCardSuccessfully];
-        }
-    });
+            status = [self.reader ConnectSCCard];
+            if(status != LT_OK) {
+                NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                [details setValue:@"Connect Card Failed" forKey:NSLocalizedDescriptionKey];
+                error = [NSError errorWithDomain:@"Nefcom Reader Error" code:200 userInfo:details];
+                
+                [self.delegate didFailPrepareCardWithError:error];
+                return;
+            }
+            else {
+                
+                [self.delegate didPrepareCardSuccessfully];
+            }
+        });
+    }else{
+        [self finalizeCard];
+    }
+    
 
 }
 
