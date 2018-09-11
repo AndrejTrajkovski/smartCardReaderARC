@@ -12,6 +12,7 @@
 #import "CAPDU.h"
 #import "RAPDU.h"
 #import "NSArray+ByteManipulation.h"
+#import "NotificationConstants.h"
 
 @interface TactivoDeviceReader()
 
@@ -105,9 +106,6 @@
 
 -(void)finalizeCard
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_REMOVED" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_INSERTED" object:nil];
-    
     PBSmartcardStatus status = [self.smartCard disconnect:PBSmartcardDispositionLeaveCard];
     status = [self.smartCard close];
     
@@ -120,24 +118,25 @@
         [self.delegate didFailFinalizeCardWithError:error];
     }
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_REMOVED" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_INSERTED" object:nil];
+
     [self.delegate didFinalizeCardSuccessfully];
 }
 
 #pragma mark - Notification handler
-// handles smart card slot events.
+
 - (void) cardEventHandler: (NSNotification *)notif
 {
-    // check if the card is inserted...
     if ([@"PB_CARD_INSERTED" compare:(NSString*)[notif name]] == 0)
     {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            [self readPublicData];
-        });
+        [[NSNotificationCenter defaultCenter] postNotificationName:DidInsertCardNotification
+                                                            object:nil];
     }
-    // ...or if the card is removed.
     else if ([@"PB_CARD_REMOVED" compare:(NSString*)[notif name]] == 0)
     {
-//        [self printStatus:@"Insert smart card..."];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DidRemoveCardNotification
+                                                            object:nil];
     }
 }
 

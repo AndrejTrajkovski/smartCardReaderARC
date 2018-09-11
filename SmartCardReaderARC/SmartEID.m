@@ -10,6 +10,8 @@
 
 #import <ExternalAccessory/ExternalAccessory.h>
 
+#import "NotificationConstants.h"
+
 #import "EMVReader.h"
 #import "EIDReader.h"
 
@@ -25,19 +27,41 @@
 
 @implementation SmartEID
 
+#pragma mark - Init
+
 - (instancetype)initWithDelegate:(id <SmartEIDDelegate>)delegate
 {
     self = [super init];
     if (self) {
         self.delegate = delegate;
-        [self startListeningPortEvents];
+        [self startListeningDeviceEvents];
     }
     return self;
 }
 
 #pragma mark - PDReaderDelegate
 
--(void)startListeningPortEvents
+-(void)didReadPublicData:(id)publicDataRecords
+{
+    NSLog(@"public data : %@", publicDataRecords);
+    [self.delegate didReadPublicData:publicDataRecords];
+}
+
+-(void)didFailToReadPublicDataWithError:(NSError *)error
+{
+    NSMutableDictionary* details = [NSMutableDictionary dictionary];
+    [details setValue:@"Failed when preparing card." forKey:NSLocalizedDescriptionKey];
+    [details setValue:error forKey:NSUnderlyingErrorKey];
+    
+    NSError *newError = [NSError errorWithDomain:ReadingPublicDataErrorDomain
+                                            code:ReadingPublicDataErrorCodeWhenPreparingCard
+                                        userInfo:details];
+    [self.delegate didFailReadPublicData:newError];
+}
+
+#pragma mark - Listen to Devices
+
+-(void)startListeningDeviceEvents
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(accessoryDidConnect:)
@@ -49,7 +73,7 @@
                                                object:nil];
 }
 
--(void)stopListeningPortEvents
+-(void)stopListeningDeviceEvents
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:EAAccessoryDidConnectNotification
@@ -70,28 +94,45 @@
     [self.delegate didDisonnectDeviceReader];
 }
 
+#pragma mark - Listen to Card Inserts
+
+-(void)startListeningCardEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didInsertCard:)
+                                                 name:DidInsertCardNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didRemoveCard:)
+                                                 name:DidRemoveCardNotification
+                                               object:nil];
+}
+
+-(void)stopListeningCardEvents
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:DidInsertCardNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:DidInsertCardNotification
+                                                  object:nil];
+}
+
+-(void)didInsertCard:(NSNotification *)notification
+{
+    [self readEMVPublicData];
+    [self.delegate didInsertCard];
+}
+
+-(void)didRemoveCard:(NSNotification *)notification
+{
+    [self.delegate didRemoveCard];
+}
+
 -(CardType)currentCardType
 {
     //TODO
     return CardTypeNoCard;
-}
-
--(void)didReadPublicData:(id)publicDataRecords
-{
-    NSLog(@"public data : %@", publicDataRecords);
-    [self.delegate didReadPublicData:publicDataRecords];
-}
-
--(void)didFailToReadPublicDataWithError:(NSError *)error
-{
-    NSMutableDictionary* details = [NSMutableDictionary dictionary];
-    [details setValue:@"Failed when preparing card." forKey:NSLocalizedDescriptionKey];
-    [details setValue:error forKey:NSUnderlyingErrorKey];
-    
-    NSError *newError = [NSError errorWithDomain:ReadingPublicDataErrorDomain
-                                            code:ReadingPublicDataErrorCodeWhenPreparingCard
-                                        userInfo:details];
-    [self.delegate didFailReadPublicData:newError];
 }
 
 #pragma mark - Implementation
@@ -170,7 +211,8 @@
 
 -(void)dealloc
 {
-    [self stopListeningPortEvents];
+    [self stopListeningDeviceEvents];
+    [self stopListeningCardEvents];
 }
 
 @end
