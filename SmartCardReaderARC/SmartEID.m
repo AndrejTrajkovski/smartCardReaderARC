@@ -20,13 +20,55 @@
 @interface SmartEID() <PDReaderDelegate>
 
 @property (strong, nonatomic) id<PDReader> reader;
-@property (assign, nonatomic) DeviceType connectedDevice;
 
 @end
 
 @implementation SmartEID
 
+- (instancetype)initWithDelegate:(id <SmartEIDDelegate>)delegate
+{
+    self = [super init];
+    if (self) {
+        self.delegate = delegate;
+        [self startListeningPortEvents];
+    }
+    return self;
+}
+
 #pragma mark - PDReaderDelegate
+
+-(void)startListeningPortEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(accessoryDidConnect:)
+                                                 name:EAAccessoryDidConnectNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(accessoryDidDisconnect:)
+                                                 name:EAAccessoryDidDisconnectNotification
+                                               object:nil];
+}
+
+-(void)stopListeningPortEvents
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:EAAccessoryDidConnectNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:EAAccessoryDidDisconnectNotification
+                                                  object:nil];
+}
+
+-(void)accessoryDidConnect:(NSNotification *)notification
+{
+    [self.delegate didConnectDeviceReader];
+    [self readEMVPublicDataFromAccessory:[notification.userInfo objectForKey:EAAccessoryKey]];
+}
+
+-(void)accessoryDidDisconnect:(NSNotification *)notification
+{
+    [self.delegate didDisonnectDeviceReader];
+}
 
 -(CardType)currentCardType
 {
@@ -56,9 +98,32 @@
 
 -(void)readEMVPublicData
 {
-    [self recognizeConnectedDeviceReader];
-    self.reader = [[EMVReader alloc] initWithDeviceReader:[self readerForConnectedDevice]
+    NSPredicate *recognizedReaderPredicate = [NSPredicate predicateWithBlock:^BOOL(EAAccessory *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return [self deviceTypeFromAccessory:evaluatedObject] != DeviceTypeNotRecognized;
+    }];
+    EAAccessory *recognizedAccessory = [[[[EAAccessoryManager sharedAccessoryManager] connectedAccessories] filteredArrayUsingPredicate:recognizedReaderPredicate] firstObject];
+    
+    [self readEMVPublicDataFromAccessory:recognizedAccessory];
+}
+
+-(void)readEMVPublicDataFromAccessory:(EAAccessory *)accessory
+{
+    DeviceType typeOfConnectedDevice = [self deviceTypeFromAccessory:accessory];
+    [self readEMVPublicDataForDeviceType:typeOfConnectedDevice];
+}
+
+-(void)readEMVPublicDataForDeviceType:(DeviceType)deviceType
+{
+    self.reader = [[EMVReader alloc] initWithDeviceReader:[self readerForDeviceType:deviceType]
                                               andDelegate:self];
+    if (!self.reader) {
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"Device type not recognized." forKey:NSLocalizedDescriptionKey];
+        NSError *error = [NSError errorWithDomain:@"Hardware error"
+                                     code:123
+                                 userInfo:details];
+        [self.delegate didFailReadPublicData:error];
+    }
     [self.reader readPublicData];
 }
 
@@ -67,28 +132,29 @@
     //TODO
 }
 
--(void)recognizeConnectedDeviceReader
+-(DeviceType)deviceTypeFromAccessory:(EAAccessory *)accessory
 {
-    [[[EAAccessoryManager sharedAccessoryManager] connectedAccessories] enumerateObjectsUsingBlock:^(EAAccessory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj.protocolStrings containsObject:@"com.keyxentic.kxpos01"]) {
-            
-            self.connectedDevice = DeviceTypeNefcom;
-            
-        }else if ([obj.protocolStrings containsObject:@"com.precisebiometrics.ccidcontrol"]) {
-            
-            self.connectedDevice = DeviceTypeTactivo;
-            
-        }else if ([obj.protocolStrings containsObject:@""]) {
-            
-            self.connectedDevice = DeviceTypeFeitian;
-        }
-    }];
+    if ([accessory.protocolStrings containsObject:@"com.keyxentic.kxpos01"]) {
+        
+        return DeviceTypeNefcom;
+        
+    }else if ([accessory.protocolStrings containsObject:@"com.precisebiometrics.ccidcontrol"]) {
+        
+        return DeviceTypeTactivo;
+        
+    }else if ([accessory.protocolStrings containsObject:@""]) {
+        
+        return DeviceTypeFeitian;
+    }else{
+        
+        return DeviceTypeNotRecognized;
+    }
 }
 
--(id<DeviceReader>)readerForConnectedDevice
+-(id<DeviceReader>)readerForDeviceType:(DeviceType)deviceType
 {
-    switch (self.connectedDevice) {
-            case DeviceTypeNoDevice:
+    switch (deviceType) {
+            case DeviceTypeNotRecognized:
             return nil;
         case DeviceTypeNefcom:
             return [NefcomDeviceReader new];
@@ -101,4 +167,10 @@
             break;
     }
 }
+
+-(void)dealloc
+{
+    [self stopListeningPortEvents];
+}
+
 @end

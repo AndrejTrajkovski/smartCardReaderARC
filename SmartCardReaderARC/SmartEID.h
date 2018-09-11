@@ -19,7 +19,7 @@ typedef enum {
 
 typedef enum {
     
-    DeviceTypeNoDevice = 0,
+    DeviceTypeNotRecognized = 0,
     DeviceTypeTactivo,
     DeviceTypeFeitian,
     DeviceTypeNefcom
