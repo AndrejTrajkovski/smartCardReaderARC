@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class BerTlv;
-@interface EMVCard : NSObject
+@interface EMVCardModel : NSObject
 
 @property (strong, nonatomic) NSString *panNumber;
 @property (strong, nonatomic) NSString *holderName;

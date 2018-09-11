@@ -6,14 +6,14 @@
 //  Copyright © 2018 Andrej Trajkovski. All rights reserved.
 //
 
-#import "EMVCard.h"
+#import "EMVCardModel.h"
 #import "BerTlv.h"
 #import "EmvTlvList.h"
 #import "EMVTlv.h"
 #import "BerTlvParser.h"
 #import "HexUtil.h"
 
-@implementation EMVCard
+@implementation EMVCardModel
 
 -(instancetype)initWithAFLRecords:(NSArray *)aflRecords
 {

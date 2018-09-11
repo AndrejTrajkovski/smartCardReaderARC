@@ -14,15 +14,18 @@
 #import "EmvAIDList.h"
 #import "CHCSVParser.h"
 #import "EmvAID.h"
-#import "EMVCard.h"
+#import "EMVCardModel.h"
+#import "lbrReader.h"
+#import "NefcomExecutioner.h"
 
-@interface ViewController ()
+@interface ViewController () <lbrReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
 // use the accessory to quickly check if we have a Precise Biometrics accessory connected
-@property (strong, nonatomic) PBAccessory *accessory;
 // the smart card reader object used to communicate with the smart card
 @property (strong, nonatomic) PublicDataReader *pdReader;
+@property (strong, nonatomic) lbrReader *lbrReader;
+//@property (strong, nonatomic) PBAccessory *accessory;
 
 @end
 
@@ -30,38 +33,84 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[EAAccessoryManager sharedAccessoryManager] registerForLocalNotifications];    //we want to hear about accessories connecting and disconnecting
 
-    // add observers for the smart card event notifications.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_REMOVED" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_INSERTED" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cardEventHandler:)
+                                                 name:EAAccessoryDidConnectNotification
+                                               object:nil];
     
-    // get the shared accessory object
-    self.accessory = [PBAccessory sharedClass];
     
-    // listen to Tactivo connect/disconnect notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pbAccessoryDidConnect) name:PBAccessoryDidConnectNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pbAccessoryDidDisconnect) name:PBAccessoryDidDisconnectNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cardEventHandler:)
+                                                 name:EAAccessoryDidDisconnectNotification
+                                               object:nil];
     
-    // check if the Tactivo device is currently connected
-    if (self.accessory.connected)
-    {
-        [self printStatus:@"Precise Biometrics Tactivo PRESENT"];
-    }
-    else
-    {
-        [self printStatus:@"Precise Biometrics Tactivo ABSENT"];
-    }
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self readPublicData];
-    });
+
+//    NSArray *accessories = [[EAAccessoryManager sharedAccessoryManager]
+//                            connectedAccessories];
+//    for (EAAccessory *obj in accessories)
+//    {
+//        NSLog(@"Found accessory named: %@", obj.name);
+//    }
+//
+//
+//    // check if the Tactivo device is currently connected
+//    if (self.accessory.connected)
+//    {
+//        [self printStatus:@"Precise Biometrics Tactivo PRESENT"];
+//    }
+//    else
+//    {
+//        [self printStatus:@"Precise Biometrics Tactivo ABSENT"];
+//    }
+//
+//    self.lbrReader = [[lbrReader alloc] init];
+//    [self.lbrReader setDelegate:self];
+//    [self.lbrReader initReader];
 }
+
+- (void) didConnectLBRReader:(int *)iConnectionStatus
+{
+    int value = 0;
+    
+    value = *iConnectionStatus;
+    if(*iConnectionStatus == 1) {
+//        _lblStatus.text = @"Device Connected";
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self readPublicData];
+        });
+    } else {
+//        _lblStatus.text = @"Device Disconnected";
+    }
+}
+- (void) didConnectCLSReader:(int *)iConnectionStatus{}
+- (void) EnrollImageCallBack :(UIImage *) image{}
+
 
 #pragma mark - Notification handler
 // handles smart card slot events.
 - (void) cardEventHandler: (NSNotification *)notif
 {
-    // check if the card is inserted...
+    [[[EAAccessoryManager sharedAccessoryManager] connectedAccessories] enumerateObjectsUsingBlock:^(EAAccessory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.protocolStrings containsObject:@"com.keyxentic.kxpos01"]) {
+            
+            //nefcom
+            self.lbrReader = [[lbrReader alloc] init];
+            [self.lbrReader setDelegate:self];
+            [self.lbrReader initReader];
+            
+        }else if ([obj.protocolStrings containsObject:@"com.precisebiometrics.ccidcontrol"]) {
+            
+            //tactivo
+            
+        }else if ([obj.protocolStrings containsObject:@""]) {
+            
+            
+        }
+    }];
+     // check if the card is inserted...
     if ([@"PB_CARD_INSERTED" compare:(NSString*)[notif name]] == 0)
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -94,11 +143,12 @@
 #pragma mark - Read Public Data
 -(void)readPublicData
 {
-    EMVCard *card;
+    EMVCardModel *card;
     [self printStatus:@"Reading public data..."];
     NSMutableString *statusString = [NSMutableString new];
     NSError *cardConnectError = nil;
-    TactivoExecutioner *tactivoExecutioner = [TactivoExecutioner new];
+    NefcomExecutioner *tactivoExecutioner = [NefcomExecutioner new];
+    tactivoExecutioner.reader = self.lbrReader;
     BOOL success = [tactivoExecutioner prepareCard:&cardConnectError];
     if (success) {
         //card and reader connected
@@ -111,7 +161,7 @@
             [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n", pseError.localizedDescription]];
             [self printStatus:statusString];
         }else{
-            card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPSE];
+            card = [[EMVCardModel alloc] initWithAFLRecords:aflRecordsPSE];
             [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@\n%@", card.panNumber,card.holderName, card.expirationDateString]];
             [self printStatus:statusString];
             return;
@@ -124,7 +174,7 @@
             [statusString appendString:[NSString stringWithFormat:@"\nAID : \n%@\n", aidError.localizedDescription]];
             [self printStatus:statusString];
         }else{
-            card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPSE];
+            card = [[EMVCardModel alloc] initWithAFLRecords:aflRecordsPSE];
             [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@\n%@", card.panNumber,card.holderName, card.expirationDateString]];
             [self printStatus:statusString];
             return;
@@ -137,7 +187,7 @@
             [statusString appendString:[NSString stringWithFormat:@"\nPPSE : \n%@\n", ppseError.localizedDescription]];
             [self printStatus:statusString];
         }else{
-            card = [[EMVCard alloc] initWithAFLRecords:aflRecordsPPSE];
+            card = [[EMVCardModel alloc] initWithAFLRecords:aflRecordsPPSE];
             [statusString appendString:[NSString stringWithFormat:@"\nPSE : \n%@\n%@\n%@", card.panNumber,card.holderName, card.expirationDateString]];
             [self printStatus:statusString];
             return;

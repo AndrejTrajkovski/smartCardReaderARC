@@ -97,4 +97,19 @@
     return responseAPDU;
 }
 
+-(void)runCardReader:(void (^)(__autoreleasing id *))success andFailureBlock:(void (^)(NSError *))failure
+{
+    // add observers for the smart card event notifications.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_REMOVED" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_INSERTED" object:nil];
+
+    // get the shared accessory object
+    self.accessory = [PBAccessory sharedClass];
+
+    // listen to Tactivo connect/disconnect notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pbAccessoryDidConnect) name:PBAccessoryDidConnectNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pbAccessoryDidDisconnect) name:PBAccessoryDidDisconnectNotification object:nil];
+
+}
+
 @end

@@ -12,5 +12,6 @@
 
 -(RAPDU *)executeCommand:(CAPDU *)capdu error:(NSError **)error;
 -(BOOL)prepareCard:(NSError **)error;
+-(void)runCardReader:(void (^)(id *responseObject))success andFailureBlock:(void (^)(NSError *error))failure;
 
 @end
