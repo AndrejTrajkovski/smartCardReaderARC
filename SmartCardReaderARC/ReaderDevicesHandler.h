@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CardReaderCommandExecutioner.h"
 
-@class CardReaderCommandExecutioner;
 @protocol ReaderDevicesHandler <NSObject>
 
--(void)startReaderWithSuccessBlock:(void (^)(id<CardReaderCommandExecutioner>))executioner andFailureBlock:(void (^)(NSError *error))failure;
+-(void)startDeviceWithSuccessBlock:(void (^)(id<CardReaderCommandExecutioner>))executioner andFailureBlock:(void (^)(NSError *error))failure;
 
 @end

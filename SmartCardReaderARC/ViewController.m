@@ -25,7 +25,7 @@
 // the smart card reader object used to communicate with the smart card
 @property (strong, nonatomic) PublicDataReader *pdReader;
 @property (strong, nonatomic) lbrReader *lbrReader;
-//@property (strong, nonatomic) PBAccessory *accessory;
+@property (strong, nonatomic) PBAccessory *accessory;
 
 @end
 
@@ -33,42 +33,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//
+//    [[EAAccessoryManager sharedAccessoryManager] registerForLocalNotifications];    //we want to hear about accessories connecting and disconnecting
+//
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(accessoryDidConnect:)
+//                                                 name:EAAccessoryDidConnectNotification
+//                                               object:nil];
+//
+//
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(accessoryDidDisconnect:)
+//                                                 name:EAAccessoryDidDisconnectNotification
+//                                               object:nil];
     
-    [[EAAccessoryManager sharedAccessoryManager] registerForLocalNotifications];    //we want to hear about accessories connecting and disconnecting
+    // add observers for the smart card event notifications.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_REMOVED" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_INSERTED" object:nil];
+    // listen to Tactivo connect/disconnect notifications
+    self.accessory = [PBAccessory sharedClass];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pbAccessoryDidConnect) name:PBAccessoryDidConnectNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pbAccessoryDidDisconnect) name:PBAccessoryDidDisconnectNotification object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(cardEventHandler:)
-                                                 name:EAAccessoryDidConnectNotification
-                                               object:nil];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(cardEventHandler:)
-                                                 name:EAAccessoryDidDisconnectNotification
-                                               object:nil];
-    
+}
 
-//    NSArray *accessories = [[EAAccessoryManager sharedAccessoryManager]
-//                            connectedAccessories];
-//    for (EAAccessory *obj in accessories)
-//    {
-//        NSLog(@"Found accessory named: %@", obj.name);
-//    }
-//
-//
-//    // check if the Tactivo device is currently connected
-//    if (self.accessory.connected)
-//    {
-//        [self printStatus:@"Precise Biometrics Tactivo PRESENT"];
-//    }
-//    else
-//    {
-//        [self printStatus:@"Precise Biometrics Tactivo ABSENT"];
-//    }
-//
-//    self.lbrReader = [[lbrReader alloc] init];
-//    [self.lbrReader setDelegate:self];
-//    [self.lbrReader initReader];
+- (void)pbAccessoryDidConnect{
+    [self printStatus:@"Precise Biometrics Tactivo PRESENT"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self readPublicData];
+    });
+
+}
+- (void)pbAccessoryDidDisconnect{
+    [self printStatus:@"Precise Biometrics Tactivo ABSENT"];
 }
 
 - (void) didConnectLBRReader:(int *)iConnectionStatus
@@ -91,28 +88,12 @@
 
 #pragma mark - Notification handler
 // handles smart card slot events.
-- (void) cardEventHandler: (NSNotification *)notif
+- (void)cardEventHandler:(NSNotification *)notif
 {
-    [[[EAAccessoryManager sharedAccessoryManager] connectedAccessories] enumerateObjectsUsingBlock:^(EAAccessory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj.protocolStrings containsObject:@"com.keyxentic.kxpos01"]) {
-            
-            //nefcom
-            self.lbrReader = [[lbrReader alloc] init];
-            [self.lbrReader setDelegate:self];
-            [self.lbrReader initReader];
-            
-        }else if ([obj.protocolStrings containsObject:@"com.precisebiometrics.ccidcontrol"]) {
-            
-            //tactivo
-            
-        }else if ([obj.protocolStrings containsObject:@""]) {
-            
-            
-        }
-    }];
      // check if the card is inserted...
     if ([@"PB_CARD_INSERTED" compare:(NSString*)[notif name]] == 0)
     {
+        NSLog(@"tactivo inserted");
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self readPublicData];
         });
@@ -126,16 +107,30 @@
 
 #pragma mark - PBAccessory notification handlers
 // Called when the system sends an EAAcessoryDidConnectNotification for a Tactivo device.
-- (void)pbAccessoryDidConnect
+- (void)accessoryDidConnect:(NSNotification *)notif
 {
-    [self printStatus:@"Precise Biometrics Tactivo PRESENT"];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self readPublicData];
-    });
+    [[[EAAccessoryManager sharedAccessoryManager] connectedAccessories] enumerateObjectsUsingBlock:^(EAAccessory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.protocolStrings containsObject:@"com.keyxentic.kxpos01"]) {
+            
+            //nefcom
+            self.lbrReader = [[lbrReader alloc] init];
+            [self.lbrReader setDelegate:self];
+            [self.lbrReader initReader];
+            
+        }else if ([obj.protocolStrings containsObject:@"com.precisebiometrics.ccidcontrol"]) {
+            
+            //tactivo
+            NSLog(@"tactivo inserted");
+            
+        }else if ([obj.protocolStrings containsObject:@""]) {
+            
+            
+        }
+    }];
 }
 
 // Called when the system sends an EAAcessoryDidDisconnectNotification for a Tactivo device.
-- (void)pbAccessoryDidDisconnect
+- (void)pbAccessoryDidDisconnect:(NSNotification *)notification
 {
     [self printStatus:@"Precise Biometrics Tactivo ABSENT"];
 }

@@ -10,7 +10,7 @@
 
 @implementation TactivoDeviceHandler
 
--(void)startReaderWithSuccessBlock:(void (^)(id))executioner
+-(void)startDeviceWithSuccessBlock:(void (^)(id))executioner
                    andFailureBlock:(void (^)(NSError *))failure
 {
     
