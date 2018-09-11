@@ -1,5 +1,5 @@
 //
-//  TactivoDeviceHandler.h
+//  NefcomExecutioner.h
 //  SmartCardReaderARC
 //
 //  Created by Andrej Trajkovski on 9/10/18.
@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ReaderDevicesHandler.h"
+#import "DeviceReader.h"
 
-@interface TactivoDeviceHandler : NSObject <ReaderDevicesHandler>
+@protocol DeviceReader;
+@interface NefcomDeviceReader : NSObject <DeviceReader>
 
 @end

@@ -1,44 +1,123 @@
 //
-//  CommandProcessor.m
+//  EMVReader.m
 //  SmartCardSampleOBJC1
 //
 //  Created by Andrej Trajkovski on 7/15/18.
 //
 
-#import "PublicDataReader.h"
+#import "EMVReader.h"
 #import "CAPDU.h"
 #import "RAPDU.h"
 #import "CAPDUGenerator.h"
 #import "RAPDUParser.h"
 #import "HexUtil.h"
 #import "NSData+ByteManipulation.h"
+#import "EmvAIDList.h"
+#import "EmvAID.h"
+#import "EMVCardModel.h"
 
-@interface PublicDataReader()
+@interface EMVReader() <DeviceReaderDelegate>
 
 @property (strong, nonatomic) RAPDUParser *rapduParser;
 
 @end
 
-@implementation PublicDataReader
+@implementation EMVReader
+
+@synthesize deviceReader;
+@synthesize delegate;
 
 NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
 
 #pragma mark - Initialization
 
--(instancetype)initWithExecutioner:(id<CardReaderCommandExecutioner>)commandExecutioner
+-(instancetype)initWithDeviceReader:(id<DeviceReader>)deviceReader
+                        andDelegate:(id <PDReaderDelegate>)delegate
 {
     self = [super init];
     
     if (self) {
         
+        self.delegate = delegate;
+        self.deviceReader = deviceReader;
+        self.deviceReader.delegate = self;
         self.rapduParser = [RAPDUParser new];
-        self.commandExecutioner = commandExecutioner;
     }
     
     return self;
 }
 
-#pragma mark - Read Public Data
+#pragma mark - Interface Method
+
+-(void)readPublicData
+{
+    //will callback one of DeviceReaderDelegate prepare card methods
+    [self.deviceReader prepareCard];
+}
+
+#pragma mark - DeviceReaderDelegate
+
+-(void)didPrepareCardSuccessfully
+{
+    [self tryToReadPublicDataWithThreeMethods];
+}
+
+-(void)didFailPrepareCardWithError:(NSError *)error
+{
+    [self.delegate didFailToReadPublicDataWithError:error];
+}
+
+- (void)didFailFinalizeCardWithError:(NSError *)error
+{
+    
+}
+
+- (void)didFinalizeCardSuccessfully
+{
+    
+}
+
+#pragma mark - Read AFL Records Methods
+
+-(void)tryToReadPublicDataWithThreeMethods
+{
+    EMVCardModel *card;
+    //card and reader connected
+    NSError *pseError = nil;
+    //try via pse
+    NSArray *aflRecordsPSE = [self readPublicDataViaPSEWithError:&pseError];
+    if (!aflRecordsPSE) {
+        [self.delegate didFailToReadPublicDataWithError:pseError];
+        return;
+    }else{
+        card = [[EMVCardModel alloc] initWithAFLRecords:aflRecordsPSE];
+        [self.delegate didReadPublicData:card];
+        return;
+    }
+    
+    NSError *aidError = nil;
+    //try via AID
+    NSArray *aflRecordsAID = [self readPublicDataViaAIDsError:&aidError];
+    if (!aflRecordsAID) {
+        [self.delegate didFailToReadPublicDataWithError:aidError];
+        return;
+    }else{
+        card = [[EMVCardModel alloc] initWithAFLRecords:aflRecordsPSE];
+        [self.delegate didReadPublicData:card];
+        return;
+    }
+    
+    NSError *ppseError = nil;
+    //try via ppse
+    NSArray *aflRecordsPPSE = [self readPublicDataViaPPSEWithError:&ppseError];
+    if (!aflRecordsPPSE) {
+        [self.delegate didFailToReadPublicDataWithError:ppseError];
+    }else{
+        card = [[EMVCardModel alloc] initWithAFLRecords:aflRecordsPPSE];
+        [self.delegate didReadPublicData:card];
+        return;
+    }
+}
 
 //TODO fix no SFI from parsing
 -(NSArray *)readPublicDataViaPPSEWithError:(NSError **)error
@@ -61,6 +140,23 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
     NSArray *aid = [self getAidFromSFI:sfi error:error];
     NSArray *publicData =  [self readPublicDataForAID:aid error:error];
     return publicData;
+}
+
+-(NSArray *)readPublicDataViaAIDsError:(NSError **)error
+{
+    NSArray *aidList = [EmvAIDList list];
+    NSArray *pd;
+    for (int i = 0; i < aidList.count; i++) {
+        EmvAID *aid = aidList[i];
+        NSArray *aidAsNSNumbersArray = [aid aidAsNSNumbersArray];
+        NSArray *publicData = [self readPublicDataForAID:aidAsNSNumbersArray error:error];
+        if (publicData) {
+            pd = publicData;
+            break;
+        }
+    }
+    
+    return nil;
 }
 
 -(NSArray *)readPublicDataForAID:(NSArray *)aid error:(NSError **)error
@@ -98,7 +194,7 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
 {
     NSError *executionerError = nil;
     CAPDU *selectPSE = [CAPDUGenerator selectPSEDirectory];
-    RAPDU *responsePSE = [self.commandExecutioner executeCommand:selectPSE error:&executionerError];
+    RAPDU *responsePSE = [self.deviceReader executeCommand:selectPSE error:&executionerError];
     responsePSE = [self executeCorrectedLengthCAPDU:selectPSE withRapdu:responsePSE error:&executionerError];
     
     if (!responsePSE) {
@@ -120,7 +216,7 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
 {
     NSError *executionerError = nil;
     CAPDU *selectPPSE = [CAPDUGenerator selectPPSEDirectory];
-    RAPDU *responsePPSE = [self.commandExecutioner executeCommand:selectPPSE error:&executionerError];
+    RAPDU *responsePPSE = [self.deviceReader executeCommand:selectPPSE error:&executionerError];
     responsePPSE = [self executeCorrectedLengthCAPDU:selectPPSE withRapdu:responsePPSE error:&executionerError];
     
     if (!responsePPSE) {
@@ -146,7 +242,7 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
     NSError *executionerError = nil;
 
     CAPDU *selectAid = [CAPDUGenerator selectApplicationWithAID:aid];
-    RAPDU *selectAidResponse = [self.commandExecutioner executeCommand:selectAid error:&executionerError];
+    RAPDU *selectAidResponse = [self.deviceReader executeCommand:selectAid error:&executionerError];
     selectAidResponse = [self executeCorrectedLengthCAPDU:selectAid withRapdu:selectAidResponse error:&executionerError];
     
     //TODO : add check if AID is contained in RAPDU
@@ -185,8 +281,6 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
             NSNumber *recordNumber = [NSNumber numberWithUnsignedInteger:j];
             RAPDU *responseFromRecord = [self readRecordWithRecordNumber:recordNumber andSFI:obj.sfi error:error];
             NSData *recordsData = [NSData byteDataFromArray:responseFromRecord.bytes];
-//            NSString *oneRecordString = [self.rapduParser berTlvParseData:recordsData];
-//            [records appendString:oneRecordString];
             [records addObject:recordsData];
             NSLog(@"\n\n%@", [self.rapduParser berTlvParseData:recordsData]);
         }
@@ -202,7 +296,7 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
     }
     //At first try Le is 0x00 to get the record location
     CAPDU *readRecord = [CAPDUGenerator readRecordWithRecordNumber:recordNumber SFI:sfi andLe:@0x00];
-    RAPDU *responseReadRecord = [self.commandExecutioner executeCommand:readRecord error:error];
+    RAPDU *responseReadRecord = [self.deviceReader executeCommand:readRecord error:error];
     responseReadRecord = [self executeCorrectedLengthCAPDU:readRecord withRapdu:responseReadRecord error:error];
     
     return responseReadRecord;
@@ -213,7 +307,7 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
 {
     //TODO PDOL != @0x00
     CAPDU *getProceessingOptions = [CAPDUGenerator getProcessingOptionsWithPDOL:pdol];
-    RAPDU *getProceessingOptionsResponse = [self.commandExecutioner executeCommand:getProceessingOptions error:error];
+    RAPDU *getProceessingOptionsResponse = [self.deviceReader executeCommand:getProceessingOptions error:error];
     getProceessingOptionsResponse = [self executeCorrectedLengthCAPDU:getProceessingOptions withRapdu:getProceessingOptionsResponse error:error];
     
     return getProceessingOptionsResponse;
@@ -235,13 +329,13 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
             
             //response bytes still available
             CAPDU *commandToExecute = [CAPDUGenerator getResponseWithLength:lastByte];
-            rapdu = [self.commandExecutioner executeCommand:commandToExecute error:error];
+            rapdu = [self.deviceReader executeCommand:commandToExecute error:error];
             
         }else if ([byteBeforeLast isEqual:@0x6C] || [byteBeforeLast isEqual:@0x67]){
             
             //same commmand, just fixed length
             CAPDU *commandToExecute = [CAPDUGenerator capduWithCAPDU:capdu withFixedLength:lastByte];
-            rapdu = [self.commandExecutioner executeCommand:commandToExecute error:error];
+            rapdu = [self.deviceReader executeCommand:commandToExecute error:error];
             
         }
     }

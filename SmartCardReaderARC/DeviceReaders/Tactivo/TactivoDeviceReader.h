@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CardReaderCommandExecutioner.h"
+#import "DeviceReader.h"
 
 @class PBSmartcard;
-@protocol CardReaderCommandExecutioner;
-@interface TactivoExecutioner : NSObject <CardReaderCommandExecutioner>
+@protocol DeviceReader;
+@interface TactivoDeviceReader : NSObject <DeviceReader>
 
 @end
 

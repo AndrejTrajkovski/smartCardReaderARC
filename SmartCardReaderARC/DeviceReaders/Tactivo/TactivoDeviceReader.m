@@ -6,44 +6,50 @@
 //  Copyright © 2018 Andrej Trajkovski. All rights reserved.
 //
 
-#import "TactivoExecutioner.h"
+#import "TactivoDeviceReader.h"
 #import "PBSmartcard.h"
-#import "CardReaderCommandExecutioner.h"
+#import "DeviceReader.h"
 #import "CAPDU.h"
 #import "RAPDU.h"
 #import "NSArray+ByteManipulation.h"
 
-@interface TactivoExecutioner()
+@interface TactivoDeviceReader()
 
 @property (strong, nonatomic) PBSmartcard *smartCard;
 
 @end
 
-@implementation TactivoExecutioner
+@implementation TactivoDeviceReader
 
--(BOOL)prepareCard:(NSError **)error
+@synthesize delegate;
+
+-(void)prepareCard
 {
+    // observers when card inserted/removed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_REMOVED" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cardEventHandler:) name:@"PB_CARD_INSERTED" object:nil];
+
     self.smartCard = [[PBSmartcard alloc] init];
-    PBSmartcardStatus status;
+    __block PBSmartcardStatus status;
     
     status = [self.smartCard open];
     
     if (status == PBSmartcardStatusSuccess) {
-        status = [self.smartCard connect:PBSmartcardProtocolTx];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            status = [self.smartCard connect:PBSmartcardProtocolTx];
+        });
     }
     
     if (status != PBSmartcardStatusSuccess) {
         
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];
-        if (error) {
-            *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
-        }
+        NSError *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
         
-        return NO;
+        [self.delegate didFailPrepareCardWithError:error];
     }
     
-    return YES;
+    [self.delegate didPrepareCardSuccessfully];
 }
 
 -(RAPDU *)executeCommand:(CAPDU *)capdu error:(NSError **)error
@@ -95,6 +101,52 @@
     }
         
     return responseAPDU;
+}
+
+-(void)finalizeCard
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_REMOVED" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_INSERTED" object:nil];
+    
+    PBSmartcardStatus status = [self.smartCard disconnect:PBSmartcardDispositionLeaveCard];
+    status = [self.smartCard close];
+    
+    if (status != PBSmartcardStatusSuccess) {
+        
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:[PBSmartcard stringFromStatus:status] forKey:NSLocalizedDescriptionKey];
+        NSError *error = [NSError errorWithDomain:@"Tactivo Reader Error" code:200 userInfo:details];
+        
+        [self.delegate didFailFinalizeCardWithError:error];
+    }
+    
+    [self.delegate didFinalizeCardSuccessfully];
+}
+
+#pragma mark - Notification handler
+// handles smart card slot events.
+- (void) cardEventHandler: (NSNotification *)notif
+{
+    // check if the card is inserted...
+    if ([@"PB_CARD_INSERTED" compare:(NSString*)[notif name]] == 0)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            [self readPublicData];
+        });
+    }
+    // ...or if the card is removed.
+    else if ([@"PB_CARD_REMOVED" compare:(NSString*)[notif name]] == 0)
+    {
+//        [self printStatus:@"Insert smart card..."];
+    }
+}
+
+#pragma mark - Dealloc
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_REMOVED" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PB_CARD_INSERTED" object:nil];
 }
 
 @end
