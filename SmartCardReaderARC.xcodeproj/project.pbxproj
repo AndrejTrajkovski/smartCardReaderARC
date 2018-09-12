@@ -48,6 +48,7 @@
 		89E508CE214921B300D8DE1D /* liblbrReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508B7214920C200D8DE1D /* liblbrReader.a */; };
 		89E508CF214921BC00D8DE1D /* libiOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E5089F214920C200D8DE1D /* libiOSLibrary.a */; };
 		89E508D2214926AC00D8DE1D /* FeitianDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A303712147DD5300AEF976 /* FeitianDeviceReader.m */; };
+		89E508D521492A1E00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508C32149215A00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a */; };
 		89EA051621383BF600CB36FD /* EMVBerTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EA051521383BF600CB36FD /* EMVBerTags.m */; };
 		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
 /* End PBXBuildFile section */
@@ -170,6 +171,8 @@
 		89E508B8214920C200D8DE1D /* lbrReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lbrReader.h; sourceTree = "<group>"; };
 		89E508C32149215A00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiRockey301_ccid_V3.5.16_Release.a; sourceTree = "<group>"; };
 		89E508C42149215A00D8DE1D /* libiRockey301_ccid_V3.5.16_Debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiRockey301_ccid_V3.5.16_Debug.a; sourceTree = "<group>"; };
+		89E508D32149299D00D8DE1D /* wintypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wintypes.h; sourceTree = "<group>"; };
+		89E508D42149299E00D8DE1D /* winscard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winscard.h; sourceTree = "<group>"; };
 		89EA051421383BF500CB36FD /* EMVBerTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVBerTags.h; sourceTree = "<group>"; };
 		89EA051521383BF600CB36FD /* EMVBerTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVBerTags.m; sourceTree = "<group>"; };
 		8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +188,7 @@
 				8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */,
 				AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */,
 				89E508CF214921BC00D8DE1D /* libiOSLibrary.a in Frameworks */,
+				89E508D521492A1E00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a in Frameworks */,
 				89E508CB214921AC00D8DE1D /* iFDiskSDK_iap2.framework in Frameworks */,
 				89E508CD214921B000D8DE1D /* kxPOSKits.framework in Frameworks */,
 				89E508CA214921A900D8DE1D /* iFDiskSDK_iap2_ST25BulkReadController.framework in Frameworks */,
@@ -464,6 +468,8 @@
 			children = (
 				89E508A4214920C200D8DE1D /* ReaderInterface.h */,
 				89E508A7214920C200D8DE1D /* ft301u.h */,
+				89E508D42149299E00D8DE1D /* winscard.h */,
+				89E508D32149299D00D8DE1D /* wintypes.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -928,10 +934,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TactivoSDK/lib",
-					"$(PROJECT_DIR)/Nefcom/lib",
-					"$(PROJECT_DIR)/Feitian/lib",
-					"$(PROJECT_DIR)/lib",
 					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Tactivo/lib",
 					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Pradotec/lib",
 					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Feitian/lib",
