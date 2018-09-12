@@ -143,7 +143,7 @@
 -(void)readEMVPublicData
 {
     NSPredicate *recognizedReaderPredicate = [NSPredicate predicateWithBlock:^BOOL(EAAccessory *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-        return [self deviceTypeFromAccessory:evaluatedObject] != DeviceTypeNotRecognized;
+        return [self deviceTypeFromAccessory:evaluatedObject] != ReaderDeviceTypeNotRecognized;
     }];
     EAAccessory *recognizedAccessory = [[[[EAAccessoryManager sharedAccessoryManager] connectedAccessories] filteredArrayUsingPredicate:recognizedReaderPredicate] firstObject];
     
@@ -152,11 +152,11 @@
 
 -(void)readEMVPublicDataFromAccessory:(EAAccessory *)accessory
 {
-    DeviceType typeOfConnectedDevice = [self deviceTypeFromAccessory:accessory];
+    ReaderDeviceType typeOfConnectedDevice = [self deviceTypeFromAccessory:accessory];
     [self readEMVPublicDataForDeviceType:typeOfConnectedDevice];
 }
 
--(void)readEMVPublicDataForDeviceType:(DeviceType)deviceType
+-(void)readEMVPublicDataForDeviceType:(ReaderDeviceType)deviceType
 {
     self.reader = [[EMVReader alloc] initWithDeviceReader:[self readerForDeviceType:deviceType]
                                               andDelegate:self];
@@ -176,37 +176,37 @@
     //TODO
 }
 
--(DeviceType)deviceTypeFromAccessory:(EAAccessory *)accessory
+-(ReaderDeviceType)deviceTypeFromAccessory:(EAAccessory *)accessory
 {
     if ([accessory.protocolStrings containsObject:@"com.keyxentic.kxpos01"]) {
         
-        return DeviceTypeNefcom;
+        return ReaderDeviceTypeNefcom;
         
     }else if ([accessory.protocolStrings containsObject:@"com.precisebiometrics.ccidcontrol"]) {
         
-        return DeviceTypeTactivo;
+        return ReaderDeviceTypeTactivo;
         
     }else if ([accessory.protocolStrings containsObject:@""]) {
         
-        return DeviceTypeFeitian;
+        return ReaderDeviceTypeFeitian;
     }else{
         
-        return DeviceTypeNotRecognized;
+        return ReaderDeviceTypeNotRecognized;
     }
 }
 
--(id<DeviceReader>)readerForDeviceType:(DeviceType)deviceType
+-(id<DeviceReader>)readerForDeviceType:(ReaderDeviceType)deviceType
 {
     switch (deviceType) {
-            case DeviceTypeNotRecognized:
+            case ReaderDeviceTypeNotRecognized:
             return nil;
-        case DeviceTypeNefcom:
+        case ReaderDeviceTypeNefcom:
             return [NefcomDeviceReader new];
             break;
-        case DeviceTypeTactivo:
+        case ReaderDeviceTypeTactivo:
             return [TactivoDeviceReader new];
             break;
-        case DeviceTypeFeitian:
+        case ReaderDeviceTypeFeitian:
             return [FeitianDeviceReader new];
             break;
     }

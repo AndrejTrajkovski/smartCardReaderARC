@@ -19,12 +19,12 @@ typedef enum {
 
 typedef enum {
     
-    DeviceTypeNotRecognized = 0,
-    DeviceTypeTactivo,
-    DeviceTypeFeitian,
-    DeviceTypeNefcom
+    ReaderDeviceTypeNotRecognized = 0,
+    ReaderDeviceTypeTactivo,
+    ReaderDeviceTypeFeitian,
+    ReaderDeviceTypeNefcom
     
-} DeviceType;
+} ReaderDeviceType;
 
 @protocol SmartEIDDelegate
 
