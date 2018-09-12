@@ -17,18 +17,10 @@
 		8277EF6020FB7EDE00DF4BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5E20FB7EDE00DF4BC6 /* LaunchScreen.storyboard */; };
 		8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6220FB7EDE00DF4BC6 /* main.m */; };
 		8277EF6D20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */; };
-		8277EF7920FB7F6800DF4BC6 /* libiOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */; };
 		8277EF9A20FB847800DF4BC6 /* EMVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9220FB847800DF4BC6 /* EMVReader.m */; };
 		8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9620FB847800DF4BC6 /* CAPDU.m */; };
 		8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9920FB847800DF4BC6 /* RAPDU.m */; };
 		8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */; };
-		8903378C21469808000E48F2 /* liblbrReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903378B21469807000E48F2 /* liblbrReader.a */; };
-		8903379F21469966000E48F2 /* iFDiskSDK_iap2_FirmwareController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379921469965000E48F2 /* iFDiskSDK_iap2_FirmwareController.framework */; };
-		890337A021469966000E48F2 /* iFDiskSDK_iap2_FPCBMController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379A21469965000E48F2 /* iFDiskSDK_iap2_FPCBMController.framework */; };
-		890337A121469966000E48F2 /* iFDiskSDK_iap2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379B21469965000E48F2 /* iFDiskSDK_iap2.framework */; };
-		890337A221469966000E48F2 /* iFDiskSDK_iap2_Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379C21469965000E48F2 /* iFDiskSDK_iap2_Authentication.framework */; };
-		890337A321469966000E48F2 /* iFDiskSDK_iap2_ST25BulkReadController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379D21469965000E48F2 /* iFDiskSDK_iap2_ST25BulkReadController.framework */; };
-		890337A421469966000E48F2 /* kxPOSKits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379E21469965000E48F2 /* kxPOSKits.framework */; };
 		890337A821469ADE000E48F2 /* NefcomDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 890337A721469ADE000E48F2 /* NefcomDeviceReader.m */; };
 		8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1720FE146000224E26 /* RAPDUParser.m */; };
 		8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */; };
@@ -45,8 +37,17 @@
 		897DD95F210B326A00950723 /* AIDList.csv in Resources */ = {isa = PBXBuildFile; fileRef = 897DD95E210B326A00950723 /* AIDList.csv */; };
 		89A303682147CEC700AEF976 /* SmartEID.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A303672147CEC700AEF976 /* SmartEID.m */; };
 		89A3036E2147D8CE00AEF976 /* EIDReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A3036D2147D8CE00AEF976 /* EIDReader.m */; };
-		89A303722147DD5300AEF976 /* FeitianDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A303712147DD5300AEF976 /* FeitianDeviceReader.m */; };
 		89A42CF82118794000136C1B /* EMVTagsList.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89A42CF72118794000136C1B /* EMVTagsList.csv */; };
+		89E508BA214920C200D8DE1D /* testObjCFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E508A1214920C200D8DE1D /* testObjCFile.m */; };
+		89E508C8214921A500D8DE1D /* iFDiskSDK_iap2_FirmwareController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508AA214920C200D8DE1D /* iFDiskSDK_iap2_FirmwareController.framework */; };
+		89E508C9214921A700D8DE1D /* iFDiskSDK_iap2_FPCBMController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508AB214920C200D8DE1D /* iFDiskSDK_iap2_FPCBMController.framework */; };
+		89E508CA214921A900D8DE1D /* iFDiskSDK_iap2_ST25BulkReadController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508AC214920C200D8DE1D /* iFDiskSDK_iap2_ST25BulkReadController.framework */; };
+		89E508CB214921AC00D8DE1D /* iFDiskSDK_iap2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508AD214920C200D8DE1D /* iFDiskSDK_iap2.framework */; };
+		89E508CC214921AE00D8DE1D /* iFDiskSDK_iap2_Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508AE214920C200D8DE1D /* iFDiskSDK_iap2_Authentication.framework */; };
+		89E508CD214921B000D8DE1D /* kxPOSKits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508AF214920C200D8DE1D /* kxPOSKits.framework */; };
+		89E508CE214921B300D8DE1D /* liblbrReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E508B7214920C200D8DE1D /* liblbrReader.a */; };
+		89E508CF214921BC00D8DE1D /* libiOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E5089F214920C200D8DE1D /* libiOSLibrary.a */; };
+		89E508D2214926AC00D8DE1D /* FeitianDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A303712147DD5300AEF976 /* FeitianDeviceReader.m */; };
 		89EA051621383BF600CB36FD /* EMVBerTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EA051521383BF600CB36FD /* EMVBerTags.m */; };
 		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
 /* End PBXBuildFile section */
@@ -133,6 +134,42 @@
 		89A303712147DD5300AEF976 /* FeitianDeviceReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeitianDeviceReader.m; sourceTree = "<group>"; };
 		89A3037421480C0400AEF976 /* NotificationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationConstants.h; sourceTree = "<group>"; };
 		89A42CF72118794000136C1B /* EMVTagsList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EMVTagsList.csv; sourceTree = "<group>"; };
+		89E5087521490A9A00D8DE1D /* libiRockey301_ccid_V3.5.16_Debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiRockey301_ccid_V3.5.16_Debug.a; path = Feitian/lib/libiRockey301_ccid_V3.5.16_Debug.a; sourceTree = "<group>"; };
+		89E5087621490A9A00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiRockey301_ccid_V3.5.16_Release.a; path = Feitian/lib/libiRockey301_ccid_V3.5.16_Release.a; sourceTree = "<group>"; };
+		89E50890214920C200D8DE1D /* PBBiometryTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryTemplate.h; sourceTree = "<group>"; };
+		89E50891214920C200D8DE1D /* PBBiometryVerifyConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryVerifyConfig.h; sourceTree = "<group>"; };
+		89E50892214920C200D8DE1D /* PBLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBLibrary.h; sourceTree = "<group>"; };
+		89E50893214920C200D8DE1D /* PBBiometryFinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryFinger.h; sourceTree = "<group>"; };
+		89E50894214920C200D8DE1D /* PBAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBAccessory.h; sourceTree = "<group>"; };
+		89E50895214920C200D8DE1D /* PBBiometryDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryDatabase.h; sourceTree = "<group>"; };
+		89E50896214920C200D8DE1D /* PBBiometryVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryVerifier.h; sourceTree = "<group>"; };
+		89E50897214920C200D8DE1D /* wintypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wintypes.h; sourceTree = "<group>"; };
+		89E50898214920C200D8DE1D /* winscard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winscard.h; sourceTree = "<group>"; };
+		89E50899214920C200D8DE1D /* PBBiometryUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryUser.h; sourceTree = "<group>"; };
+		89E5089A214920C200D8DE1D /* PBBiometryGUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryGUI.h; sourceTree = "<group>"; };
+		89E5089B214920C200D8DE1D /* PBBiometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometry.h; sourceTree = "<group>"; };
+		89E5089C214920C200D8DE1D /* PBSmartcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBSmartcard.h; sourceTree = "<group>"; };
+		89E5089D214920C200D8DE1D /* PBBiometryEnrollConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBiometryEnrollConfig.h; sourceTree = "<group>"; };
+		89E5089F214920C200D8DE1D /* libiOSLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiOSLibrary.a; sourceTree = "<group>"; };
+		89E508A0214920C200D8DE1D /* Tactivo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tactivo-Bridging-Header.h"; sourceTree = "<group>"; };
+		89E508A1214920C200D8DE1D /* testObjCFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testObjCFile.m; sourceTree = "<group>"; };
+		89E508A4214920C200D8DE1D /* ReaderInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderInterface.h; sourceTree = "<group>"; };
+		89E508A7214920C200D8DE1D /* ft301u.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ft301u.h; sourceTree = "<group>"; };
+		89E508AA214920C200D8DE1D /* iFDiskSDK_iap2_FirmwareController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iFDiskSDK_iap2_FirmwareController.framework; sourceTree = "<group>"; };
+		89E508AB214920C200D8DE1D /* iFDiskSDK_iap2_FPCBMController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iFDiskSDK_iap2_FPCBMController.framework; sourceTree = "<group>"; };
+		89E508AC214920C200D8DE1D /* iFDiskSDK_iap2_ST25BulkReadController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iFDiskSDK_iap2_ST25BulkReadController.framework; sourceTree = "<group>"; };
+		89E508AD214920C200D8DE1D /* iFDiskSDK_iap2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iFDiskSDK_iap2.framework; sourceTree = "<group>"; };
+		89E508AE214920C200D8DE1D /* iFDiskSDK_iap2_Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iFDiskSDK_iap2_Authentication.framework; sourceTree = "<group>"; };
+		89E508AF214920C200D8DE1D /* kxPOSKits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = kxPOSKits.framework; sourceTree = "<group>"; };
+		89E508B1214920C200D8DE1D /* BLENfcReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLENfcReader.h; sourceTree = "<group>"; };
+		89E508B2214920C200D8DE1D /* SCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCException.h; sourceTree = "<group>"; };
+		89E508B3214920C200D8DE1D /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		89E508B4214920C200D8DE1D /* CCIDReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCIDReader.h; sourceTree = "<group>"; };
+		89E508B5214920C200D8DE1D /* BLEReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEReader.h; sourceTree = "<group>"; };
+		89E508B7214920C200D8DE1D /* liblbrReader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblbrReader.a; sourceTree = "<group>"; };
+		89E508B8214920C200D8DE1D /* lbrReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lbrReader.h; sourceTree = "<group>"; };
+		89E508C32149215A00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiRockey301_ccid_V3.5.16_Release.a; sourceTree = "<group>"; };
+		89E508C42149215A00D8DE1D /* libiRockey301_ccid_V3.5.16_Debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiRockey301_ccid_V3.5.16_Debug.a; sourceTree = "<group>"; };
 		89EA051421383BF500CB36FD /* EMVBerTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVBerTags.h; sourceTree = "<group>"; };
 		89EA051521383BF600CB36FD /* EMVBerTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVBerTags.m; sourceTree = "<group>"; };
 		8B7F83E8FBF655B0DB39948C /* libPods-SmartCardReaderARCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartCardReaderARCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,16 +182,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8903379F21469966000E48F2 /* iFDiskSDK_iap2_FirmwareController.framework in Frameworks */,
-				890337A021469966000E48F2 /* iFDiskSDK_iap2_FPCBMController.framework in Frameworks */,
-				890337A121469966000E48F2 /* iFDiskSDK_iap2.framework in Frameworks */,
-				890337A221469966000E48F2 /* iFDiskSDK_iap2_Authentication.framework in Frameworks */,
-				890337A321469966000E48F2 /* iFDiskSDK_iap2_ST25BulkReadController.framework in Frameworks */,
-				890337A421469966000E48F2 /* kxPOSKits.framework in Frameworks */,
 				8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */,
-				8277EF7920FB7F6800DF4BC6 /* libiOSLibrary.a in Frameworks */,
 				AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */,
-				8903378C21469808000E48F2 /* liblbrReader.a in Frameworks */,
+				89E508CF214921BC00D8DE1D /* libiOSLibrary.a in Frameworks */,
+				89E508CB214921AC00D8DE1D /* iFDiskSDK_iap2.framework in Frameworks */,
+				89E508CD214921B000D8DE1D /* kxPOSKits.framework in Frameworks */,
+				89E508CA214921A900D8DE1D /* iFDiskSDK_iap2_ST25BulkReadController.framework in Frameworks */,
+				89E508C8214921A500D8DE1D /* iFDiskSDK_iap2_FirmwareController.framework in Frameworks */,
+				89E508CC214921AE00D8DE1D /* iFDiskSDK_iap2_Authentication.framework in Frameworks */,
+				89E508C9214921A700D8DE1D /* iFDiskSDK_iap2_FPCBMController.framework in Frameworks */,
+				89E508CE214921B300D8DE1D /* liblbrReader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +243,7 @@
 				89A3037421480C0400AEF976 /* NotificationConstants.h */,
 				89A3036A2147D38500AEF976 /* PDReaders */,
 				89A303692147D35200AEF976 /* DeviceReaders */,
+				89E5088D214920C200D8DE1D /* SDKs */,
 				8913AF3321009DD400224E26 /* ParsingRAPDU */,
 				8913AF29210075C000224E26 /* Commands */,
 				8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */,
@@ -243,6 +281,8 @@
 		8277EF7720FB7F6800DF4BC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89E5087521490A9A00D8DE1D /* libiRockey301_ccid_V3.5.16_Debug.a */,
+				89E5087621490A9A00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a */,
 				8903379C21469965000E48F2 /* iFDiskSDK_iap2_Authentication.framework */,
 				8903379921469965000E48F2 /* iFDiskSDK_iap2_FirmwareController.framework */,
 				8903379A21469965000E48F2 /* iFDiskSDK_iap2_FPCBMController.framework */,
@@ -358,6 +398,127 @@
 				89A42CF72118794000136C1B /* EMVTagsList.csv */,
 			);
 			path = EmvTags;
+			sourceTree = "<group>";
+		};
+		89E5088D214920C200D8DE1D /* SDKs */ = {
+			isa = PBXGroup;
+			children = (
+				89E5088E214920C200D8DE1D /* Tactivo */,
+				89E508A2214920C200D8DE1D /* Feitian */,
+				89E508A8214920C200D8DE1D /* Pradotec */,
+			);
+			path = SDKs;
+			sourceTree = "<group>";
+		};
+		89E5088E214920C200D8DE1D /* Tactivo */ = {
+			isa = PBXGroup;
+			children = (
+				89E5088F214920C200D8DE1D /* headers */,
+				89E5089E214920C200D8DE1D /* lib */,
+				89E508A0214920C200D8DE1D /* Tactivo-Bridging-Header.h */,
+				89E508A1214920C200D8DE1D /* testObjCFile.m */,
+			);
+			path = Tactivo;
+			sourceTree = "<group>";
+		};
+		89E5088F214920C200D8DE1D /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				89E50890214920C200D8DE1D /* PBBiometryTemplate.h */,
+				89E50891214920C200D8DE1D /* PBBiometryVerifyConfig.h */,
+				89E50892214920C200D8DE1D /* PBLibrary.h */,
+				89E50893214920C200D8DE1D /* PBBiometryFinger.h */,
+				89E50894214920C200D8DE1D /* PBAccessory.h */,
+				89E50895214920C200D8DE1D /* PBBiometryDatabase.h */,
+				89E50896214920C200D8DE1D /* PBBiometryVerifier.h */,
+				89E50897214920C200D8DE1D /* wintypes.h */,
+				89E50898214920C200D8DE1D /* winscard.h */,
+				89E50899214920C200D8DE1D /* PBBiometryUser.h */,
+				89E5089A214920C200D8DE1D /* PBBiometryGUI.h */,
+				89E5089B214920C200D8DE1D /* PBBiometry.h */,
+				89E5089C214920C200D8DE1D /* PBSmartcard.h */,
+				89E5089D214920C200D8DE1D /* PBBiometryEnrollConfig.h */,
+			);
+			path = headers;
+			sourceTree = "<group>";
+		};
+		89E5089E214920C200D8DE1D /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				89E5089F214920C200D8DE1D /* libiOSLibrary.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		89E508A2214920C200D8DE1D /* Feitian */ = {
+			isa = PBXGroup;
+			children = (
+				89E508A3214920C200D8DE1D /* include */,
+				89E508C22149215A00D8DE1D /* lib */,
+			);
+			path = Feitian;
+			sourceTree = "<group>";
+		};
+		89E508A3214920C200D8DE1D /* include */ = {
+			isa = PBXGroup;
+			children = (
+				89E508A4214920C200D8DE1D /* ReaderInterface.h */,
+				89E508A7214920C200D8DE1D /* ft301u.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		89E508A8214920C200D8DE1D /* Pradotec */ = {
+			isa = PBXGroup;
+			children = (
+				89E508A9214920C200D8DE1D /* kxPOSKits */,
+				89E508B0214920C200D8DE1D /* include */,
+				89E508B6214920C200D8DE1D /* lib */,
+			);
+			path = Pradotec;
+			sourceTree = "<group>";
+		};
+		89E508A9214920C200D8DE1D /* kxPOSKits */ = {
+			isa = PBXGroup;
+			children = (
+				89E508AA214920C200D8DE1D /* iFDiskSDK_iap2_FirmwareController.framework */,
+				89E508AB214920C200D8DE1D /* iFDiskSDK_iap2_FPCBMController.framework */,
+				89E508AC214920C200D8DE1D /* iFDiskSDK_iap2_ST25BulkReadController.framework */,
+				89E508AD214920C200D8DE1D /* iFDiskSDK_iap2.framework */,
+				89E508AE214920C200D8DE1D /* iFDiskSDK_iap2_Authentication.framework */,
+				89E508AF214920C200D8DE1D /* kxPOSKits.framework */,
+			);
+			path = kxPOSKits;
+			sourceTree = "<group>";
+		};
+		89E508B0214920C200D8DE1D /* include */ = {
+			isa = PBXGroup;
+			children = (
+				89E508B1214920C200D8DE1D /* BLENfcReader.h */,
+				89E508B2214920C200D8DE1D /* SCException.h */,
+				89E508B3214920C200D8DE1D /* Card.h */,
+				89E508B4214920C200D8DE1D /* CCIDReader.h */,
+				89E508B5214920C200D8DE1D /* BLEReader.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		89E508B6214920C200D8DE1D /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				89E508B7214920C200D8DE1D /* liblbrReader.a */,
+				89E508B8214920C200D8DE1D /* lbrReader.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		89E508C22149215A00D8DE1D /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				89E508C32149215A00D8DE1D /* libiRockey301_ccid_V3.5.16_Release.a */,
+				89E508C42149215A00D8DE1D /* libiRockey301_ccid_V3.5.16_Debug.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		9185946349FD629875FCF36A /* Pods */ = {
@@ -518,18 +679,19 @@
 				82268BFC21067AF30044591C /* EMVTlv.m in Sources */,
 				82268BFF21067E450044591C /* EmvTlvList.m in Sources */,
 				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
+				89E508D2214926AC00D8DE1D /* FeitianDeviceReader.m in Sources */,
 				8913AF2520FF35D200224E26 /* TactivoDeviceReader.m in Sources */,
 				8277EF9A20FB847800DF4BC6 /* EMVReader.m in Sources */,
 				89A303682147CEC700AEF976 /* SmartEID.m in Sources */,
 				890337A821469ADE000E48F2 /* NefcomDeviceReader.m in Sources */,
 				897DD95D210B30E000950723 /* EmvAIDList.m in Sources */,
-				89A303722147DD5300AEF976 /* FeitianDeviceReader.m in Sources */,
 				8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */,
 				897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
 				89EA051621383BF600CB36FD /* EMVBerTags.m in Sources */,
 				896440A8211DBD2F0024CDDD /* EMVCardModel.m in Sources */,
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,
+				89E508BA214920C200D8DE1D /* testObjCFile.m in Sources */,
 				8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */,
 				896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */,
 				8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */,
@@ -635,6 +797,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "$(ARCHS_STANDARD) armv6";
 			};
 			name = Debug;
 		};
@@ -687,6 +850,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "$(ARCHS_STANDARD) armv6";
 			};
 			name = Release;
 		};
@@ -700,7 +864,14 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Nefcom/kxPOSKits",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Pradotec/kxPOSKits",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BerTlv\"",
+					"\"${PODS_ROOT}/Headers/Public/CHCSVParser\"",
+					"\"$(PROJECT_DIR)/SmartCardReaderARC/SDKs\"/**",
 				);
 				INFOPLIST_FILE = SmartCardReaderARC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -710,19 +881,23 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TactivoSDK/lib",
-					"$(PROJECT_DIR)/Nefcom/lib",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Tactivo/lib",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Pradotec/lib",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Feitian/lib",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"BerTlv\"",
+					"-l\"CHCSVParser\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netcetera.smartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2b7a75b3-f221-4cb8-8d9a-1ce815fe893e";
 				PROVISIONING_PROFILE_SPECIFIER = GenericDevelopmentNew;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/TactivoSDK/headers",
-					"$(PROJECT_DIR)/Nefcom/include/lbrdemo",
-					"$(PROJECT_DIR)/Nefcom/lib",
-				);
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -736,7 +911,14 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Nefcom/kxPOSKits",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Pradotec/kxPOSKits",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BerTlv\"",
+					"\"${PODS_ROOT}/Headers/Public/CHCSVParser\"",
+					"\"$(PROJECT_DIR)/SmartCardReaderARC/SDKs\"/**",
 				);
 				INFOPLIST_FILE = SmartCardReaderARC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -748,16 +930,23 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TactivoSDK/lib",
 					"$(PROJECT_DIR)/Nefcom/lib",
+					"$(PROJECT_DIR)/Feitian/lib",
+					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Tactivo/lib",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Pradotec/lib",
+					"$(PROJECT_DIR)/SmartCardReaderARC/SDKs/Feitian/lib",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"BerTlv\"",
+					"-l\"CHCSVParser\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netcetera.smartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/TactivoSDK/headers",
-					"$(PROJECT_DIR)/Nefcom/include/lbrdemo",
-					"$(PROJECT_DIR)/Nefcom/lib",
-				);
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

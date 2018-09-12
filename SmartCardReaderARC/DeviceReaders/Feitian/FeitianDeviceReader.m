@@ -7,8 +7,18 @@
 //
 
 #import "FeitianDeviceReader.h"
+//#import "ft301u.h"
+//#import "ReaderInterface.h"
+//#import "winscard.h"
 
-@implementation FeitianDeviceReader
+@interface FeitianDeviceReader()//<ReaderInterfaceDelegate>
+
+@end
+
+@implementation FeitianDeviceReader{
+//    SCARDHANDLE  gCardHandle;
+//    ReaderInterface *interface;
+}
 
 @synthesize delegate;
 
@@ -23,6 +33,23 @@
 
 - (void)prepareCard {
     //TODO
+//    interface = [ReaderInterface new];
+//    [interface setDelegate:self];
+
+}
+
+#pragma mark ReaderInterfaceDelegate
+
+- (void)cardInterfaceDidDetach:(BOOL)attached {
+    
+}
+
+- (void)findPeripheralReader:(NSString *)readerName {
+    
+}
+
+- (void)readerInterfaceDidChange:(BOOL)attached {
+    
 }
 
 @end
