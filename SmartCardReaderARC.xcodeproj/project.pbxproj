@@ -18,7 +18,7 @@
 		8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6220FB7EDE00DF4BC6 /* main.m */; };
 		8277EF6D20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */; };
 		8277EF7920FB7F6800DF4BC6 /* libiOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */; };
-		8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9220FB847800DF4BC6 /* PublicDataReader.m */; };
+		8277EF9A20FB847800DF4BC6 /* EMVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9220FB847800DF4BC6 /* EMVReader.m */; };
 		8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9620FB847800DF4BC6 /* CAPDU.m */; };
 		8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9920FB847800DF4BC6 /* RAPDU.m */; };
 		8277EFA520FBC2E400DF4BC6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */; };
@@ -29,11 +29,11 @@
 		890337A221469966000E48F2 /* iFDiskSDK_iap2_Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379C21469965000E48F2 /* iFDiskSDK_iap2_Authentication.framework */; };
 		890337A321469966000E48F2 /* iFDiskSDK_iap2_ST25BulkReadController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379D21469965000E48F2 /* iFDiskSDK_iap2_ST25BulkReadController.framework */; };
 		890337A421469966000E48F2 /* kxPOSKits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8903379E21469965000E48F2 /* kxPOSKits.framework */; };
-		890337A821469ADE000E48F2 /* NefcomExecutioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 890337A721469ADE000E48F2 /* NefcomExecutioner.m */; };
+		890337A821469ADE000E48F2 /* NefcomDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 890337A721469ADE000E48F2 /* NefcomDeviceReader.m */; };
 		8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1720FE146000224E26 /* RAPDUParser.m */; };
 		8913AF1E20FF315500224E26 /* NSData+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */; };
 		8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1F20FF31D700224E26 /* NSArray+ByteManipulation.m */; };
-		8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2420FF35D200224E26 /* TactivoExecutioner.m */; };
+		8913AF2520FF35D200224E26 /* TactivoDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2420FF35D200224E26 /* TactivoDeviceReader.m */; };
 		8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */; };
 		894FC4E82105BCC300E9A686 /* VisaElectronPDParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */; };
 		894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 894FC4E92105C08900E9A686 /* pd data example.rtf */; };
@@ -43,7 +43,9 @@
 		897DD95A210B2F6700950723 /* EmvAID.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD959210B2F6700950723 /* EmvAID.m */; };
 		897DD95D210B30E000950723 /* EmvAIDList.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD95C210B30E000950723 /* EmvAIDList.m */; };
 		897DD95F210B326A00950723 /* AIDList.csv in Resources */ = {isa = PBXBuildFile; fileRef = 897DD95E210B326A00950723 /* AIDList.csv */; };
-		89A303652146CB4D00AEF976 /* TactivoDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A303642146CB4D00AEF976 /* TactivoDeviceHandler.m */; };
+		89A303682147CEC700AEF976 /* SmartEID.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A303672147CEC700AEF976 /* SmartEID.m */; };
+		89A3036E2147D8CE00AEF976 /* EIDReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A3036D2147D8CE00AEF976 /* EIDReader.m */; };
+		89A303722147DD5300AEF976 /* FeitianDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A303712147DD5300AEF976 /* FeitianDeviceReader.m */; };
 		89A42CF82118794000136C1B /* EMVTagsList.csv in Resources */ = {isa = PBXBuildFile; fileRef = 89A42CF72118794000136C1B /* EMVTagsList.csv */; };
 		89EA051621383BF600CB36FD /* EMVBerTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EA051521383BF600CB36FD /* EMVBerTags.m */; };
 		AFFA64A7946F646BB23A58EB /* libPods-SmartCardReaderARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C1529086597D6EA9AD377 /* libPods-SmartCardReaderARC.a */; };
@@ -81,11 +83,11 @@
 		8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartCardReaderARCTests.m; sourceTree = "<group>"; };
 		8277EF6E20FB7EDE00DF4BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8277EF7820FB7F6800DF4BC6 /* libiOSLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiOSLibrary.a; path = lib/libiOSLibrary.a; sourceTree = "<group>"; };
-		8277EF9220FB847800DF4BC6 /* PublicDataReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicDataReader.m; sourceTree = "<group>"; };
+		8277EF9220FB847800DF4BC6 /* EMVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVReader.m; sourceTree = "<group>"; };
 		8277EF9320FB847800DF4BC6 /* CAPDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPDU.h; sourceTree = "<group>"; };
 		8277EF9420FB847800DF4BC6 /* RAPDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPDU.h; sourceTree = "<group>"; };
 		8277EF9620FB847800DF4BC6 /* CAPDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPDU.m; sourceTree = "<group>"; };
-		8277EF9720FB847800DF4BC6 /* PublicDataReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicDataReader.h; sourceTree = "<group>"; };
+		8277EF9720FB847800DF4BC6 /* EMVReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVReader.h; sourceTree = "<group>"; };
 		8277EF9920FB847800DF4BC6 /* RAPDU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPDU.m; sourceTree = "<group>"; };
 		8277EFA420FBC2E400DF4BC6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8903378B21469807000E48F2 /* liblbrReader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblbrReader.a; path = Nefcom/lib/liblbrReader.a; sourceTree = "<group>"; };
@@ -95,18 +97,17 @@
 		8903379C21469965000E48F2 /* iFDiskSDK_iap2_Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iFDiskSDK_iap2_Authentication.framework; path = Nefcom/kxPOSKits/iFDiskSDK_iap2_Authentication.framework; sourceTree = "<group>"; };
 		8903379D21469965000E48F2 /* iFDiskSDK_iap2_ST25BulkReadController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iFDiskSDK_iap2_ST25BulkReadController.framework; path = Nefcom/kxPOSKits/iFDiskSDK_iap2_ST25BulkReadController.framework; sourceTree = "<group>"; };
 		8903379E21469965000E48F2 /* kxPOSKits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kxPOSKits.framework; path = Nefcom/kxPOSKits/kxPOSKits.framework; sourceTree = "<group>"; };
-		890337A521469A70000E48F2 /* lbrReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = lbrReader.h; path = SmartCardReaderARC/Nefcom/lbrReader.h; sourceTree = SOURCE_ROOT; };
-		890337A621469ADE000E48F2 /* NefcomExecutioner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NefcomExecutioner.h; sourceTree = "<group>"; };
-		890337A721469ADE000E48F2 /* NefcomExecutioner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NefcomExecutioner.m; sourceTree = "<group>"; };
+		890337A621469ADE000E48F2 /* NefcomDeviceReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NefcomDeviceReader.h; sourceTree = "<group>"; };
+		890337A721469ADE000E48F2 /* NefcomDeviceReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NefcomDeviceReader.m; sourceTree = "<group>"; };
 		8913AF1620FE146000224E26 /* RAPDUParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAPDUParser.h; sourceTree = "<group>"; };
 		8913AF1720FE146000224E26 /* RAPDUParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RAPDUParser.m; sourceTree = "<group>"; };
 		8913AF1C20FF315500224E26 /* NSData+ByteManipulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ByteManipulation.h"; sourceTree = "<group>"; };
 		8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ByteManipulation.m"; sourceTree = "<group>"; };
 		8913AF1F20FF31D700224E26 /* NSArray+ByteManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ByteManipulation.m"; sourceTree = "<group>"; };
 		8913AF2020FF31D700224E26 /* NSArray+ByteManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ByteManipulation.h"; sourceTree = "<group>"; };
-		8913AF2220FF359800224E26 /* CardReaderCommandExecutioner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardReaderCommandExecutioner.h; sourceTree = "<group>"; };
-		8913AF2320FF35D200224E26 /* TactivoExecutioner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TactivoExecutioner.h; sourceTree = "<group>"; };
-		8913AF2420FF35D200224E26 /* TactivoExecutioner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TactivoExecutioner.m; sourceTree = "<group>"; };
+		8913AF2220FF359800224E26 /* DeviceReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceReader.h; sourceTree = "<group>"; };
+		8913AF2320FF35D200224E26 /* TactivoDeviceReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TactivoDeviceReader.h; sourceTree = "<group>"; };
+		8913AF2420FF35D200224E26 /* TactivoDeviceReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TactivoDeviceReader.m; sourceTree = "<group>"; };
 		8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFIWithRecordNumbers.h; sourceTree = "<group>"; };
 		8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFIWithRecordNumbers.m; sourceTree = "<group>"; };
 		8913AF2A2100763100224E26 /* APDU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
@@ -123,9 +124,14 @@
 		897DD95B210B30E000950723 /* EmvAIDList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvAIDList.h; sourceTree = "<group>"; };
 		897DD95C210B30E000950723 /* EmvAIDList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvAIDList.m; sourceTree = "<group>"; };
 		897DD95E210B326A00950723 /* AIDList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AIDList.csv; sourceTree = "<group>"; };
-		89A303622146CA6400AEF976 /* ReaderDevicesHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReaderDevicesHandler.h; path = SmartCardReaderARC/ReaderDevicesHandler.h; sourceTree = SOURCE_ROOT; };
-		89A303632146CB4D00AEF976 /* TactivoDeviceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TactivoDeviceHandler.h; sourceTree = "<group>"; };
-		89A303642146CB4D00AEF976 /* TactivoDeviceHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TactivoDeviceHandler.m; sourceTree = "<group>"; };
+		89A303662147CEC700AEF976 /* SmartEID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartEID.h; sourceTree = "<group>"; };
+		89A303672147CEC700AEF976 /* SmartEID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartEID.m; sourceTree = "<group>"; };
+		89A3036B2147D47A00AEF976 /* PDReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDReader.h; sourceTree = "<group>"; };
+		89A3036C2147D8CE00AEF976 /* EIDReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDReader.h; sourceTree = "<group>"; };
+		89A3036D2147D8CE00AEF976 /* EIDReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDReader.m; sourceTree = "<group>"; };
+		89A303702147DD5300AEF976 /* FeitianDeviceReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeitianDeviceReader.h; sourceTree = "<group>"; };
+		89A303712147DD5300AEF976 /* FeitianDeviceReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeitianDeviceReader.m; sourceTree = "<group>"; };
+		89A3037421480C0400AEF976 /* NotificationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationConstants.h; sourceTree = "<group>"; };
 		89A42CF72118794000136C1B /* EMVTagsList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EMVTagsList.csv; sourceTree = "<group>"; };
 		89EA051421383BF500CB36FD /* EMVBerTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVBerTags.h; sourceTree = "<group>"; };
 		89EA051521383BF600CB36FD /* EMVBerTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVBerTags.m; sourceTree = "<group>"; };
@@ -195,16 +201,15 @@
 		8277EF5220FB7EDD00DF4BC6 /* SmartCardReaderARC */ = {
 			isa = PBXGroup;
 			children = (
-				8913AF2220FF359800224E26 /* CardReaderCommandExecutioner.h */,
-				89A303622146CA6400AEF976 /* ReaderDevicesHandler.h */,
-				890337AA21469AF1000E48F2 /* Tactivo */,
-				890337A921469AE5000E48F2 /* Nefcom */,
+				89A303662147CEC700AEF976 /* SmartEID.h */,
+				89A303672147CEC700AEF976 /* SmartEID.m */,
+				89A3037421480C0400AEF976 /* NotificationConstants.h */,
+				89A3036A2147D38500AEF976 /* PDReaders */,
+				89A303692147D35200AEF976 /* DeviceReaders */,
 				8913AF3321009DD400224E26 /* ParsingRAPDU */,
 				8913AF29210075C000224E26 /* Commands */,
 				8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */,
 				8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */,
-				8277EF9720FB847800DF4BC6 /* PublicDataReader.h */,
-				8277EF9220FB847800DF4BC6 /* PublicDataReader.m */,
 				8913AF1C20FF315500224E26 /* NSData+ByteManipulation.h */,
 				8913AF1D20FF315500224E26 /* NSData+ByteManipulation.m */,
 				8913AF2020FF31D700224E26 /* NSArray+ByteManipulation.h */,
@@ -256,9 +261,8 @@
 		890337A921469AE5000E48F2 /* Nefcom */ = {
 			isa = PBXGroup;
 			children = (
-				890337A621469ADE000E48F2 /* NefcomExecutioner.h */,
-				890337A721469ADE000E48F2 /* NefcomExecutioner.m */,
-				890337A521469A70000E48F2 /* lbrReader.h */,
+				890337A621469ADE000E48F2 /* NefcomDeviceReader.h */,
+				890337A721469ADE000E48F2 /* NefcomDeviceReader.m */,
 			);
 			path = Nefcom;
 			sourceTree = "<group>";
@@ -266,10 +270,8 @@
 		890337AA21469AF1000E48F2 /* Tactivo */ = {
 			isa = PBXGroup;
 			children = (
-				8913AF2320FF35D200224E26 /* TactivoExecutioner.h */,
-				8913AF2420FF35D200224E26 /* TactivoExecutioner.m */,
-				89A303632146CB4D00AEF976 /* TactivoDeviceHandler.h */,
-				89A303642146CB4D00AEF976 /* TactivoDeviceHandler.m */,
+				8913AF2320FF35D200224E26 /* TactivoDeviceReader.h */,
+				8913AF2420FF35D200224E26 /* TactivoDeviceReader.m */,
 			);
 			path = Tactivo;
 			sourceTree = "<group>";
@@ -296,6 +298,38 @@
 				896440A7211DBD2F0024CDDD /* EMVCardModel.m */,
 			);
 			path = ParsingRAPDU;
+			sourceTree = "<group>";
+		};
+		89A303692147D35200AEF976 /* DeviceReaders */ = {
+			isa = PBXGroup;
+			children = (
+				8913AF2220FF359800224E26 /* DeviceReader.h */,
+				89A3036F2147DD4100AEF976 /* Feitian */,
+				890337AA21469AF1000E48F2 /* Tactivo */,
+				890337A921469AE5000E48F2 /* Nefcom */,
+			);
+			path = DeviceReaders;
+			sourceTree = "<group>";
+		};
+		89A3036A2147D38500AEF976 /* PDReaders */ = {
+			isa = PBXGroup;
+			children = (
+				89A3036B2147D47A00AEF976 /* PDReader.h */,
+				8277EF9720FB847800DF4BC6 /* EMVReader.h */,
+				8277EF9220FB847800DF4BC6 /* EMVReader.m */,
+				89A3036C2147D8CE00AEF976 /* EIDReader.h */,
+				89A3036D2147D8CE00AEF976 /* EIDReader.m */,
+			);
+			path = PDReaders;
+			sourceTree = "<group>";
+		};
+		89A3036F2147DD4100AEF976 /* Feitian */ = {
+			isa = PBXGroup;
+			children = (
+				89A303702147DD5300AEF976 /* FeitianDeviceReader.h */,
+				89A303712147DD5300AEF976 /* FeitianDeviceReader.m */,
+			);
+			path = Feitian;
 			sourceTree = "<group>";
 		};
 		89A42CFC211879B300136C1B /* AID */ = {
@@ -483,12 +517,13 @@
 			files = (
 				82268BFC21067AF30044591C /* EMVTlv.m in Sources */,
 				82268BFF21067E450044591C /* EmvTlvList.m in Sources */,
-				89A303652146CB4D00AEF976 /* TactivoDeviceHandler.m in Sources */,
 				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
-				8913AF2520FF35D200224E26 /* TactivoExecutioner.m in Sources */,
-				8277EF9A20FB847800DF4BC6 /* PublicDataReader.m in Sources */,
-				890337A821469ADE000E48F2 /* NefcomExecutioner.m in Sources */,
+				8913AF2520FF35D200224E26 /* TactivoDeviceReader.m in Sources */,
+				8277EF9A20FB847800DF4BC6 /* EMVReader.m in Sources */,
+				89A303682147CEC700AEF976 /* SmartEID.m in Sources */,
+				890337A821469ADE000E48F2 /* NefcomDeviceReader.m in Sources */,
 				897DD95D210B30E000950723 /* EmvAIDList.m in Sources */,
+				89A303722147DD5300AEF976 /* FeitianDeviceReader.m in Sources */,
 				8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */,
 				897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
@@ -500,6 +535,7 @@
 				8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */,
 				897DD95A210B2F6700950723 /* EmvAID.m in Sources */,
 				8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */,
+				89A3036E2147D8CE00AEF976 /* EIDReader.m in Sources */,
 				8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */,
 				8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */,
 			);
@@ -685,6 +721,7 @@
 				USER_HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TactivoSDK/headers",
 					"$(PROJECT_DIR)/Nefcom/include/lbrdemo",
+					"$(PROJECT_DIR)/Nefcom/lib",
 				);
 			};
 			name = Debug;
@@ -719,6 +756,7 @@
 				USER_HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TactivoSDK/headers",
 					"$(PROJECT_DIR)/Nefcom/include/lbrdemo",
+					"$(PROJECT_DIR)/Nefcom/lib",
 				);
 			};
 			name = Release;

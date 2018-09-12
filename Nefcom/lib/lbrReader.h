@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BLEReader.h"
 #import "BLENfcReader.h"
+#import <UIKit/UIImage.h>
 
 //General Error Code
 #define LT_OK                       0
