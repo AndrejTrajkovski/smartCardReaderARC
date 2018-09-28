@@ -60,7 +60,7 @@
     [self.delegate didFailReadPublicData:newError];
 }
 
-#pragma mark - Listen to Devices
+#pragma mark - Listen to Device Inserts
 
 -(void)startListeningDeviceEvents
 {
@@ -138,7 +138,7 @@
     return CardTypeNoCard;
 }
 
-#pragma mark - Implementation
+#pragma mark - Read EMV
 
 -(void)readEMVPublicData
 {
@@ -171,10 +171,14 @@
     [self.reader readPublicData];
 }
 
+#pragma mark - Read EID
+
 -(void)readEIDPublicData
 {
     //TODO
 }
+
+#pragma mark - Choose strategy
 
 -(ReaderDeviceType)deviceTypeFromAccessory:(EAAccessory *)accessory
 {
@@ -186,9 +190,10 @@
         
         return ReaderDeviceTypeTactivo;
         
-    }else if ([accessory.protocolStrings containsObject:@""]) {
+    }else if ([accessory.protocolStrings containsObject:@"com.ftsafe.iR301"]) {
         
         return ReaderDeviceTypeFeitian;
+        
     }else{
         
         return ReaderDeviceTypeNotRecognized;
@@ -211,6 +216,8 @@
             break;
     }
 }
+
+#pragma mark - Dealloc
 
 -(void)dealloc
 {

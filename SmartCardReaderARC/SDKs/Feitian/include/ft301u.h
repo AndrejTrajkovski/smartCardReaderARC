@@ -7,8 +7,8 @@
 #define __ft301u_h__
 
 
-#include "./wintypes.h"
-#include "./winscard.h"
+#include "wintypes.h"
+#include "winscard.h"
 
 #ifdef __cplusplus
 extern "C"

@@ -34,6 +34,7 @@
 		<string>com.precisebiometrics.ccidcontrol</string>
 		<string>com.precisebiometrics.ccidinterrupt</string>
 		<string>com.precisebiometrics.ccidbulk</string>
+		<string>com.ftsafe.iR301</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

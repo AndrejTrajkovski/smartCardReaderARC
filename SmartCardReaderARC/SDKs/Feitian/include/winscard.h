@@ -35,7 +35,7 @@ extern "C"
         DWORD isConnected;
         unsigned char rgbAtr[MAX_ATR_SIZE];
     }
-    FTSCARD_READERSTATE, *FTLPSCARD_READERSTATE;
+    SCARD_READERSTATE, *LPSCARD_READERSTATE;
 	/** Protocol Control Information (PCI) */
 	typedef struct _SCARD_IO_REQUEST
 	{
@@ -79,7 +79,7 @@ extern "C"
 
 	PCSC_API LONG SCardGetStatusChange(SCARDCONTEXT hContext,
 		DWORD dwTimeout,
-		FTLPSCARD_READERSTATE rgReaderStates, DWORD cReaders);
+		LPSCARD_READERSTATE rgReaderStates, DWORD cReaders);
 
 	PCSC_API LONG SCardControl(SCARDHANDLE hCard, DWORD dwControlCode,
 		LPCVOID pbSendBuffer, DWORD cbSendLength,
