@@ -7,7 +7,7 @@
 //
 
 #import "EmvAIDList.h"
-#import "EmvAID.h"
+#import "CardAID.h"
 #import "CHCSVParser.h"
 
 static NSArray *list = nil;
@@ -35,7 +35,7 @@ static NSArray *list = nil;
         
         NSMutableArray *helperList = [NSMutableArray new];
         for (NSUInteger i = 0; i < csvArray.count; i++) {
-            EmvAID *oneAid = [[EmvAID alloc] initFromCSVArray:csvArray[i]];
+            CardAID *oneAid = [[CardAID alloc] initFromCSVArray:csvArray[i]];
             [helperList addObject:oneAid];
         }
         

@@ -11,17 +11,6 @@
 
 @class CAPDU, RAPDU, PBSmartcard;
 
-extern NSString * const ReadingPublicDataErrorDomain;
-
-typedef NS_ENUM(NSInteger, ReadingPublicDataErrorCode) {
-    ReadingPublicDataErrorCodeWhenPreparingCard = 1,
-    ReadingPublicDataErrorCodePDOLRequired = 2,
-    ReadingPublicDataErrorCodeNoPSEDir = 3,
-    ReadingPublicDataErrorCodeNoPPSEDir = 4,
-    ReadingPublicDataErrorCodeSelectAID
-    
-};
-
 @interface EMVReader : NSObject <PDReader>
 
 @end

@@ -37,7 +37,8 @@ SCARDCONTEXT gContxtHandle;
     SCARD_IO_REQUEST pioSendPci;
     int status = SCardTransmit(gContxtHandle,
                                &pioSendPci,
-                               command, (u_int32_t)capdu.bytes.count,
+                               command,
+                               (u_int32_t)capdu.bytes.count,
                                NULL,
                                buffer,
                                &rdl);

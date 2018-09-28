@@ -11,6 +11,8 @@
 @class CAPDU;
 @interface CAPDUGenerator : NSObject
 
+#pragma mark - EMV
+
 +(CAPDU *)selectPSEDirectory;
 
 +(CAPDU *)selectPPSEDirectory;
@@ -24,5 +26,11 @@
 +(CAPDU *)getProcessingOptionsWithPDOL:(NSArray *)PDOL;
 
 +(CAPDU *)readRecordWithRecordNumber:(NSNumber *)recordNumber SFI:(NSNumber *)sfi andLe:(NSNumber *)le;
+
+#pragma mark - EID
+
++(CAPDU *)selectEmiratesCardFileWithFID:(NSArray *)fid;
+
++(CAPDU *)readEmiratesCardFileWithFID:(NSArray *)fid;
 
 @end

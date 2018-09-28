@@ -39,7 +39,7 @@
             
             return RAPDUStatusResponseBytesStillAvailable;
             
-        }else if ([[self byteBeforeLast] isEqual:@0x6C]){
+        }else if ([[self byteBeforeLast] isEqual:@0x6C] || [[self byteBeforeLast] isEqual:@0x67]){
             
             return RAPDUStatusWrongLength;
             

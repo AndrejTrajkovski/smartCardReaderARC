@@ -86,4 +86,27 @@
     return readRecord;
 }
 
+#pragma mark - EID
+
++(CAPDU *)selectEmiratesCardFileWithFID:(NSArray *)fid
+{
+    CAPDU *readRecord = [[CAPDU alloc] initWithCLA:@0x00
+                                               INS:@0xA4
+                                                p1:@0x00
+                                                p2:@0x00
+                                       commandData:fid];
+    
+    return readRecord;
+}
+
++(CAPDU *)readEmiratesCardFileWithFID:(NSArray *)fid
+{
+    CAPDU *readRecord = [[CAPDU alloc] initWithCLA:@0x00
+                                               INS:@0xB0
+                                                p1:@0x00
+                                                p2:@0x00
+                                       commandData:fid];
+    
+    return readRecord;
+}
 @end

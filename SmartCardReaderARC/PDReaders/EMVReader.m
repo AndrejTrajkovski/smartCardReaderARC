@@ -13,7 +13,7 @@
 #import "HexUtil.h"
 #import "NSData+ByteManipulation.h"
 #import "EmvAIDList.h"
-#import "EmvAID.h"
+#import "CardAID.h"
 #import "EMVCardModel.h"
 
 @interface EMVReader() <DeviceReaderDelegate>
@@ -147,8 +147,8 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
     NSArray *aidList = [EmvAIDList list];
     NSArray *pd;
     for (int i = 0; i < aidList.count; i++) {
-        EmvAID *aid = aidList[i];
-        NSArray *aidAsNSNumbersArray = [aid aidAsNSNumbersArray];
+        CardAID *aid = aidList[i];
+        NSArray *aidAsNSNumbersArray = aid.aid;
         NSArray *publicData = [self readPublicDataForAID:aidAsNSNumbersArray error:error];
         if (publicData) {
             pd = publicData;

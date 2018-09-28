@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.smartEid = [[SmartEID alloc] initWithDelegate:self];
-    [self.smartEid readEMVPublicData];
+    [self.smartEid readPublicData];
 }
 
 #pragma mark - SmartEID Delegate

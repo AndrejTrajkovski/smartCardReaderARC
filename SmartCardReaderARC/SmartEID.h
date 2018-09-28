@@ -43,8 +43,7 @@ typedef enum {
 
 @property (weak, nonatomic) id <SmartEIDDelegate> delegate;
 
--(void)readEIDPublicData;
--(void)readEMVPublicData;
+-(void)readPublicData;
 -(CardType)currentCardType;
 
 - (instancetype)initWithDelegate:(id <SmartEIDDelegate>)delegate;

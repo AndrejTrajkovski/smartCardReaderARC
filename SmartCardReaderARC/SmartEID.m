@@ -89,7 +89,7 @@
 -(void)accessoryDidConnect:(NSNotification *)notification
 {
     [self.delegate didConnectDeviceReader];
-    [self readEMVPublicDataFromAccessory:[notification.userInfo objectForKey:EAAccessoryKey]];
+    [self readPublicDataFromAccessory:[notification.userInfo objectForKey:EAAccessoryKey]];
 }
 
 -(void)accessoryDidDisconnect:(NSNotification *)notification
@@ -123,7 +123,7 @@
 
 -(void)didInsertCard:(NSNotification *)notification
 {
-    [self readEMVPublicData];
+    [self readPublicData];
     [self.delegate didInsertCard];
 }
 
@@ -135,32 +135,51 @@
 -(CardType)currentCardType
 {
     //TODO
-    return CardTypeNoCard;
+    return CardTypeEID;
 }
 
 #pragma mark - Read EMV
 
--(void)readEMVPublicData
+-(void)readPublicData
 {
     NSPredicate *recognizedReaderPredicate = [NSPredicate predicateWithBlock:^BOOL(EAAccessory *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         return [self deviceTypeFromAccessory:evaluatedObject] != ReaderDeviceTypeNotRecognized;
     }];
     EAAccessory *recognizedAccessory = [[[[EAAccessoryManager sharedAccessoryManager] connectedAccessories] filteredArrayUsingPredicate:recognizedReaderPredicate] firstObject];
     
-    [self readEMVPublicDataFromAccessory:recognizedAccessory];
+    [self readPublicDataFromAccessory:recognizedAccessory];
 }
 
--(void)readEMVPublicDataFromAccessory:(EAAccessory *)accessory
+-(void)readPublicDataFromAccessory:(EAAccessory *)accessory
 {
     ReaderDeviceType typeOfConnectedDevice = [self deviceTypeFromAccessory:accessory];
-    [self readEMVPublicDataForDeviceType:typeOfConnectedDevice];
+    [self readPublicDataForDeviceType:typeOfConnectedDevice andCardType:self.currentCardType];
 }
 
--(void)readEMVPublicDataForDeviceType:(ReaderDeviceType)deviceType
+-(void)readPublicDataForDeviceType:(ReaderDeviceType)deviceType andCardType:(CardType)cardType
 {
-    self.reader = [[EMVReader alloc] initWithDeviceReader:[self readerForDeviceType:deviceType]
-                                              andDelegate:self];
-    if (!self.reader) {
+    id<DeviceReader> deviceReader = [self readerForDeviceType:deviceType];
+    id<PDReader> publicDataReader;
+    
+    switch (cardType) {
+        case CardTypeNoCard:
+            publicDataReader = nil;
+            break;
+        case CardTypeEMV:
+            publicDataReader = [[EMVReader alloc] initWithDeviceReader:deviceReader
+                                                      andDelegate:self];
+            break;
+        case CardTypeEID:
+            publicDataReader = [[EIDReader alloc] initWithDeviceReader:deviceReader
+                                                      andDelegate:self];
+            break;
+        default:
+            publicDataReader = nil;
+            break;
+    }
+    
+    
+    if (!publicDataReader) {
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"Device type not recognized." forKey:NSLocalizedDescriptionKey];
         NSError *error = [NSError errorWithDomain:@"Hardware error"
@@ -168,17 +187,12 @@
                                  userInfo:details];
         [self.delegate didFailReadPublicData:error];
     }
+    
+    self.reader = publicDataReader;
     [self.reader readPublicData];
 }
 
-#pragma mark - Read EID
-
--(void)readEIDPublicData
-{
-    //TODO
-}
-
-#pragma mark - Choose strategy
+#pragma mark - Choose device type strategy
 
 -(ReaderDeviceType)deviceTypeFromAccessory:(EAAccessory *)accessory
 {

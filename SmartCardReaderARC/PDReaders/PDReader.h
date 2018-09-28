@@ -16,7 +16,19 @@
 
 @end
 
+extern NSString * const ReadingPublicDataErrorDomain;
+
+typedef NS_ENUM(NSInteger, ReadingPublicDataErrorCode) {
+    ReadingPublicDataErrorCodeWhenPreparingCard = 1,
+    ReadingPublicDataErrorCodePDOLRequired = 2,
+    ReadingPublicDataErrorCodeNoPSEDir = 3,
+    ReadingPublicDataErrorCodeNoPPSEDir = 4,
+    ReadingPublicDataErrorCodeSelectAID
+    
+};
+
 @protocol PDReader <NSObject>
+
 
 @property (weak) id <PDReaderDelegate> delegate;
 @property (strong, nonatomic) id <DeviceReader> deviceReader;
