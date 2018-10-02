@@ -12,6 +12,8 @@
 #import "CAPDUGenerator.h"
 #import "CAPDU.h"
 #import "RAPDU.h"
+#import "EIDCardModel.h"
+#import "NSData+ByteManipulation.h"
 
 @interface EIDReader() <DeviceReaderDelegate>
 
@@ -71,18 +73,21 @@
     }
     
     NSError *readFileError = nil;
-    CAPDU *selectFile = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x02]];
-    CAPDU *readFile = [CAPDUGenerator read];
-    
+    CAPDU *selectFile = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x01]];
     RAPDU *selectFileResponse = [self.deviceReader executeCommand:selectFile error:&readFileError];
-    RAPDU *readFileResponse = [self.deviceReader executeCommand:readFile error:&readFileError];
+    
+    NSArray *selectedFile = [self readSelectedFile];
     
 //    CAPDU *file2 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x02]];
 //    CAPDU *file3 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x03]];
 //    CAPDU *file4 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x05]];
 //    CAPDU *file5 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x07]];
 //    CAPDU *file6 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x01]];
-
+    EIDCardModel *card = [[EIDCardModel alloc] init];
+    card.file1 = [NSData byteDataFromArray:selectedFile];
+    NSString *cn = card.cardNumber;
+    NSString *cid = [card cardId];
+    [self.delegate didReadPublicData:card];
 }
 
 -(RAPDU *)selectApplicationWithError:(NSError **)error
@@ -92,18 +97,47 @@
     
     NSError *underlyingError = nil;
     RAPDU *selectCardResponse = [self.deviceReader executeCommand:selectEmiratesAID error:&underlyingError];
-//    selectCardResponse = [self executeCorrectedLengthCAPDU:selectEmiratesAID withRapdu:selectCardResponse error:&underlyingError];
-//
-//    if (!selectCardResponse) {
-//        NSMutableDictionary* details = [NSMutableDictionary dictionary];
-//        [details setValue:@"Cannot read public data." forKey:NSLocalizedDescriptionKey];
-//        *error = [NSError errorWithDomain:ReadingPublicDataErrorDomain
-//                                     code:ReadingPublicDataErrorCodeSelectAID
-//                                 userInfo:details];
-//    }
-//
     return selectCardResponse;
 }
+
+-(NSArray *)readSelectedFile
+{
+    NSInteger chunkSize = 230;
+    NSInteger bytesRead = 0;
+    NSInteger offset = 0;
+    NSInteger nextLength = chunkSize;
+    NSMutableArray *allBytes = [NSMutableArray new];
+    
+    while (nextLength != 0) {
+        
+        CAPDU *readFile = [CAPDUGenerator readEmiratesCardFileWithOffset:offset andLength:nextLength];
+        RAPDU *readFileResponse = [self.deviceReader executeCommand:readFile error:nil];
+        
+        switch (readFileResponse.responseStatus) {
+            case RAPDUStatusSuccess:{
+                nextLength = chunkSize;
+                bytesRead = readFileResponse.bytes.count - 2;
+                break;
+            }
+            case RAPDUStatusWrongLength:{
+                nextLength = readFileResponse.lastByte.integerValue;
+                bytesRead = 0;
+            }
+            case RAPDUStatusWrongP1P2:{
+                nextLength = 0;
+                bytesRead = 0;
+            }
+            default:
+                break;
+        }
+        
+        [allBytes addObjectsFromArray:readFileResponse.bytes];
+        offset += bytesRead;
+    }
+    
+    return [NSArray arrayWithArray:allBytes];
+}
+
 #pragma mark - Read Public Data
 
 -(RAPDU *)executeCorrectedLengthCAPDU:(CAPDU *)capdu withRapdu:(RAPDU *)rapdu error:(NSError **)error

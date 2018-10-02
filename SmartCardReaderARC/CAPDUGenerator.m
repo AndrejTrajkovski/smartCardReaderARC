@@ -28,7 +28,6 @@
     return selectPPSE;
 }
 
-
 +(CAPDU *)getResponseWithLength:(NSNumber *)le
 {
     CAPDU *getResponseCAPDU = [[CAPDU alloc] initWithCLA:@0x00
@@ -99,14 +98,22 @@
     return readRecord;
 }
 
-+(CAPDU *)readEmiratesCardFileWithFID:(NSArray *)fid
++(CAPDU *)readEmiratesCardFileWithOffset:(NSInteger)offset
+                               andLength:(NSInteger)length
 {
+    NSNumber *p1 = [NSNumber numberWithLong:offset / 0x100];
+    NSNumber *p2 = [NSNumber numberWithLong:offset % 0x100];
+    NSNumber *le = [NSNumber numberWithInt:length];
+    
+    NSLog(@"offset : %lu \n p1 : %@ \n p2 : %@", offset, p1, p2);
+    
     CAPDU *readRecord = [[CAPDU alloc] initWithCLA:@0x00
                                                INS:@0xB0
-                                                p1:@0x00
-                                                p2:@0x00
-                                       commandData:fid];
+                                                p1:p1
+                                                p2:p2
+                            expectedResponseLength:le];
     
     return readRecord;
 }
+
 @end

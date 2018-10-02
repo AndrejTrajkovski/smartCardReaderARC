@@ -46,6 +46,10 @@
         }else if ([[self byteBeforeLast] isEqual:@0x90] && [[self lastByte] isEqual:@0x00]){
             
             return RAPDUStatusSuccess;
+        
+        }else if ([[self byteBeforeLast] isEqual:@0x6B]){
+            
+            return RAPDUStatusWrongP1P2;
             
         }else{
             

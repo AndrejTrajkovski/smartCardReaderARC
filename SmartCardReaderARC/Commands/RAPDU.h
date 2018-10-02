@@ -12,6 +12,7 @@ typedef enum {
     RAPDUStatusWrongLength,
     RAPDUStatusOther,
     RAPDUStatusNoBytes,
+    RAPDUStatusWrongP1P2,
     RAPDUStatusSuccess
 } RAPDUStatus;
 

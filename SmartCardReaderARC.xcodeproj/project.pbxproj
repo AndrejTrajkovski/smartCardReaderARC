@@ -35,6 +35,10 @@
 		897DD95A210B2F6700950723 /* CardAID.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD959210B2F6700950723 /* CardAID.m */; };
 		897DD95D210B30E000950723 /* EmvAIDList.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD95C210B30E000950723 /* EmvAIDList.m */; };
 		897DD95F210B326A00950723 /* AIDList.csv in Resources */ = {isa = PBXBuildFile; fileRef = 897DD95E210B326A00950723 /* AIDList.csv */; };
+		899B8BB22162122900385F27 /* EidTlvList.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BB12162122900385F27 /* EidTlvList.m */; };
+		899B8BB5216212C000385F27 /* EIDBerTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BB4216212C000385F27 /* EIDBerTags.m */; };
+		899B8BB8216213C900385F27 /* EIDCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BB7216213C900385F27 /* EIDCardModel.m */; };
+		899B8BBC2162174200385F27 /* EIDTlv.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BBB2162174200385F27 /* EIDTlv.m */; };
 		899C3F27215A314A00BB8CED /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899C3F26215A314A00BB8CED /* ExternalAccessory.framework */; };
 		899C3F29215A315800BB8CED /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899C3F28215A315800BB8CED /* CoreBluetooth.framework */; };
 		899C3F33215A366700BB8CED /* libiRockey301_ccid_V3.5.16_Debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 899C3F31215A366700BB8CED /* libiRockey301_ccid_V3.5.16_Debug.a */; };
@@ -114,6 +118,14 @@
 		897DD95B210B30E000950723 /* EmvAIDList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvAIDList.h; sourceTree = "<group>"; };
 		897DD95C210B30E000950723 /* EmvAIDList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvAIDList.m; sourceTree = "<group>"; };
 		897DD95E210B326A00950723 /* AIDList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AIDList.csv; sourceTree = "<group>"; };
+		899B8BB02162122900385F27 /* EidTlvList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EidTlvList.h; sourceTree = "<group>"; };
+		899B8BB12162122900385F27 /* EidTlvList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EidTlvList.m; sourceTree = "<group>"; };
+		899B8BB3216212C000385F27 /* EIDBerTags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDBerTags.h; sourceTree = "<group>"; };
+		899B8BB4216212C000385F27 /* EIDBerTags.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDBerTags.m; sourceTree = "<group>"; };
+		899B8BB6216213C900385F27 /* EIDCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDCardModel.h; sourceTree = "<group>"; };
+		899B8BB7216213C900385F27 /* EIDCardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDCardModel.m; sourceTree = "<group>"; };
+		899B8BBA2162174200385F27 /* EIDTlv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDTlv.h; sourceTree = "<group>"; };
+		899B8BBB2162174200385F27 /* EIDTlv.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDTlv.m; sourceTree = "<group>"; };
 		899C3F26215A314A00BB8CED /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		899C3F28215A315800BB8CED /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		899C3F2B215A366700BB8CED /* ReaderInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderInterface.h; sourceTree = "<group>"; };
@@ -184,6 +196,7 @@
 		82268C0021067E4B0044591C /* EmvTlv */ = {
 			isa = PBXGroup;
 			children = (
+				899B8BB92162172100385F27 /* EidTags */,
 				89A42CFD211879C300136C1B /* EmvTags */,
 				89A42CFC211879B300136C1B /* AID */,
 			);
@@ -304,8 +317,23 @@
 				8913AF1720FE146000224E26 /* RAPDUParser.m */,
 				896440A6211DBD2F0024CDDD /* EMVCardModel.h */,
 				896440A7211DBD2F0024CDDD /* EMVCardModel.m */,
+				899B8BB6216213C900385F27 /* EIDCardModel.h */,
+				899B8BB7216213C900385F27 /* EIDCardModel.m */,
 			);
 			path = ParsingRAPDU;
+			sourceTree = "<group>";
+		};
+		899B8BB92162172100385F27 /* EidTags */ = {
+			isa = PBXGroup;
+			children = (
+				899B8BB02162122900385F27 /* EidTlvList.h */,
+				899B8BB12162122900385F27 /* EidTlvList.m */,
+				899B8BB3216212C000385F27 /* EIDBerTags.h */,
+				899B8BB4216212C000385F27 /* EIDBerTags.m */,
+				899B8BBA2162174200385F27 /* EIDTlv.h */,
+				899B8BBB2162174200385F27 /* EIDTlv.m */,
+			);
+			path = EidTags;
 			sourceTree = "<group>";
 		};
 		899C3F2A215A366700BB8CED /* include */ = {
@@ -600,8 +628,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				899B8BB8216213C900385F27 /* EIDCardModel.m in Sources */,
 				82268BFC21067AF30044591C /* EMVTlv.m in Sources */,
 				82268BFF21067E450044591C /* EmvTlvList.m in Sources */,
+				899B8BBC2162174200385F27 /* EIDTlv.m in Sources */,
 				8913AF1820FE146000224E26 /* RAPDUParser.m in Sources */,
 				89E508D2214926AC00D8DE1D /* FeitianDeviceReader.m in Sources */,
 				8913AF2520FF35D200224E26 /* TactivoDeviceReader.m in Sources */,
@@ -610,8 +640,10 @@
 				890337A821469ADE000E48F2 /* NefcomDeviceReader.m in Sources */,
 				897DD95D210B30E000950723 /* EmvAIDList.m in Sources */,
 				8913AF2120FF31D700224E26 /* NSArray+ByteManipulation.m in Sources */,
+				899B8BB22162122900385F27 /* EidTlvList.m in Sources */,
 				897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */,
 				8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */,
+				899B8BB5216212C000385F27 /* EIDBerTags.m in Sources */,
 				89EA051621383BF600CB36FD /* EMVBerTags.m in Sources */,
 				896440A8211DBD2F0024CDDD /* EMVCardModel.m in Sources */,
 				8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */,

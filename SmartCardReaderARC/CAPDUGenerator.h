@@ -31,6 +31,7 @@
 
 +(CAPDU *)selectEmiratesCardFileWithFID:(NSArray *)fid;
 
-+(CAPDU *)readEmiratesCardFileWithFID:(NSArray *)fid;
++(CAPDU *)readEmiratesCardFileWithOffset:(NSInteger)offset
+                               andLength:(NSInteger)length;
 
 @end
