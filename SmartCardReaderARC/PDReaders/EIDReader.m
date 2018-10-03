@@ -112,7 +112,7 @@
         
         CAPDU *readFile = [CAPDUGenerator readEmiratesCardFileWithOffset:offset andLength:nextLength];
         RAPDU *readFileResponse = [self.deviceReader executeCommand:readFile error:nil];
-        
+        NSLog(@"read file response : %@", readFileResponse.bytes);
         switch (readFileResponse.responseStatus) {
             case RAPDUStatusSuccess:{
                 nextLength = chunkSize;
@@ -131,7 +131,9 @@
                 break;
         }
         
-        [allBytes addObjectsFromArray:readFileResponse.bytes];
+        NSRange cutLastTwoElementsRange = NSMakeRange(0, readFileResponse.bytes.count - 2 );
+        NSArray *bytesWithoutStatus = [readFileResponse.bytes subarrayWithRange:cutLastTwoElementsRange];
+        [allBytes addObjectsFromArray:bytesWithoutStatus];
         offset += bytesRead;
     }
     

@@ -815,8 +815,9 @@
 			baseConfigurationReference = 8D28A030C0AB434E6807CB68 /* Pods-SmartCardReaderARC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = LAA69LK8PF;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DKV7Q87Z7J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
@@ -843,10 +844,10 @@
 					"-l\"BerTlv\"",
 					"-l\"CHCSVParser\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netcetera.smartCardReaderARC;
+				PRODUCT_BUNDLE_IDENTIFIER = andrej.smartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b7a75b3-f221-4cb8-8d9a-1ce815fe893e";
-				PROVISIONING_PROFILE_SPECIFIER = GenericDevelopmentNew;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -857,8 +858,9 @@
 			baseConfigurationReference = 61A5E681FC7E0A2FBE338A05 /* Pods-SmartCardReaderARC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DKV7Q87Z7J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
@@ -885,7 +887,7 @@
 					"-l\"BerTlv\"",
 					"-l\"CHCSVParser\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netcetera.smartCardReaderARC;
+				PRODUCT_BUNDLE_IDENTIFIER = andrej.smartCardReaderARC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
