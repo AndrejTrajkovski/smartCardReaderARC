@@ -102,14 +102,13 @@
 
 -(NSArray *)readSelectedFile
 {
-    NSInteger chunkSize = 230;
+    const NSInteger chunkSize = 230;
     NSInteger bytesRead = 0;
     NSInteger offset = 0;
     NSInteger nextLength = chunkSize;
     NSMutableArray *allBytes = [NSMutableArray new];
     
     while (nextLength != 0) {
-        
         CAPDU *readFile = [CAPDUGenerator readEmiratesCardFileWithOffset:offset andLength:nextLength];
         RAPDU *readFileResponse = [self.deviceReader executeCommand:readFile error:nil];
         NSLog(@"read file response : %@", readFileResponse.bytes);
@@ -131,8 +130,7 @@
                 break;
         }
         
-        NSRange cutLastTwoElementsRange = NSMakeRange(0, readFileResponse.bytes.count - 2 );
-        NSArray *bytesWithoutStatus = [readFileResponse.bytes subarrayWithRange:cutLastTwoElementsRange];
+        NSArray *bytesWithoutStatus = [readFileResponse bytesWithoutStatus];
         [allBytes addObjectsFromArray:bytesWithoutStatus];
         offset += bytesRead;
     }

@@ -72,4 +72,11 @@
     return self.bytes[self.bytes.count - 2];
 }
 
+-(NSArray *)bytesWithoutStatus
+{
+    NSRange cutLastTwoElementsRange = NSMakeRange(0, self.bytes.count - 2 );
+    NSArray *bytesWithoutStatus = [self.bytes subarrayWithRange:cutLastTwoElementsRange];
+    return bytesWithoutStatus;
+}
+
 @end

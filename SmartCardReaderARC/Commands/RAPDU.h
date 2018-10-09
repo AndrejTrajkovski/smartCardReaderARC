@@ -24,5 +24,6 @@ typedef enum {
 -(RAPDUStatus)responseStatus;
 -(NSNumber *)lastByte;
 -(NSNumber *)byteBeforeLast;
+-(NSArray *)bytesWithoutStatus;
 
 @end
