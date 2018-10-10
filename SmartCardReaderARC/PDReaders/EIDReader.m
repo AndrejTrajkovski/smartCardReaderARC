@@ -85,7 +85,7 @@
 //    CAPDU *file6 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x01]];
     EIDCardModel *card = [[EIDCardModel alloc] init];
     card.file1 = [NSData byteDataFromArray:selectedFile];
-    NSString *cn = card.cardNumber;
+//    NSString *cn = card.cardNumber;
     NSString *cid = [card cardId];
     [self.delegate didReadPublicData:card];
 }
@@ -122,10 +122,12 @@
             case RAPDUStatusWrongLength:{
                 nextLength = readFileResponse.lastByte.integerValue;
                 bytesRead = 0;
+                break;
             }
             case RAPDUStatusWrongP1P2:{
                 nextLength = 0;
                 bytesRead = 0;
+                break;
             }
             default:
                 break;
