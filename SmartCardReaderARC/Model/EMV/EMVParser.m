@@ -6,7 +6,7 @@
 //  Copyright © 2018 Andrej Trajkovski. All rights reserved.
 //
 
-#import "RAPDUParser.h"
+#import "EMVParser.h"
 #import "BerTlvParser.h"
 #import "BerTag.h"
 #import "BerTlv.h"
@@ -20,13 +20,13 @@
 #import "EMVTlv.h"
 #import "BerTlv+Emv.h"
 
-@interface RAPDUParser()
+@interface EMVParser()
 
 @property (strong, nonatomic) BerTlvParser *berTlvParser;
 
 @end
 
-@implementation RAPDUParser
+@implementation EMVParser
 
 NSString *const RAPDUParsingErrorDomain = @"RAPDUParsingErrorDomain";
 

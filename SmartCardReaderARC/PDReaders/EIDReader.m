@@ -8,7 +8,7 @@
 
 #import "EIDReader.h"
 #import "CardAID.h"
-#import "RAPDUParser.h"
+#import "EMVParser.h"
 #import "CAPDUGenerator.h"
 #import "CAPDU.h"
 #import "RAPDU.h"
@@ -17,7 +17,7 @@
 
 @interface EIDReader() <DeviceReaderDelegate>
 
-@property (strong, nonatomic) RAPDUParser *rapduParser;
+@property (strong, nonatomic) EMVParser *rapduParser;
 
 @end
 
@@ -36,7 +36,7 @@
         self.delegate = delegate;
         self.deviceReader = deviceReader;
         self.deviceReader.delegate = self;
-        self.rapduParser = [RAPDUParser new];
+        self.rapduParser = [EMVParser new];
     }
     
     return self;

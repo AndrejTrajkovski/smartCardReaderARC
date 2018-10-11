@@ -9,7 +9,7 @@
 #import "CAPDU.h"
 #import "RAPDU.h"
 #import "CAPDUGenerator.h"
-#import "RAPDUParser.h"
+#import "EMVParser.h"
 #import "HexUtil.h"
 #import "NSData+ByteManipulation.h"
 #import "EmvAIDList.h"
@@ -18,7 +18,7 @@
 
 @interface EMVReader() <DeviceReaderDelegate>
 
-@property (strong, nonatomic) RAPDUParser *rapduParser;
+@property (strong, nonatomic) EMVParser *rapduParser;
 
 @end
 
@@ -41,7 +41,7 @@ NSString *const ReadingPublicDataErrorDomain = @"ReadingPublicDataErrorDomain";
         self.delegate = delegate;
         self.deviceReader = deviceReader;
         self.deviceReader.delegate = self;
-        self.rapduParser = [RAPDUParser new];
+        self.rapduParser = [EMVParser new];
     }
     
     return self;

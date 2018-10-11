@@ -7,14 +7,14 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "RAPDUParser.h"
+#import "EMVParser.h"
 #import "NSData+ByteManipulation.h"
 #import "NSArray+ByteManipulation.h"
 
 @interface VisaElectronPDParsingTest : XCTestCase
 
 @property (strong, nonatomic) NSData *visaElectronPDDataBytes;
-@property (strong, nonatomic) RAPDUParser *rapduParser;
+@property (strong, nonatomic) EMVParser *rapduParser;
 @end
 
 @implementation VisaElectronPDParsingTest

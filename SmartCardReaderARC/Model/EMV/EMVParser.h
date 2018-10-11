@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, RAPDUParsingErrorCode) {
 };
 
 @class RAPDU, CAPDU;
-@interface RAPDUParser : NSObject
+@interface EMVParser : NSObject
 
 -(NSNumber *)sfiFromRAPDU:(RAPDU *)rapdu error:(NSError **)error;
 
