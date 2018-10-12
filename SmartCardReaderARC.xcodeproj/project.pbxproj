@@ -15,15 +15,14 @@
 		82585265216FBC70009FDD03 /* EIDFileOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 82585264216FBC70009FDD03 /* EIDFileOne.m */; };
 		8258526D216FC7EC009FDD03 /* EIDBaseFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8258526C216FC7EC009FDD03 /* EIDBaseFile.m */; };
 		82585270216FCA3C009FDD03 /* EIDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8258526F216FCA3C009FDD03 /* EIDParser.m */; };
-		82585273216FD28A009FDD03 /* BerTag+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 82585272216FD28A009FDD03 /* BerTag+Util.m */; };
 		82585276216FD6CE009FDD03 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 82585275216FD6CE009FDD03 /* NSArray+Util.m */; };
+		8258527B217107AA009FDD03 /* EIDParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8258527A217107AA009FDD03 /* EIDParserTest.m */; };
 		8277EF5520FB7EDD00DF4BC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */; };
 		8277EF5820FB7EDD00DF4BC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF5720FB7EDD00DF4BC6 /* ViewController.m */; };
 		8277EF5B20FB7EDD00DF4BC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5920FB7EDD00DF4BC6 /* Main.storyboard */; };
 		8277EF5D20FB7EDE00DF4BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5C20FB7EDE00DF4BC6 /* Assets.xcassets */; };
 		8277EF6020FB7EDE00DF4BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8277EF5E20FB7EDE00DF4BC6 /* LaunchScreen.storyboard */; };
 		8277EF6320FB7EDE00DF4BC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6220FB7EDE00DF4BC6 /* main.m */; };
-		8277EF6D20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */; };
 		8277EF9A20FB847800DF4BC6 /* EMVReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9220FB847800DF4BC6 /* EMVReader.m */; };
 		8277EF9B20FB847800DF4BC6 /* CAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9620FB847800DF4BC6 /* CAPDU.m */; };
 		8277EF9D20FB847800DF4BC6 /* RAPDU.m in Sources */ = {isa = PBXBuildFile; fileRef = 8277EF9920FB847800DF4BC6 /* RAPDU.m */; };
@@ -32,7 +31,6 @@
 		8913AF1820FE146000224E26 /* EMVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1720FE146000224E26 /* EMVParser.m */; };
 		8913AF2520FF35D200224E26 /* TactivoDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2420FF35D200224E26 /* TactivoDeviceReader.m */; };
 		8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */; };
-		894FC4E82105BCC300E9A686 /* VisaElectronPDParsingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */; };
 		894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 894FC4E92105C08900E9A686 /* pd data example.rtf */; };
 		896440A8211DBD2F0024CDDD /* EMVCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 896440A7211DBD2F0024CDDD /* EMVCardModel.m */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
@@ -82,15 +80,13 @@
 		8258525C216FB986009FDD03 /* NSArray+ByteManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ByteManipulation.m"; sourceTree = "<group>"; };
 		82585263216FBC70009FDD03 /* EIDFileOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDFileOne.h; sourceTree = "<group>"; };
 		82585264216FBC70009FDD03 /* EIDFileOne.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDFileOne.m; sourceTree = "<group>"; };
-		8258526A216FC742009FDD03 /* EIDFileTags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDFileTags.h; sourceTree = "<group>"; };
 		8258526B216FC7EC009FDD03 /* EIDBaseFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDBaseFile.h; sourceTree = "<group>"; };
 		8258526C216FC7EC009FDD03 /* EIDBaseFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDBaseFile.m; sourceTree = "<group>"; };
 		8258526E216FCA3C009FDD03 /* EIDParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDParser.h; sourceTree = "<group>"; };
 		8258526F216FCA3C009FDD03 /* EIDParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDParser.m; sourceTree = "<group>"; };
-		82585271216FD28A009FDD03 /* BerTag+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BerTag+Util.h"; sourceTree = "<group>"; };
-		82585272216FD28A009FDD03 /* BerTag+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BerTag+Util.m"; sourceTree = "<group>"; };
 		82585274216FD6CE009FDD03 /* NSArray+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
 		82585275216FD6CE009FDD03 /* NSArray+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
+		8258527A217107AA009FDD03 /* EIDParserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDParserTest.m; sourceTree = "<group>"; };
 		8277EF5020FB7EDD00DF4BC6 /* SmartCardReaderARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCardReaderARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8277EF5320FB7EDD00DF4BC6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8277EF5420FB7EDD00DF4BC6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -102,7 +98,6 @@
 		8277EF6120FB7EDE00DF4BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8277EF6220FB7EDE00DF4BC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8277EF6820FB7EDE00DF4BC6 /* SmartCardReaderARCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCardReaderARCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartCardReaderARCTests.m; sourceTree = "<group>"; };
 		8277EF6E20FB7EDE00DF4BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8277EF9220FB847800DF4BC6 /* EMVReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVReader.m; sourceTree = "<group>"; };
 		8277EF9320FB847800DF4BC6 /* CAPDU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPDU.h; sourceTree = "<group>"; };
@@ -121,7 +116,6 @@
 		8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFIWithRecordNumbers.h; sourceTree = "<group>"; };
 		8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFIWithRecordNumbers.m; sourceTree = "<group>"; };
 		8913AF2A2100763100224E26 /* APDU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
-		894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisaElectronPDParsingTest.m; sourceTree = "<group>"; };
 		894FC4E92105C08900E9A686 /* pd data example.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "pd data example.rtf"; sourceTree = "<group>"; };
 		896440A6211DBD2F0024CDDD /* EMVCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMVCardModel.h; sourceTree = "<group>"; };
 		896440A7211DBD2F0024CDDD /* EMVCardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMVCardModel.m; sourceTree = "<group>"; };
@@ -251,8 +245,6 @@
 				8258525A216FB986009FDD03 /* NSData+ByteManipulation.h */,
 				8258525B216FB986009FDD03 /* NSData+ByteManipulation.m */,
 				8258525C216FB986009FDD03 /* NSArray+ByteManipulation.m */,
-				82585271216FD28A009FDD03 /* BerTag+Util.h */,
-				82585272216FD28A009FDD03 /* BerTag+Util.m */,
 				82585274216FD6CE009FDD03 /* NSArray+Util.h */,
 				82585275216FD6CE009FDD03 /* NSArray+Util.m */,
 			);
@@ -262,7 +254,6 @@
 		8258525F216FBBC1009FDD03 /* FilesOnCard */ = {
 			isa = PBXGroup;
 			children = (
-				8258526A216FC742009FDD03 /* EIDFileTags.h */,
 				8258526B216FC7EC009FDD03 /* EIDBaseFile.h */,
 				8258526C216FC7EC009FDD03 /* EIDBaseFile.m */,
 				82585263216FBC70009FDD03 /* EIDFileOne.h */,
@@ -322,9 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				894FC4E92105C08900E9A686 /* pd data example.rtf */,
-				8277EF6C20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m */,
 				8277EF6E20FB7EDE00DF4BC6 /* Info.plist */,
-				894FC4E72105BCC300E9A686 /* VisaElectronPDParsingTest.m */,
+				8258527A217107AA009FDD03 /* EIDParserTest.m */,
 			);
 			path = SmartCardReaderARCTests;
 			sourceTree = "<group>";
@@ -685,7 +675,6 @@
 				899B8BBC2162174200385F27 /* EIDTlv.m in Sources */,
 				8913AF1820FE146000224E26 /* EMVParser.m in Sources */,
 				89E508D2214926AC00D8DE1D /* FeitianDeviceReader.m in Sources */,
-				82585273216FD28A009FDD03 /* BerTag+Util.m in Sources */,
 				8913AF2520FF35D200224E26 /* TactivoDeviceReader.m in Sources */,
 				8277EF9A20FB847800DF4BC6 /* EMVReader.m in Sources */,
 				89A303682147CEC700AEF976 /* SmartEID.m in Sources */,
@@ -719,8 +708,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8277EF6D20FB7EDE00DF4BC6 /* SmartCardReaderARCTests.m in Sources */,
-				894FC4E82105BCC300E9A686 /* VisaElectronPDParsingTest.m in Sources */,
+				8258527B217107AA009FDD03 /* EIDParserTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

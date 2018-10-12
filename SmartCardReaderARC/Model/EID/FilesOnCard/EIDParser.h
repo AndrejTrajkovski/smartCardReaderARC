@@ -1,14 +1,7 @@
-//
-//  EIDParser.h
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 10/11/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
-@class EIDBaseFile, EIDTlv;
 
+@class EIDBaseFile, BerTag;
 @interface EIDParser : NSObject
--(NSArray *)datainFile:(EIDBaseFile *)file;
+-(NSData *)dataForTag:(BerTag *)tag inFile:(EIDBaseFile *)file;
+
 @end

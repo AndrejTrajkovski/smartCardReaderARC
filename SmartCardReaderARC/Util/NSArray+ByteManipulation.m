@@ -1,11 +1,3 @@
-//
-//  NSArray+ByteManipulation.m
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 7/15/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import "NSArray+ByteManipulation.h"
 
 @implementation NSArray (ByteManipulation)
@@ -41,26 +33,6 @@
     
     return [NSArray arrayWithArray:helperArray];;
 }
-
-
-//-(instancetype)initFromUnsignedCharArray:(unsigned char *)unsignedCharArray
-//                               withCount:(int)arrayCount
-//{
-//    self = [self init];
-//
-//    if (self) {
-//
-//        NSMutableArray *helperArray = [NSMutableArray new];
-//        for (int i = 0; i < arrayCount; i++) {
-//            unsigned char x = unsignedCharArray[i];
-//            NSNumber *number = [NSNumber numberWithUnsignedChar:x];
-//            [helperArray addObject:number];
-//        }
-//        self = [NSArray arrayWithArray:helperArray];
-//    }
-//
-//    return self;
-//}
 
 -(unsigned char *)cArrayFromBytes
 {

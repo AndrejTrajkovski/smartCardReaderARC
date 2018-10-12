@@ -1,11 +1,3 @@
-//
-//  SmartEID.m
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 9/11/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import "SmartEID.h"
 
 #import <ExternalAccessory/ExternalAccessory.h>

@@ -12,6 +12,7 @@
 
 -(instancetype)initWithBerTag:(BerTag *)berTag
                       andName:(NSString *)name
+                 andValueType:(ValueType)valueType
 {
     self = [super init];
     
@@ -19,6 +20,7 @@
         
         self.tag = berTag;
         self.name = name;
+        self.valueType = valueType;
     }
     
     return self;

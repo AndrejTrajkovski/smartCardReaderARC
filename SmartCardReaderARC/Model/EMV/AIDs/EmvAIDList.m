@@ -1,11 +1,3 @@
-//
-//  EmvAIDList.m
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 7/27/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import "EmvAIDList.h"
 #import "CardAID.h"
 #import "CHCSVParser.h"

@@ -1,16 +1,10 @@
-//
-//  EIDBaseFile.h
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 10/11/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
-#import "EIDFileTags.h"
 
-@interface EIDBaseFile : NSObject <EIDFileTags>
+@class BerTag;
+@interface EIDBaseFile : NSObject
 
+-(instancetype)initWithBytes:(NSArray *)bytes;
 @property (strong, nonatomic) NSArray *bytes;
+-(BerTag *)baseTag;
 
 @end

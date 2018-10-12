@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561024239.220066"
+            timestampString = "561055540.092402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561024239.22014"
+            timestampString = "561055540.092533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561024239.22019"
+            timestampString = "561055540.092634"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561024239.220234"
+            timestampString = "561055540.092701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561024239.220277"
+            timestampString = "561055540.092764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561024239.22032"
+            timestampString = "561055540.092828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561024239.22036"
+            timestampString = "561055540.092896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -122,93 +122,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/BerTlv/BerTlv/BerTlvParser.m"
-            timestampString = "561024239.220403"
+            timestampString = "561055540.092988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "-parseWithResult:data:offset:len:level:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartCardReaderARC/ViewController.m"
-            timestampString = "561024239.220605"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartCardReaderARC/Model/EID/FilesOnCard/EIDParser.m"
-            timestampString = "561024239.220958"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-datainFile:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartCardReaderARC/Model/EID/FilesOnCard/EIDParser.m"
-            timestampString = "561024239.221016"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-datainFile:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[EIDParser datainFile:]"
-                  moduleName = "SmartCardReaderARC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrejtrajkovski/Documents/workspace/SmartCardReaderARC/SmartCardReaderARC/Model/EID/FilesOnCard/EIDParser.m"
-                  timestampString = "561024239.363119"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "1503">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[EIDParser datainFile:]"
-                  moduleName = "SmartCardReaderARC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrejtrajkovski/Documents/workspace/SmartCardReaderARC/SmartCardReaderARC/Model/EID/FilesOnCard/EIDParser.m"
-                  timestampString = "561024239.365366"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "1577">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

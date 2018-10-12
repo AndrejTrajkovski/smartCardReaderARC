@@ -1,10 +1,3 @@
-//
-//  RAPDU.m
-//  SmartCardSampleOBJC1
-//
-//  Created by Andrej Trajkovski on 7/15/18.
-//
-
 #import "RAPDU.h"
 #import "NSArray+ByteManipulation.h"
 

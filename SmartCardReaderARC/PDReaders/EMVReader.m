@@ -1,10 +1,3 @@
-//
-//  EMVReader.m
-//  SmartCardSampleOBJC1
-//
-//  Created by Andrej Trajkovski on 7/15/18.
-//
-
 #import "EMVReader.h"
 #import "CAPDU.h"
 #import "RAPDU.h"

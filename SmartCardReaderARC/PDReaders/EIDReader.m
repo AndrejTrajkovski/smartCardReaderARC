@@ -1,11 +1,3 @@
-//
-//  EIDReader.m
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 9/11/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import "EIDReader.h"
 #import "CardAID.h"
 #import "EMVParser.h"

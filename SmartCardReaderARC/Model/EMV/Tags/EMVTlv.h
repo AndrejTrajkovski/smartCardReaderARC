@@ -1,11 +1,3 @@
-//
-//  EMVTlv.h
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 7/23/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 @class BerTag;
 typedef enum TagValueType : NSUInteger {
@@ -25,7 +17,6 @@ typedef enum TagValueType : NSUInteger {
 @property (strong, nonatomic) NSString *details;
 @property (assign, nonatomic) NSUInteger minLength;
 @property (assign, nonatomic) NSUInteger maxLength;
-//@property (assign, nonatomic) BOOL isConstructed;
 
 -(instancetype)initWithBerTag:(BerTag *)berTag
                       andName:(NSString *)name;

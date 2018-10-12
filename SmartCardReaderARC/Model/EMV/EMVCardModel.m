@@ -1,11 +1,3 @@
-//
-//  EMVCard.m
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 8/10/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import "EMVCardModel.h"
 #import "BerTlv.h"
 #import "EmvTlvList.h"

@@ -1,11 +1,3 @@
-//
-//  EmvTlvList.m
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 7/23/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import "EmvTlvList.h"
 #import "EMVTlv.h"
 #import "BerTag.h"
@@ -42,16 +34,6 @@ static NSArray *list = nil;
     
     return nil;
 }
-
-//+(NSArray *)list
-//{
-//    if (!list) {
-//
-//        list = [EmvTlvList getEmvTagsListFromResourceFileError:nil];
-//    }
-//
-//    return list;
-//}
 
 +(EMVTlv *)PAN_NUMBER
 {

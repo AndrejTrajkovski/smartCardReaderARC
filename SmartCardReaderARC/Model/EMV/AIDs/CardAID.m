@@ -1,11 +1,3 @@
-//
-//  EmvAID.m
-//  SmartCardReaderARC
-//
-//  Created by Andrej Trajkovski on 7/27/18.
-//  Copyright © 2018 Andrej Trajkovski. All rights reserved.
-//
-
 #import "CardAID.h"
 #import "HexUtil.h"
 #import "NSArray+ByteManipulation.h"
