@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class EIDBaseFile;
 @interface EIDCardModel : NSObject
 
+@property (strong, nonatomic) NSArray<EIDBaseFile *> *files;
 @property (strong, nonatomic) NSString *cardId;
 @property (strong, nonatomic) NSString *cardNumber;
 @property (strong, nonatomic) NSData *file1; 

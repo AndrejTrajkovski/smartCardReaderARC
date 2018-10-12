@@ -125,8 +125,6 @@ static int IS_DEBUG_ENABLED = 0;
     } else {
         return 1;
     }
-
-    
 }
 
 - (BerTag *) createTag:(NSData *)aBuf offset:(uint)aOffset len:(uint)aLen pad:(NSString *)aLevelPadding {
