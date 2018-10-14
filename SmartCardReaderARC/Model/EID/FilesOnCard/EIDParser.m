@@ -4,51 +4,29 @@
 #import "BerTag.h"
 #import "NSArray+Util.h"
 #import "NSData+ByteManipulation.h"
-#import "EIDTlv.h"
-#import "BerTlv.h"
 #import <UIKit/UIImage.h>
+#import "EIDBerTags.h"
 
 @implementation EIDParser
 
--(id)valueForEMVTlv:(EIDTlv *)eidTlv inFile:(EIDBaseFile *)file
+-(NSData *)dataForTag:(BerTag *)tag
 {
-    NSData *valueData = [self dataForTag:eidTlv.tag inFile:file];
-    
-    switch (eidTlv.valueType) {
-        case ValueTypeText:{
-            NSString *value = [[NSString alloc] initWithData:valueData encoding:NSASCIIStringEncoding];
-            return value;
-            break;
-        }
-        case ValueTypeNumeric:{
-            NSInteger decodedInteger;
-            [valueData getBytes:&decodedInteger length:sizeof(decodedInteger)];
-            NSNumber *integerObject = [NSNumber numberWithInteger:decodedInteger];
-            return integerObject;
-        }
-            break;
-        case ValueTypeImage:{
-            UIImage *myImage = [[UIImage alloc] initWithData:valueData];
-            return myImage;
-            break;
-        }
-        default:
-            break;
-    }
+    return nil;
 }
 
--(NSData *)dataForTag:(BerTag *)tag inFile:(EIDBaseFile *)file
+-(NSData *)dataForTag:(BerTag *)tag inBytes:(NSArray *)bytes
 {
-    NSArray *dataWithNoBaseTLV = [self cutBaseTagDatainFile:file];
+    NSArray *dataWithNoBaseTLV = [self cutBaseTagDataInBytes:bytes];
     NSArray *tagBytesArray = [NSArray byteArrayFromData:tag.data];
     NSArray *valueAsArray = [self valueForTagBytes:tagBytesArray inBytes:dataWithNoBaseTLV];
     return [NSData byteDataFromArray:valueAsArray];
 }
 
--(NSArray *)cutBaseTagDatainFile:(EIDBaseFile *)file
+-(NSArray *)cutBaseTagDataInBytes:(NSArray *)bytes
 {
-    NSArray *tagBytesArray = [NSArray byteArrayFromData:file.baseTag.data];
-    NSArray *noTagBytes = [self valueForTagBytes:tagBytesArray inBytes:file.bytes];
+    BerTag *baseTag = [EIDBerTags BASE_TAG];
+    NSArray *tagBytesArray = [NSArray byteArrayFromData:baseTag.data];
+    NSArray *noTagBytes = [self valueForTagBytes:tagBytesArray inBytes:bytes];
     return noTagBytes;
 }
 

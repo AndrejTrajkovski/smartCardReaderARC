@@ -95,11 +95,11 @@ SCARDCONTEXT gContxtHandle;
         return;
     }
 
-    BOOL readerAttached = [self.interface isReaderAttached];
-    BOOL cardAttached = [self.interface isCardAttached];
-    char mszReaders[128] = "";
-    DWORD pcchReaders = -1;
-    NSInteger iRet = SCardListReaders(gContxtHandle, NULL, mszReaders, &pcchReaders);
+//    BOOL readerAttached = [self.interface isReaderAttached];
+//    BOOL cardAttached = [self.interface isCardAttached];
+//    char mszReaders[128] = "";
+//    DWORD pcchReaders = -1;
+//    NSInteger iRet = SCardListReaders(gContxtHandle, NULL, mszReaders, &pcchReaders);
 
     
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

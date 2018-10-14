@@ -20,6 +20,7 @@ typedef enum {
 -(instancetype)initWithBerTag:(BerTag *)berTag
                       andName:(NSString *)name
                  andValueType:(ValueType)valueType;
+
 @property (strong, nonatomic) BerTag *tag;
 @property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) ValueType valueType;

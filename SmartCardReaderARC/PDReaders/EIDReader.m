@@ -6,6 +6,9 @@
 #import "RAPDU.h"
 #import "EIDCardModel.h"
 #import "NSData+ByteManipulation.h"
+#import "EIDFiles.h"
+#import "EIDCardAdapter.h"
+#import "EIDParser.h"
 
 @interface EIDReader() <DeviceReaderDelegate>
 
@@ -58,28 +61,41 @@
     
     NSError *error = nil;
     RAPDU *selectAID = [self selectApplicationWithError:&error];
-    
+    //We do not check the response for error.
     if (!selectAID) {
         [self.delegate didFailToReadPublicDataWithError:error];
         return;
     }
+    //App is selected, continue with selecting files and reading files
+    NSArray *filesList = [self filesList];
+    [filesList enumerateObjectsUsingBlock:^(EIDBaseFile* file, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self selectFileWithId:file.fileId];
+        file.bytes = [self readSelectedFile];
+    }];
     
-    NSError *readFileError = nil;
-    CAPDU *selectFile = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x01]];
-    RAPDU *selectFileResponse = [self.deviceReader executeCommand:selectFile error:&readFileError];
-    
-    NSArray *selectedFile = [self readSelectedFile];
-    
-//    CAPDU *file2 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x02]];
-//    CAPDU *file3 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x03]];
-//    CAPDU *file4 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x05]];
-//    CAPDU *file5 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x07]];
-//    CAPDU *file6 = [CAPDUGenerator selectEmiratesCardFileWithFID:@[@0x02, @0x01]];
-    EIDCardModel *card = [[EIDCardModel alloc] init];
-    card.file1 = [NSData byteDataFromArray:selectedFile];
-//    NSString *cn = card.cardNumber;
-    NSString *cid = [card cardId];
+    EIDCardAdapter *cardAdapter = [[EIDCardAdapter alloc] initWithParser:[EIDParser new]];
+    EIDCardModel *card = [cardAdapter cardModelForFiles:filesList];
     [self.delegate didReadPublicData:card];
+}
+
+-(NSArray<EIDBaseFile*> *)filesList
+{
+    EIDFileOne *fileOne = [EIDFileOne new];
+    EIDFileTwo *fileTwo = [EIDFileTwo new];
+    EIDFileThree *fileThree = [EIDFileThree new];
+    EIDFileFour *fileFour = [EIDFileFour new];
+    EIDFileFive *fileFive = [EIDFileFive new];
+    EIDFileSix *fileSix = [EIDFileSix new];
+    
+    return @[fileOne, fileTwo, fileThree, fileFour, fileFive, fileSix];
+}
+
+-(RAPDU *)selectFileWithId:(NSArray <NSNumber *>*)identifier
+{
+    NSError *readFileError = nil;
+    CAPDU *selectFile = [CAPDUGenerator selectEmiratesCardFileWithFID:identifier];
+    RAPDU *selectFileResponse = [self.deviceReader executeCommand:selectFile error:&readFileError];
+    return selectFileResponse;
 }
 
 -(RAPDU *)selectApplicationWithError:(NSError **)error

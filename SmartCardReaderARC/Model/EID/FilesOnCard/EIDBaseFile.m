@@ -1,23 +1,12 @@
 #import "EIDBaseFile.h"
-#import "BerTag.h"
-#import "EIDBerTags.h"
 
 @implementation EIDBaseFile
 
--(instancetype)initWithBytes:(NSArray *)bytes
+-(NSArray<NSNumber *> *)fileId
 {
-    self = [super init];
-    
-    if (self) {
-        self.bytes = bytes;
-    }
-    
-    return self;
-}
-
--(BerTag *)baseTag
-{
-    return [EIDBerTags BASE_TAG];
+    [NSException raise:NSInternalInconsistencyException
+                format:@"Method fileId should be overridden in subclasses."];
+    return nil;
 }
 
 @end

@@ -95,7 +95,7 @@
 {
     NSNumber *p1 = [NSNumber numberWithLong:offset / 0x100];
     NSNumber *p2 = [NSNumber numberWithLong:offset % 0x100];
-    NSNumber *le = [NSNumber numberWithInt:length];
+    NSNumber *le = [NSNumber numberWithInteger:length];
     
     NSLog(@"offset : %lu \n p1 : %@ \n p2 : %@", offset, p1, p2);
     

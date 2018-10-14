@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561055540.092402"
+            timestampString = "561200867.946101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-readSelectedFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561055540.092533"
+            timestampString = "561200867.946412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "EIDReader"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
+            timestampString = "561200867.946478"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "-executeCorrectedLengthCAPDU:withRapdu:error:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
+            timestampString = "561200867.9465359"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-readSelectedFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561055540.092634"
+            timestampString = "561200867.946592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-readSelectedFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,60 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561055540.092701"
+            timestampString = "561200867.946646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-readSelectedFile"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561055540.092764"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-readSelectedFile"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561055540.092828"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-readSelectedFile"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartCardReaderARC/PDReaders/EIDReader.m"
-            timestampString = "561055540.092896"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-didPrepareCardSuccessfully"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -128,6 +112,38 @@
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "-parseWithResult:data:offset:len:level:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartCardReaderARC/Model/EID/FilesOnCard/EIDParser.m"
+            timestampString = "561200867.946775"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-valueForTagBytes:inBytes:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SmartCardReaderARC/Model/EID/FilesOnCard/EIDParser.m"
+            timestampString = "561200867.947233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-valueForTagBytes:inBytes:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

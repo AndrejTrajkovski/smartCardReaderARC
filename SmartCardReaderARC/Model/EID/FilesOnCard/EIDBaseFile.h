@@ -1,10 +1,9 @@
 #import <Foundation/Foundation.h>
 
-@class BerTag;
 @interface EIDBaseFile : NSObject
 
--(instancetype)initWithBytes:(NSArray *)bytes;
 @property (strong, nonatomic) NSArray *bytes;
--(BerTag *)baseTag;
+//Method fileId should be overridden in subclasses.
+-(NSArray<NSNumber *> *)fileId;
 
 @end
