@@ -5,6 +5,7 @@
 
 @interface ViewController () <SmartEIDDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *signatureImageView;
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *facialImageView;
 @property (strong, nonatomic) SmartEID *smartEid;
@@ -24,7 +25,14 @@
 {
     if ([publicData isKindOfClass:[EIDCardModel class]]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.facialImageView.image = [(EIDCardModel *)publicData facialImage];
+            EIDCardModel *eidCard = (EIDCardModel *)publicData;
+            self.facialImageView.image = [eidCard facialImage];
+            self.signatureImageView.image = [eidCard signatureImage];
+            for (NSString *str in [eidCard cardDesription]) {
+                if ([str isKindOfClass:[NSString class]]){
+                    self.statusTextView.text = [self.statusTextView.text stringByAppendingString:str];
+                }
+            }
         });
     }
 }

@@ -1,6 +1,6 @@
 #import "EIDFiles.h"
 
-@implementation EIDFileOne
+@implementation EIDFile0201
 -(NSArray<NSNumber *> *)fileId
 {
     return @[@0x02, @0x01];
@@ -11,7 +11,7 @@
 }
 @end
 
-@implementation EIDFileTwo
+@implementation EIDFile0202
 -(NSArray<NSNumber *> *)fileId
 {
     return @[@0x02, @0x02];
@@ -22,7 +22,7 @@
 }
 @end
 
-@implementation EIDFileThree
+@implementation EIDFile0203
 -(NSArray<NSNumber *> *)fileId
 {
     return @[@0x02, @0x03];
@@ -33,7 +33,7 @@
 }
 @end
 
-@implementation EIDFileFour
+@implementation EIDFile0205
 -(NSArray<NSNumber *> *)fileId
 {
     return @[@0x02, @0x05];
@@ -45,7 +45,7 @@
 
 @end
 
-@implementation EIDFileFive
+@implementation EIDFile0A02
 -(NSArray<NSNumber *> *)fileId
 {
     return @[@0x0A, @0x02];
@@ -56,7 +56,7 @@
 }
 @end
 
-@implementation EIDFileSix
+@implementation EIDFile0207
 -(NSArray<NSNumber *> *)fileId
 {
     return @[@0x02, @0x07];

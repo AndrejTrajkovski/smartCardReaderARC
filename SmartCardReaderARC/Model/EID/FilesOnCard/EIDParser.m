@@ -23,7 +23,6 @@ static NSInteger lengthOfBytesIndicatingLengthOfValue = 2;
 {
     NSArray *sliceStartingWithTag = [bytes sliceStartingWithSubarray:tagBytes];
     NSArray *sliceWithoutTAg = [self cutTag:tagBytes inBytes:sliceStartingWithTag];
-//    NSArray *sliceWithoutZeroByte = [self cutZeroByteInBytes:sliceWithoutTAg];
     NSInteger lengthOfValue = [self lengthOfValueFromBytes:sliceWithoutTAg];
     NSArray *sliceWithoutLengthByte = [self cutLengthBytesInBytes:sliceWithoutTAg];
     if (sliceWithoutLengthByte.count >= lengthOfValue) {
@@ -55,7 +54,7 @@ static NSInteger lengthOfBytesIndicatingLengthOfValue = 2;
 
         double floatDigit = digit.doubleValue;
         double floatIdx = (double)idx;
-        int x = pow(16, floatIdx * 2) * floatDigit;
+        int x = pow(16, floatIdx * lengthOfBytesIndicatingLengthOfValue) * floatDigit;
         NSLog(@"X : %d", x);
         totalLength = totalLength + x;
     }];
@@ -80,23 +79,6 @@ static NSInteger lengthOfBytesIndicatingLengthOfValue = 2;
         return [NSArray arrayWithArray:newBytes];
     }
     //error, expected bytes after tag
-    return bytes;
-}
-
--(NSArray *)cutZeroByteInBytes:(NSArray *)bytes
-{
-    if (bytes.count > 0) {
-        NSNumber *extraByte = [bytes objectAtIndex:0];
-        if ([extraByte isEqual:@0x00]) {
-            NSMutableArray *newBytes = [bytes mutableCopy];
-            [newBytes removeObjectAtIndex:0];
-            return [NSArray arrayWithArray:newBytes];
-        }else {
-            //error, expected 0x00 byte
-            return bytes;
-        }
-    }
-    //error, expected 0x00 byte
     return bytes;
 }
 

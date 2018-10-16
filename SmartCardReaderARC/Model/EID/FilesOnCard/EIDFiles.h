@@ -1,32 +1,32 @@
 #import <Foundation/Foundation.h>
 #import "EIDBaseFile.h"
 
-@interface EIDFileOne : EIDBaseFile
+@interface EIDFile0201 : EIDBaseFile
 -(NSArray<NSNumber *> *)fileId;
 -(NSArray<NSNumber *> *)baseTag;
 @end
 
-@interface EIDFileTwo : EIDBaseFile
+@interface EIDFile0202 : EIDBaseFile
 -(NSArray<NSNumber *> *)fileId;
 -(NSArray<NSNumber *> *)baseTag;
 @end
 
-@interface EIDFileThree : EIDBaseFile
+@interface EIDFile0203 : EIDBaseFile
 -(NSArray<NSNumber *> *)fileId;
 -(NSArray<NSNumber *> *)baseTag;
 @end
 
-@interface EIDFileFour : EIDBaseFile
+@interface EIDFile0205 : EIDBaseFile
 -(NSArray<NSNumber *> *)fileId;
 -(NSArray<NSNumber *> *)baseTag;
 @end
 
-@interface EIDFileFive : EIDBaseFile
+@interface EIDFile0A02 : EIDBaseFile
 -(NSArray<NSNumber *> *)fileId;
 -(NSArray<NSNumber *> *)baseTag;
 @end
 
-@interface EIDFileSix : EIDBaseFile
+@interface EIDFile0207 : EIDBaseFile
 -(NSArray<NSNumber *> *)fileId;
 -(NSArray<NSNumber *> *)baseTag;
 @end

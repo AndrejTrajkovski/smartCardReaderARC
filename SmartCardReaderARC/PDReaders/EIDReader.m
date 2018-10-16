@@ -9,6 +9,8 @@
 #import "EIDFiles.h"
 #import "EIDCardAdapter.h"
 #import "EIDParser.h"
+#import "AIDs.h"
+#import "EIDBaseFile.h"
 
 @interface EIDReader() <DeviceReaderDelegate>
 
@@ -59,36 +61,55 @@
 
 - (void)didPrepareCardSuccessfully {
     
-    NSError *error = nil;
-    RAPDU *selectAID = [self selectApplicationWithError:&error];
-    //Ignore RAPDU.responseStatus, the flow on EID does not care about wrong statuses
-    if (!selectAID) {
-        [self.delegate didFailToReadPublicDataWithError:error];
-        return;
-    }
-    //App is selected, continue with selecting files and reading files
-    NSArray *filesList = [self filesList];
-    [filesList enumerateObjectsUsingBlock:^(EIDBaseFile* file, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self selectFileWithId:file.fileId];
-        file.bytes = [self readSelectedFile];
-    }];
+    
+    AID01 *aid01 = [AID01 new];
+    NSArray *aid01Files = [self readFilesForAID:aid01];
+    
+    AID09 *aid09 = [AID09 new];
+    NSArray *aid09Files = [self readFilesForAID:aid09];
+    
+    NSMutableArray *allFiles = [NSMutableArray arrayWithArray:aid01Files];
+    [allFiles addObjectsFromArray:aid09Files];
+//    CAPDU *selectEmiratesAID = [CAPDUGenerator selectApplicationWithAID:firstAID.aid];
+//    NSError *underlyingError = nil;
+//    RAPDU *selectAIDRapdu = [self.deviceReader executeCommand:selectEmiratesAID error:&underlyingError];
+//    //Ignore RAPDU.responseStatus, the flow on EID does not care about wrong statuses
+//    if (!selectAIDRapdu) {
+//        [self.delegate didFailToReadPublicDataWithError:error];
+//        return;
+//    }
+//    //App is selected, continue with selecting files and reading files
+//    NSArray *aid01Files = [firstAID filesList];
+//    [aid01Files enumerateObjectsUsingBlock:^(EIDBaseFile* file, NSUInteger idx, BOOL * _Nonnull stop) {
+//        [self selectFileWithId:file.fileId];
+//        file.bytes = [self readSelectedFile];
+//    }];
     
     EIDCardAdapter *cardAdapter = [[EIDCardAdapter alloc] initWithParser:[EIDParser new]];
-    EIDCardModel *card = [cardAdapter cardModelForFiles:filesList];
+    EIDCardModel *card = [cardAdapter cardModelForFiles:allFiles];
     [self.delegate didReadPublicData:card];
 }
 
--(NSArray<EIDBaseFile*> *)filesList
+-(NSArray <EIDBaseFile*>*)readFilesForAID:(id <BaseAID>)aid
 {
-    EIDFileOne *fileOne = [EIDFileOne new];
-    EIDFileTwo *fileTwo = [EIDFileTwo new];
-    EIDFileThree *fileThree = [EIDFileThree new];
-    EIDFileFour *fileFour = [EIDFileFour new];
-    EIDFileFive *fileFive = [EIDFileFive new];
-    EIDFileSix *fileSix = [EIDFileSix new];
-    
-    return @[fileOne, fileTwo, fileThree, fileFour, fileFive, fileSix];
+    NSError *error = nil;
+    CAPDU *selectEmiratesAID = [CAPDUGenerator selectApplicationWithAID:aid.aid];
+    NSError *underlyingError = nil;
+    RAPDU *selectAIDRapdu = [self.deviceReader executeCommand:selectEmiratesAID error:&underlyingError];
+    //Ignore RAPDU.responseStatus, the flow on EID does not care about wrong statuses
+    if (!selectAIDRapdu) {
+        [self.delegate didFailToReadPublicDataWithError:error];
+        return nil;
+    }
+    //App is selected, continue with selecting files and reading files
+    NSArray *aidFiles = aid.filesList;
+    [aidFiles enumerateObjectsUsingBlock:^(EIDBaseFile* file, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self selectFileWithId:file.fileId];
+        file.bytes = [self readSelectedFile];
+    }];
+    return aidFiles;
 }
+
 
 -(RAPDU *)selectFileWithId:(NSArray <NSNumber *>*)identifier
 {
@@ -96,16 +117,6 @@
     CAPDU *selectFile = [CAPDUGenerator selectEmiratesCardFileWithFID:identifier];
     RAPDU *selectFileResponse = [self.deviceReader executeCommand:selectFile error:&readFileError];
     return selectFileResponse;
-}
-
--(RAPDU *)selectApplicationWithError:(NSError **)error
-{
-    NSArray *emiratesCardAID = @[@0xA0, @0x00, @0x00, @0x02, @0x43, @0x00, @0x13, @0x00, @0x00, @0x00, @0x01, @0x01, @0x01];
-    CAPDU *selectEmiratesAID = [CAPDUGenerator selectApplicationWithAID:emiratesCardAID];
-    
-    NSError *underlyingError = nil;
-    RAPDU *selectCardResponse = [self.deviceReader executeCommand:selectEmiratesAID error:&underlyingError];
-    return selectCardResponse;
 }
 
 -(NSArray *)readSelectedFile

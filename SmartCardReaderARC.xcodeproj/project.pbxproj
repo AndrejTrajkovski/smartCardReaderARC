@@ -32,6 +32,7 @@
 		8913AF1820FE146000224E26 /* EMVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF1720FE146000224E26 /* EMVParser.m */; };
 		8913AF2520FF35D200224E26 /* TactivoDeviceReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2420FF35D200224E26 /* TactivoDeviceReader.m */; };
 		8913AF2820FF7C8800224E26 /* SFIWithRecordNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */; };
+		894D579F2176330200E1C00D /* AIDs.m in Sources */ = {isa = PBXBuildFile; fileRef = 894D579E2176330200E1C00D /* AIDs.m */; };
 		894FC4EA2105C08900E9A686 /* pd data example.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 894FC4E92105C08900E9A686 /* pd data example.rtf */; };
 		896440A8211DBD2F0024CDDD /* EMVCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 896440A7211DBD2F0024CDDD /* EMVCardModel.m */; };
 		896EC5FC20FDD21E005BC89F /* CAPDUGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 896EC5FB20FDD21E005BC89F /* CAPDUGenerator.m */; };
@@ -118,6 +119,8 @@
 		8913AF2620FF7C8800224E26 /* SFIWithRecordNumbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFIWithRecordNumbers.h; sourceTree = "<group>"; };
 		8913AF2720FF7C8800224E26 /* SFIWithRecordNumbers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFIWithRecordNumbers.m; sourceTree = "<group>"; };
 		8913AF2A2100763100224E26 /* APDU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APDU.h; sourceTree = "<group>"; };
+		894D579D2176330200E1C00D /* AIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIDs.h; sourceTree = "<group>"; };
+		894D579E2176330200E1C00D /* AIDs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIDs.m; sourceTree = "<group>"; };
 		894FC4E92105C08900E9A686 /* pd data example.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "pd data example.rtf"; sourceTree = "<group>"; };
 		896440A6211DBD2F0024CDDD /* EMVCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMVCardModel.h; sourceTree = "<group>"; };
 		896440A7211DBD2F0024CDDD /* EMVCardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMVCardModel.m; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				8258526F216FCA3C009FDD03 /* EIDParser.m */,
 				8258528521724F08009FDD03 /* EIDFiles.h */,
 				8258528621724F08009FDD03 /* EIDFiles.m */,
+				894D579D2176330200E1C00D /* AIDs.h */,
+				894D579E2176330200E1C00D /* AIDs.m */,
 			);
 			path = FilesOnCard;
 			sourceTree = "<group>";
@@ -669,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894D579F2176330200E1C00D /* AIDs.m in Sources */,
 				899B8BB8216213C900385F27 /* EIDCardModel.m in Sources */,
 				82268BFC21067AF30044591C /* EMVTlv.m in Sources */,
 				82268BFF21067E450044591C /* EmvTlvList.m in Sources */,
