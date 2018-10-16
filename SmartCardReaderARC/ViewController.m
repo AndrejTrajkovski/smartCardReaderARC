@@ -1,10 +1,12 @@
 #import "ViewController.h"
 #import "SmartEID.h"
 //#import "lbrReader.h"
+#import "EIDCardModel.h"
 
 @interface ViewController () <SmartEIDDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *facialImageView;
 @property (strong, nonatomic) SmartEID *smartEid;
 @end
 
@@ -20,7 +22,11 @@
 
 -(void)didReadPublicData:(id)publicData
 {
-    
+    if ([publicData isKindOfClass:[EIDCardModel class]]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.facialImageView.image = [(EIDCardModel *)publicData facialImage];
+        });
+    }
 }
 
 -(void)didFailReadPublicData:(NSError *)error

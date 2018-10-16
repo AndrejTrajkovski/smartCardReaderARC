@@ -5,5 +5,6 @@
 @property (strong, nonatomic) NSArray *bytes;
 //Method fileId should be overridden in subclasses.
 -(NSArray<NSNumber *> *)fileId;
-
+-(NSArray<NSNumber *> *)baseTag;
+-(NSString *)bytesAsHex;
 @end

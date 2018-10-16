@@ -9,36 +9,25 @@
 
 @implementation EIDParser
 
--(NSData *)dataForTag:(BerTag *)tag
-{
-    return nil;
-}
+static NSInteger lengthOfBytesIndicatingLengthOfValue = 2;
 
--(NSData *)dataForTag:(BerTag *)tag inBytes:(NSArray *)bytes
+-(NSData *)dataForTag:(BerTag *)tag inFile:(EIDBaseFile *)file
 {
-    NSArray *dataWithNoBaseTLV = [self cutBaseTagDataInBytes:bytes];
+    NSArray *dataWithNoBaseTag = [self cutTag:file.baseTag inBytes:file.bytes];
     NSArray *tagBytesArray = [NSArray byteArrayFromData:tag.data];
-    NSArray *valueAsArray = [self valueForTagBytes:tagBytesArray inBytes:dataWithNoBaseTLV];
+    NSArray *valueAsArray = [self valueForTagBytes:tagBytesArray inBytes:dataWithNoBaseTag];
     return [NSData byteDataFromArray:valueAsArray];
-}
-
--(NSArray *)cutBaseTagDataInBytes:(NSArray *)bytes
-{
-    BerTag *baseTag = [EIDBerTags BASE_TAG];
-    NSArray *tagBytesArray = [NSArray byteArrayFromData:baseTag.data];
-    NSArray *noTagBytes = [self valueForTagBytes:tagBytesArray inBytes:bytes];
-    return noTagBytes;
 }
 
 -(NSArray *)valueForTagBytes:(NSArray<BerTag *> *)tagBytes inBytes:(NSArray *)bytes
 {
     NSArray *sliceStartingWithTag = [bytes sliceStartingWithSubarray:tagBytes];
     NSArray *sliceWithoutTAg = [self cutTag:tagBytes inBytes:sliceStartingWithTag];
-    NSArray *sliceWithoutZeroByte = [self cutZeroByteInBytes:sliceWithoutTAg];
-    NSNumber *lengthOfValue = [self lengthOfValueFromBytes:sliceWithoutZeroByte];
-    NSArray *sliceWithoutLengthByte = [self cutLengthByteInBytes:sliceWithoutZeroByte];
-    if (sliceWithoutLengthByte.count >= lengthOfValue.integerValue) {
-        NSRange rangeOfValueSlice = NSMakeRange(0, lengthOfValue.integerValue);
+//    NSArray *sliceWithoutZeroByte = [self cutZeroByteInBytes:sliceWithoutTAg];
+    NSInteger lengthOfValue = [self lengthOfValueFromBytes:sliceWithoutTAg];
+    NSArray *sliceWithoutLengthByte = [self cutLengthBytesInBytes:sliceWithoutTAg];
+    if (sliceWithoutLengthByte.count >= lengthOfValue) {
+        NSRange rangeOfValueSlice = NSMakeRange(0, lengthOfValue);
         NSArray *valueSlice = [sliceWithoutLengthByte subarrayWithRange:rangeOfValueSlice];
         return valueSlice;
     }else {
@@ -47,20 +36,37 @@
     }
 }
 
--(NSArray *)cutLengthByteInBytes:(NSArray *)bytes
+-(NSArray *)cutLengthBytesInBytes:(NSArray *)bytes
 {
-    if (bytes.count > 0) {
+    if (bytes.count > lengthOfBytesIndicatingLengthOfValue) {
         NSMutableArray *newBytes = [bytes mutableCopy];
-        [newBytes removeObjectAtIndex:0];
+        NSRange firstElementsRange = NSMakeRange(0, lengthOfBytesIndicatingLengthOfValue);
+        [newBytes removeObjectsInRange:firstElementsRange];
         return [NSArray arrayWithArray:newBytes];
     }
     return nil;
 }
 
--(NSNumber *)lengthOfValueFromBytes:(NSArray *)bytes
+-(NSInteger)lengthOfValueFromBytes:(NSArray<NSNumber *> *)bytes
+{
+    NSArray *lengthBytes = [self lengthBytesFromBytes:bytes];
+    __block NSInteger totalLength = 0;
+    [lengthBytes.reverseObjectEnumerator.allObjects enumerateObjectsUsingBlock:^(NSNumber *digit, NSUInteger idx, BOOL * _Nonnull stop) {
+
+        double floatDigit = digit.doubleValue;
+        double floatIdx = (double)idx;
+        int x = pow(16, floatIdx * 2) * floatDigit;
+        NSLog(@"X : %d", x);
+        totalLength = totalLength + x;
+    }];
+    return totalLength;
+}
+
+-(NSArray<NSNumber *>*)lengthBytesFromBytes:(NSArray *)bytes
 {
     if (bytes.count > 0) {
-        return bytes.firstObject;
+        NSRange firstTwoElementsRange = NSMakeRange(0, lengthOfBytesIndicatingLengthOfValue);
+        return [bytes subarrayWithRange:firstTwoElementsRange];
     }
     return nil;
 }
@@ -73,7 +79,7 @@
         [newBytes removeObjectsInRange:tagRange];
         return [NSArray arrayWithArray:newBytes];
     }
-    //error, should have bytes after tag
+    //error, expected bytes after tag
     return bytes;
 }
 
@@ -86,11 +92,11 @@
             [newBytes removeObjectAtIndex:0];
             return [NSArray arrayWithArray:newBytes];
         }else {
-            //error, should have 0x00 byte
+            //error, expected 0x00 byte
             return bytes;
         }
     }
-    //error, should have 0x00 byte
+    //error, expected 0x00 byte
     return bytes;
 }
 

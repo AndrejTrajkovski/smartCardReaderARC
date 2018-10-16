@@ -39,7 +39,6 @@
 		897DD95A210B2F6700950723 /* CardAID.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD959210B2F6700950723 /* CardAID.m */; };
 		897DD95D210B30E000950723 /* EmvAIDList.m in Sources */ = {isa = PBXBuildFile; fileRef = 897DD95C210B30E000950723 /* EmvAIDList.m */; };
 		897DD95F210B326A00950723 /* AIDList.csv in Resources */ = {isa = PBXBuildFile; fileRef = 897DD95E210B326A00950723 /* AIDList.csv */; };
-		899B8BB22162122900385F27 /* EidTlvList.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BB12162122900385F27 /* EidTlvList.m */; };
 		899B8BB5216212C000385F27 /* EIDBerTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BB4216212C000385F27 /* EIDBerTags.m */; };
 		899B8BB8216213C900385F27 /* EIDCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BB7216213C900385F27 /* EIDCardModel.m */; };
 		899B8BBC2162174200385F27 /* EIDTlv.m in Sources */ = {isa = PBXBuildFile; fileRef = 899B8BBB2162174200385F27 /* EIDTlv.m */; };
@@ -131,8 +130,6 @@
 		897DD95B210B30E000950723 /* EmvAIDList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmvAIDList.h; sourceTree = "<group>"; };
 		897DD95C210B30E000950723 /* EmvAIDList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmvAIDList.m; sourceTree = "<group>"; };
 		897DD95E210B326A00950723 /* AIDList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AIDList.csv; sourceTree = "<group>"; };
-		899B8BB02162122900385F27 /* EidTlvList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EidTlvList.h; sourceTree = "<group>"; };
-		899B8BB12162122900385F27 /* EidTlvList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EidTlvList.m; sourceTree = "<group>"; };
 		899B8BB3216212C000385F27 /* EIDBerTags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDBerTags.h; sourceTree = "<group>"; };
 		899B8BB4216212C000385F27 /* EIDBerTags.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EIDBerTags.m; sourceTree = "<group>"; };
 		899B8BB6216213C900385F27 /* EIDCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EIDCardModel.h; sourceTree = "<group>"; };
@@ -372,8 +369,6 @@
 		899B8BB92162172100385F27 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
-				899B8BB02162122900385F27 /* EidTlvList.h */,
-				899B8BB12162122900385F27 /* EidTlvList.m */,
 				899B8BB3216212C000385F27 /* EIDBerTags.h */,
 				899B8BB4216212C000385F27 /* EIDBerTags.m */,
 				899B8BBA2162174200385F27 /* EIDTlv.h */,
@@ -686,7 +681,6 @@
 				82585270216FCA3C009FDD03 /* EIDParser.m in Sources */,
 				890337A821469ADE000E48F2 /* NefcomDeviceReader.m in Sources */,
 				897DD95D210B30E000950723 /* EmvAIDList.m in Sources */,
-				899B8BB22162122900385F27 /* EidTlvList.m in Sources */,
 				8258525E216FB987009FDD03 /* NSArray+ByteManipulation.m in Sources */,
 				8258526D216FC7EC009FDD03 /* EIDBaseFile.m in Sources */,
 				897DD955210B18BB00950723 /* BerTlv+Emv.m in Sources */,
@@ -867,7 +861,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DKV7Q87Z7J;
+				DEVELOPMENT_TEAM = LAA69LK8PF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
@@ -910,7 +904,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DKV7Q87Z7J;
+				DEVELOPMENT_TEAM = LAA69LK8PF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (

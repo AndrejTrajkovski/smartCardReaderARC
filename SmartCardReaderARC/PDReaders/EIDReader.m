@@ -61,7 +61,7 @@
     
     NSError *error = nil;
     RAPDU *selectAID = [self selectApplicationWithError:&error];
-    //We do not check the response for error.
+    //Ignore RAPDU.responseStatus, the flow on EID does not care about wrong statuses
     if (!selectAID) {
         [self.delegate didFailToReadPublicDataWithError:error];
         return;

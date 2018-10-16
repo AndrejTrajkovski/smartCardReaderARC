@@ -3,9 +3,9 @@
 
 @interface EIDBerTags : NSObject
 
-//each file starts with the BASE_TAG
-+(BerTag *)BASE_TAG;
 +(BerTag *)ID_NUMBER;
 +(BerTag *)CARD_NUMBER;
++(BerTag *)ID_TYPE;
++(BerTag *)FACIAL_IMAGE;
 
 @end
